@@ -63,6 +63,9 @@ if [ ! -d "node_modules" ]; then
     npm install
 fi
 
+echo -e "${YELLOW}Running local CI gate...${NC}"
+npm run ci:gate
+
 # Build deploy trace metadata for Netlify deploy message
 if command -v git &> /dev/null && git rev-parse --is-inside-work-tree &> /dev/null; then
     GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown-branch)"

@@ -22,7 +22,10 @@ npm run dev
 npm run lint
 npm run type-check
 npm run build
+npm run ci:gate
 ```
+
+`npm run ci:gate` runs the full local gate: lint, type-check, build, Lychee link checks, and npm audit.
 
 ## Deploy (Local Script + Netlify)
 
@@ -39,7 +42,7 @@ netlify link
 ./deploy.sh prod
 ```
 
-`deploy.sh` runs Netlify builds and publishes using your local Netlify CLI session.
+`deploy.sh` runs `npm run ci:gate` first, then runs Netlify build and publish using your local Netlify CLI session.
 
 ## Governance
 
