@@ -14,8 +14,7 @@ export default function ArtifactsPage() {
           Artifact Coverage
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          SkillGate scans source code and non-source artifacts. Every finding is tagged by origin type
-          so policy and CI decisions stay auditable.
+          SkillGate scans source code and supporting files so teams can review risk in one place.
         </p>
       </div>
 
@@ -48,12 +47,12 @@ export default function ArtifactsPage() {
         </table>
       </div>
 
-      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Provenance and policy</h2>
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>How findings are organized</h2>
       <ul style={{ color: 'var(--text-muted)', lineHeight: 2.2, paddingLeft: '20px', marginBottom: '32px' }}>
         {[
-          'Every finding is tagged by origin type (code, document_text, archive_member, config, markdown).',
-          'Origin-aware policy allows per-origin severity floors and blocked categories.',
-          'SARIF and JSON output include provenance fields for CI and audit traceability.',
+          'Findings are grouped by file type so reviewers can triage quickly.',
+          'Policies can apply stricter thresholds for specific content types.',
+          'JSON and SARIF outputs preserve file context for audits and CI review.',
         ].map((item) => (
           <li key={item} style={{ fontSize: '0.9rem' }}>{item}</li>
         ))}
@@ -62,16 +61,16 @@ export default function ArtifactsPage() {
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Safety and performance controls</h2>
       <ul style={{ color: 'var(--text-muted)', lineHeight: 2.2, paddingLeft: '20px', marginBottom: '32px' }}>
         {[
-          'Archive traversal is bounded by depth and extraction budget.',
+          'Archive scanning is limited for safe and predictable performance.',
           'Files larger than 100 KB are skipped with an explicit warning.',
-          'Unicode normalization and confusable folding are applied before analysis.',
+          'Text is normalized before scanning for more reliable matching.',
           'No code is executed during scanning. Analysis is purely static.',
         ].map((item) => (
           <li key={item} style={{ fontSize: '0.9rem' }}>{item}</li>
         ))}
       </ul>
 
-      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Per-origin policy example</h2>
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Policy example</h2>
       <div style={{ background: 'var(--code-bg)', borderRadius: '8px', padding: '16px 20px', fontFamily: 'monospace', fontSize: '0.83rem', color: '#e5e7eb', overflow: 'auto', marginBottom: '24px' }}>
         <pre style={{ margin: 0 }}>{`version: "1"
 preset: production

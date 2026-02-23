@@ -1,56 +1,30 @@
 import type { Metadata } from 'next';
-import { Badge } from '@/components/ui/Badge';
-
 export const metadata: Metadata = {
   title: 'Changelog',
-  description: 'SkillGate release history and version notes.',
+  description: 'Product update log for SkillGate documentation and rollout status.',
 };
 
 const RELEASES = [
   {
-    version: '1.0.0',
+    label: 'Pre-launch status',
     date: '2026-02-23',
-    status: 'stable' as const,
-    summary: 'General availability release.',
+    summary: 'Public launch is in progress. GA versioning is not announced yet.',
     changes: [
-      'Core scanning engine with 119 detection rules across 7 languages.',
-      'Deterministic risk scoring with severity multipliers.',
-      'Policy enforcement: development, staging, production, and strict presets.',
-      'Ed25519 signed attestation reports.',
-      'SARIF 2.1.0 output for GitHub Security tab.',
-      'GitHub Actions and GitLab CI integration.',
-      'Multi-artifact scanning: ZIP, PDF, DOCX, and source directories.',
-      'Cross-artifact correlation for distributed skills.',
-      'git pre-commit hooks via skillgate hooks install.',
-      'Entitlement contract: Free (10/min), Pro (60/min), Team (300/min), Enterprise (1000/min).',
+      'Docs migrated to docs.skillgate.io.',
+      'Core guides published for setup, policy, rules, and integrations.',
+      'Enterprise and legal guidance pages prepared for buyer review.',
+      'Content cleanup in progress to keep docs user-focused and launch-accurate.',
     ],
   },
   {
-    version: '0.9.0',
-    date: '2026-01-15',
-    status: 'stable' as const,
-    summary: 'Release candidate. API stabilization and performance improvements.',
+    label: 'What to expect next',
+    date: 'Planned',
+    summary: 'These updates are planned for public launch readiness.',
     changes: [
-      'Cold start under 2 seconds.',
-      'Parallel rule evaluation per file.',
-      'Unicode hardening (homoglyph detection, bidirectional override detection).',
-      'Performance SLO guards: skip files over 100KB with warning.',
-      'Retroscan: replay historical scans with updated rules.',
-      'Hunt: search historical scan reports by rule ID and severity.',
-      'Approval workflow signing (Enterprise).',
-    ],
-  },
-  {
-    version: '0.7.0',
-    date: '2025-11-20',
-    status: 'stable' as const,
-    summary: 'Universal language governance across all 7 supported languages.',
-    changes: [
-      'Go, Rust, and Ruby rule coverage added.',
-      'Per-origin policy for multi-skill bundles.',
-      'Session lineage DAG for runtime tracing (Enterprise).',
-      'AI-BOM (CycloneDX) import and validation.',
-      'Reputation graph verification.',
+      'Versioned public release notes after GA announcement.',
+      'Endpoint-level API reference by tier.',
+      'Expanded operational runbooks for self-hosted teams.',
+      'Additional migration guides for upgrade paths.',
     ],
   },
 ];
@@ -64,13 +38,13 @@ export default function ChangelogPage() {
           Changelog
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          Release history for SkillGate.
+          Launch-status updates for SkillGate docs and rollout readiness.
         </p>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
         {RELEASES.map((release) => (
-          <div key={release.version} style={{ borderLeft: '2px solid var(--border)', paddingLeft: '24px', position: 'relative' }}>
+          <div key={release.label} style={{ borderLeft: '2px solid var(--border)', paddingLeft: '24px', position: 'relative' }}>
             <div style={{
               position: 'absolute', left: '-5px', top: '4px',
               width: '8px', height: '8px', borderRadius: '50%',
@@ -78,9 +52,8 @@ export default function ChangelogPage() {
             }} />
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px', flexWrap: 'wrap' }}>
               <span style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--text)', fontFamily: 'monospace' }}>
-                v{release.version}
+                {release.label}
               </span>
-              <Badge status={release.status} />
               <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{release.date}</span>
             </div>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '12px', fontStyle: 'italic' }}>

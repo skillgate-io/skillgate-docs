@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
+import { HeadingAnchors } from '@/components/ui/HeadingAnchors';
 
 export function DocLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -24,8 +25,10 @@ export function DocLayout({ children }: { children: React.ReactNode }) {
             minWidth: 0,
             padding: '40px 48px 80px',
           }}
+          data-docs-content="true"
           className="doc-main"
         >
+          <HeadingAnchors />
           {children}
         </main>
       </div>

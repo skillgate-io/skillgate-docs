@@ -4,14 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'SkillGate Docs',
   description:
-    'SkillGate scans AI agent skills for security risks and enforces policy gates before deployment.',
+    'SkillGate helps teams review AI agent skills, apply policy checks, and ship safely.',
 };
 
 const FEATURES = [
   {
     icon: '🔍',
     title: '119 Detection Rules',
-    desc: 'Static analysis across Python, JavaScript, TypeScript, Shell, Go, Rust, and Ruby. No ML — deterministic results every time.',
+    desc: 'Coverage across Python, JavaScript, TypeScript, Shell, Go, Rust, and Ruby with clear, repeatable findings.',
   },
   {
     icon: '⚡',
@@ -21,7 +21,7 @@ const FEATURES = [
   {
     icon: '🔐',
     title: 'Signed Attestations',
-    desc: 'Ed25519-signed scan reports with canonical JSON hashing. Verifiable proof of policy compliance.',
+    desc: 'Signed reports help teams share evidence and confirm policy checks were completed.',
   },
   {
     icon: '🚦',
@@ -36,7 +36,7 @@ const FEATURES = [
   {
     icon: '📦',
     title: 'Multi-Artifact',
-    desc: 'Scans ZIP bundles, PDF documents, DOCX files, and source directories with cross-artifact correlation.',
+    desc: 'Review source folders, archives, and common document formats in one workflow.',
   },
 ];
 
@@ -68,7 +68,7 @@ export default function HomePage() {
               letterSpacing: '0.03em',
             }}
           >
-            v1.0 — 1,245 tests passing
+            v1.0
           </span>
         </div>
         <h1
@@ -93,7 +93,7 @@ export default function HomePage() {
           }}
         >
           SkillGate is a CLI-first security scanner and policy enforcement tool for AI agent skills.
-          It blocks unsafe code before deployment using deterministic static analysis and signed attestations.
+          It helps teams catch risky changes early and block unsafe deployments with clear policy checks.
         </p>
       </div>
 

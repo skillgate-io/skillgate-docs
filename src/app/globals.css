@@ -88,6 +88,37 @@
     font-weight: 600;
   }
 
+  .sg-prose h1,
+  .sg-prose h2,
+  .sg-prose h3,
+  .sg-prose h4 {
+    scroll-margin-top: 84px;
+  }
+
+  .sg-heading-anchor {
+    margin-left: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+    font-weight: 500;
+  }
+
+  .sg-prose h1:hover .sg-heading-anchor,
+  .sg-prose h2:hover .sg-heading-anchor,
+  .sg-prose h3:hover .sg-heading-anchor,
+  .sg-prose h4:hover .sg-heading-anchor,
+  .sg-heading-anchor:focus-visible {
+    opacity: 1;
+  }
+
+  .sg-prose h1:target,
+  .sg-prose h2:target,
+  .sg-prose h3:target,
+  .sg-prose h4:target {
+    color: var(--accent);
+  }
+
   .sg-prose p,
   .sg-prose li {
     color: var(--text);

@@ -14,6 +14,7 @@ export const NAV: NavSection[] = [
     title: 'Getting Started',
     items: [
       { href: '/', label: 'Overview' },
+      { href: '/get-started', label: 'Get Started' },
       { href: '/quickstart', label: 'Quickstart' },
       { href: '/installation', label: 'Installation' },
       { href: '/concepts', label: 'Core Concepts' },
@@ -63,6 +64,7 @@ export const NAV: NavSection[] = [
   {
     title: 'Runtime',
     items: [
+      { href: '/agent-gateway', label: 'Agent Gateway' },
       { href: '/runtime-control', label: 'Runtime Control' },
       { href: '/artifacts', label: 'Artifact Coverage' },
       { href: '/intelligence', label: 'Intelligence' },
@@ -89,8 +91,10 @@ export const NAV: NavSection[] = [
   {
     title: 'More',
     items: [
+      { href: '/governance', label: 'Governance' },
+      { href: '/legal', label: 'Legal' },
+      { href: '/product', label: 'Product' },
       { href: '/security', label: 'Security' },
-      { href: '/migrations', label: 'Migrations' },
       { href: '/changelog', label: 'Changelog' },
     ],
   },

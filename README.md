@@ -22,17 +22,27 @@ npm run dev
 npm run lint
 npm run type-check
 npm run build
+npm run ci:gate
 ```
 
-## Deploy (GitHub + Vercel)
+`npm run ci:gate` runs the full local gate: lint, type-check, build, Lychee link checks, and npm audit.
 
-Set repository secrets:
+## Deploy (Local Script + Netlify)
 
-- `VERCEL_TOKEN`
-- `VERCEL_ORG_ID`
-- `VERCEL_PROJECT_ID`
+This repo is configured for local operator-driven deploys (not GitHub auto-deploy).
 
-`deploy.yml` publishes `main` to production.
+```bash
+# one-time: link local folder to your Netlify site
+netlify link
+
+# preview deploy
+./deploy.sh preview
+
+# production deploy
+./deploy.sh prod
+```
+
+`deploy.sh` runs `npm run ci:gate` first, then runs Netlify build and publish using your local Netlify CLI session.
 
 ## Governance
 
@@ -40,7 +50,12 @@ Set repository secrets:
 - CI checks in `.github/workflows/ci.yml`
 - Link checks in `.github/workflows/link-check.yml`
 - Security checks in `.github/workflows/security.yml`
+- No GitHub deploy workflow (deployment is local-script only)
 
 ## DNS Cutover
 
 Point `docs.skillgate.io` CNAME to your hosting provider target and verify TLS before changing product links.
+
+## License
+
+Proprietary. All rights reserved. See [LICENSE](./LICENSE).

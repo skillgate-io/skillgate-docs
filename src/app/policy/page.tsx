@@ -23,7 +23,7 @@ const PRESETS = [
   },
   {
     name: 'production',
-    desc: 'Strict deterministic enforcement. Fails on HIGH and CRITICAL, plus shell and injection categories.',
+    desc: 'Production-ready guardrails. Fails on HIGH and CRITICAL, plus shell and injection categories.',
     failOn: ['high', 'critical'],
     maxScore: 70,
   },
@@ -44,7 +44,7 @@ export default function PolicyPage() {
           Policy Reference
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          SkillGate enforces deterministic policy decisions. A policy defines what findings cause a scan to fail —
+          SkillGate applies policy checks consistently. A policy defines what findings cause a scan to fail —
           by severity level, by category, or by total risk score.
         </p>
       </div>
