@@ -24,15 +24,22 @@ npm run type-check
 npm run build
 ```
 
-## Deploy (GitHub + Vercel)
+## Deploy (Local Script + Netlify)
 
-Set repository secrets:
+This repo is configured for local operator-driven deploys (not GitHub auto-deploy).
 
-- `VERCEL_TOKEN`
-- `VERCEL_ORG_ID`
-- `VERCEL_PROJECT_ID`
+```bash
+# one-time: link local folder to your Netlify site
+netlify link
 
-`deploy.yml` publishes `main` to production.
+# preview deploy
+./deploy.sh preview
+
+# production deploy
+./deploy.sh prod
+```
+
+`deploy.sh` runs Netlify builds and publishes using your local Netlify CLI session.
 
 ## Governance
 
@@ -40,7 +47,12 @@ Set repository secrets:
 - CI checks in `.github/workflows/ci.yml`
 - Link checks in `.github/workflows/link-check.yml`
 - Security checks in `.github/workflows/security.yml`
+- No GitHub deploy workflow (deployment is local-script only)
 
 ## DNS Cutover
 
 Point `docs.skillgate.io` CNAME to your hosting provider target and verify TLS before changing product links.
+
+## License
+
+Proprietary. All rights reserved. See [LICENSE](./LICENSE).

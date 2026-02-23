@@ -5,7 +5,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
   title: 'Detection Rules',
-  description: 'SkillGate rule catalog: 119 deterministic static analysis rules across 7 languages and 7 categories.',
+  description: 'SkillGate rule catalog with 119 rules across 7 languages and 7 categories.',
 };
 
 const CATEGORIES = [
@@ -76,7 +76,7 @@ export default function RulesPage() {
           Rule Catalog
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          119 deterministic static analysis rules across 7 languages (Python, JavaScript, TypeScript, Shell, Go, Rust, Ruby)
+          119 static analysis rules across 7 languages (Python, JavaScript, TypeScript, Shell, Go, Rust, Ruby)
           and 7 risk categories. Every rule has a stable ID and fires only on relevant file types.
         </p>
       </div>
@@ -90,7 +90,7 @@ export default function RulesPage() {
           { value: '119', label: 'Total rules' },
           { value: '7', label: 'Languages' },
           { value: '7', label: 'Categories' },
-          { value: '0', label: 'False negatives on canonical patterns' },
+          { value: '24/7', label: 'Docs availability' },
         ].map((s) => (
           <div key={s.label} style={{
             padding: '16px', borderRadius: '8px',
@@ -119,7 +119,7 @@ export default function RulesPage() {
             <tbody>
               {[
                 { field: 'id', example: 'SG-SHELL-001', desc: 'Stable rule identifier.' },
-                { field: 'name', example: 'subprocess_call', desc: 'Internal rule name.' },
+                { field: 'name', example: 'subprocess_call', desc: 'Rule name.' },
                 { field: 'description', example: 'Direct subprocess execution detected', desc: 'Human-readable summary.' },
                 { field: 'severity', example: 'HIGH', desc: 'LOW, MEDIUM, HIGH, or CRITICAL.' },
                 { field: 'weight', example: '40', desc: 'Risk score contribution (0–100).' },

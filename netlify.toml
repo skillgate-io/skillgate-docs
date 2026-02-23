@@ -1,5 +1,5 @@
 [build]
-  base = "skillgate-docs"
+  base = "."
   command = "npm run build"
   publish = ".next"
 

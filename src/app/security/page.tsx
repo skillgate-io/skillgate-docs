@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Security',
-  description: 'Threat model, hardening controls, and responsible disclosure process for SkillGate.',
+  description: 'High-level security posture and disclosure contact.',
 };
 
 export default function SecurityPage() {
@@ -14,62 +14,35 @@ export default function SecurityPage() {
           Security
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          Security defaults are strict. Data handling is explicit, outcomes are predictable, and there
-          are no silent bypasses.
+          This page shares a high-level security overview for evaluation and procurement.
         </p>
       </div>
 
-      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Baseline controls</h2>
-      <ul style={{ color: 'var(--text-muted)', lineHeight: 2.2, paddingLeft: '20px', marginBottom: '32px' }}>
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Current overview</h2>
+      <div style={{ display: 'grid', gap: '12px', marginBottom: '28px', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
         {[
-          'Local scan mode never executes skill code. Analysis is purely static.',
-          'Policy decisions are deterministic and testable — the same input always produces the same output.',
-          'Ed25519-signed attestations provide verifiable proof of report integrity.',
-          'Hosted API uses request IDs, typed error responses, and per-tier rate limiting.',
-          'All hosted communication uses TLS 1.3. Dependencies are pinned with hashes.',
-          'Private signing keys never leave the local machine. API keys are never included in scan reports.',
-        ].map((item) => (
-          <li key={item} style={{ fontSize: '0.9rem' }}>{item}</li>
+          ['Static analysis', 'Local scanning does not execute analyzed skill code.'],
+          ['Encrypted transport', 'Hosted communication uses encrypted transport.'],
+          ['Review materials', 'Security documentation package is available on request.'],
+        ].map(([title, desc]) => (
+          <div key={title} style={{ border: '1px solid var(--border)', borderRadius: '10px', padding: '14px', background: 'var(--sidebar-bg)' }}>
+            <p style={{ margin: 0, color: 'var(--text)', fontWeight: 700, fontSize: '0.95rem' }}>{title}</p>
+            <p style={{ margin: '6px 0 0', color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.6 }}>{desc}</p>
+          </div>
         ))}
-      </ul>
-
-      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Data handling</h2>
-      <div style={{ border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden', fontSize: '0.875rem', marginBottom: '32px' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ background: 'var(--sidebar-bg)' }}>
-              {['Data type', 'Stays local', 'Leaves device'].map((h) => (
-                <th key={h} style={{ padding: '8px 14px', textAlign: 'left', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '1px solid var(--border)' }}>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['Skill source code', 'Always', 'Never'],
-              ['Scan findings', 'Always', 'Only if you run submit-scan explicitly'],
-              ['Signing keys', 'Always', 'Never'],
-              ['API keys', 'In env var or config', 'Never in reports'],
-              ['Reputation submissions', 'In outbox file', 'Only when you sync manually'],
-            ].map(([type, local, remote]) => (
-              <tr key={type} style={{ borderBottom: '1px solid var(--border)' }}>
-                <td style={{ padding: '8px 14px', color: 'var(--text)' }}>{type}</td>
-                <td style={{ padding: '8px 14px', color: 'var(--text-muted)' }}>{local}</td>
-                <td style={{ padding: '8px 14px', color: 'var(--text-muted)' }}>{remote}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
 
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Responsible disclosure</h2>
-      <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '12px' }}>
-        Report security issues to{' '}
-        <a href="mailto:support@skillgate.io" style={{ color: 'var(--accent)' }}>support@skillgate.io</a>{' '}
-        with reproduction steps and impact assessment.
-      </p>
-      <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
-        We confirm receipt within one business day and send status updates at each milestone.
-      </p>
+      <div style={{ border: '1px solid var(--border)', borderRadius: '10px', padding: '14px 16px' }}>
+        <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '10px' }}>
+          Report security issues to{' '}
+          <a href="mailto:support@skillgate.io" style={{ color: 'var(--accent)' }}>support@skillgate.io</a>{' '}
+          with reproduction steps and impact assessment.
+        </p>
+        <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
+          We confirm receipt and follow up with next steps.
+        </p>
+      </div>
     </div>
   );
 }

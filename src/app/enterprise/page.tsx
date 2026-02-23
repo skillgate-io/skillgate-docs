@@ -10,12 +10,12 @@ const sections = [
   {
     href: '/enterprise/security',
     label: 'Security',
-    desc: 'Threat model, identity controls, and incident readiness artifacts for security review.',
+    desc: 'Security controls, identity support, and incident readiness for security review.',
   },
   {
     href: '/enterprise/compliance',
     label: 'Compliance',
-    desc: 'AI-BOM inventory workflows, EU AI Act evidence, and signed runtime audit trails.',
+    desc: 'Compliance workflows for regulated environments and audit-ready evidence.',
   },
   {
     href: '/enterprise/deployment',
@@ -58,7 +58,7 @@ export default function EnterprisePage() {
           'SSO / SAML / OIDC identity integration.',
           'RBAC scopes for team-level policy authority.',
           'Private relay and air-gap deployment modes.',
-          'Signed runtime session artifacts for compliance audit.',
+          'Signed runtime records for compliance audit.',
           'AI-BOM (CycloneDX) import and validation.',
           'Organization-scoped capability budgets.',
           'SLA-backed support with dedicated escalation contacts.',

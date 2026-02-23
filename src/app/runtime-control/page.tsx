@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
   title: 'Runtime Control',
-  description: 'Control AI agent actions at runtime with approvals, capability limits, and signed session lineage.',
+  description: 'Control AI agent actions at runtime with approvals, capability limits, and verification steps.',
 };
 
 export default function RuntimeControlPage() {
@@ -29,13 +29,13 @@ export default function RuntimeControlPage() {
        +---------------------+--------------------+
                              |
                              v
-                  [Allow / Block Deterministically]
+              [Allow / Block]
                              |
                              v
-            [Signed Runtime Lineage + Session Artifact]
+              [Session Record]
                              |
                              v
-                    [Transitive Risk Scoring]`} />
+                [Risk Summary]`} />
 
       <p style={{ color: 'var(--text-muted)', marginBottom: '32px', lineHeight: 1.7 }}>
         Most tools report after the fact. SkillGate runtime control prevents risky actions before they run.
@@ -64,7 +64,7 @@ skillgate approval sign \\
 skillgate approval verify .skillgate/approvals/approval.json \\
   --required-reviewers 2`} />
 
-      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '32px', marginBottom: '16px' }}>Lineage and transitive risk</h2>
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '32px', marginBottom: '16px' }}>Session review</h2>
       <CodeBlock language="bash" code={`# Verify a signed runtime session artifact
 skillgate dag verify .skillgate/runtime/session.json
 
@@ -78,7 +78,7 @@ skillgate dag risk .skillgate/runtime/session.json --output json`} />
           'skillgate gateway check — pre-execution preflight check for individual tool calls',
           'skillgate gateway scan-output — scan tool output for injection before LLM re-entry',
           'skillgate approval sign / verify — manage reviewer quorum approvals',
-          'skillgate dag show / verify / risk — inspect signed session lineage artifacts',
+          'skillgate dag show / verify / risk — inspect signed session records',
         ].map((item) => (
           <li key={item} style={{ fontSize: '0.9rem' }}>{item}</li>
         ))}
