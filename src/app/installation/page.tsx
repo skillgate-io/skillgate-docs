@@ -126,10 +126,10 @@ export default function InstallationPage() {
         <CodeBlock
           language="bash"
           code={`pipx install skillgate          # install runtime first
-npm install -g @skillgate/cli   # then the npm wrapper`}
+npm install -g @skillgate-io/cli   # then the npm wrapper`}
         />
         <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: '12px' }}>Quick run without global install:</p>
-        <CodeBlock language="bash" code="npx @skillgate/cli version" />
+        <CodeBlock language="bash" code="npx @skillgate-io/cli version" />
       </section>
 
       {/* Post-install */}
@@ -186,7 +186,7 @@ npm install -g @skillgate/cli   # then the npm wrapper`}
                 { ch: 'pip', cmd: 'pip install skillgate==1.0.0' },
                 { ch: 'Homebrew', cmd: 'brew install skillgate@1.0.0' },
                 { ch: 'winget', cmd: 'winget install SkillGate.SkillGate --version 1.0.0' },
-                { ch: 'npm', cmd: 'npm install -g @skillgate/cli@1.0.0' },
+                { ch: 'npm', cmd: 'npm install -g @skillgate-io/cli@1.0.0' },
               ].map((row, i) => (
                 <tr key={row.ch} style={{ borderBottom: i < 4 ? '1px solid var(--border)' : 'none' }}>
                   <td style={{ padding: '10px 16px', fontWeight: 500, color: 'var(--text)' }}>{row.ch}</td>
