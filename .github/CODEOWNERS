@@ -1,0 +1,9 @@
+# Default ownership
+* @skillgate/docs-team
+
+# Security and policy docs require security review
+/src/app/policy/ @skillgate/security-team @skillgate/docs-team
+/src/app/rules/ @skillgate/security-team @skillgate/docs-team
+
+# GitHub workflows require platform review
+/.github/workflows/ @skillgate/platform-team @skillgate/docs-team

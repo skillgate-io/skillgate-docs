@@ -1,0 +1,89 @@
+export interface SearchEntry {
+  title: string;
+  description: string;
+  href: string;
+  section: string;
+  keywords?: string[];
+}
+
+export const SEARCH_INDEX: SearchEntry[] = [
+  // Getting Started
+  { href: '/', title: 'Overview', description: 'SkillGate documentation home. 119 rules, signed attestations, CI/CD native.', section: 'Getting Started', keywords: ['home', 'overview', 'introduction'] },
+  { href: '/quickstart', title: 'Quickstart', description: 'Scan your first skill in 5 minutes. Install, set API key, run scan.', section: 'Getting Started', keywords: ['install', 'start', 'first scan', 'pipx'] },
+  { href: '/installation', title: 'Installation', description: 'Install via pipx, pip, Homebrew, winget, or npm shim. All platforms.', section: 'Getting Started', keywords: ['pipx', 'pip', 'brew', 'homebrew', 'winget', 'npm', 'install', 'setup'] },
+  { href: '/concepts', title: 'Core Concepts', description: 'How SkillGate works: rules, risk scoring, policy enforcement, attestations.', section: 'Getting Started', keywords: ['pipeline', 'scoring', 'attestation', 'ed25519', 'deterministic'] },
+
+  // CLI Reference
+  { href: '/cli', title: 'CLI Commands', description: 'All SkillGate CLI commands. Exit codes and environment variables reference.', section: 'CLI Reference', keywords: ['commands', 'cli', 'terminal', 'exit codes', 'env vars'] },
+  { href: '/cli/scan', title: 'scan', description: 'Scan a skill bundle. Fleet mode, watch mode, signing, SARIF output.', section: 'CLI Reference', keywords: ['scan', 'fleet', 'enforce', 'sarif', 'json', 'sign', 'watch', 'explain', 'mode', 'output'] },
+  { href: '/cli/verify', title: 'verify', description: 'Verify a signed Ed25519 attestation report.', section: 'CLI Reference', keywords: ['verify', 'signature', 'attestation', 'ed25519', 'public key'] },
+  { href: '/cli/init', title: 'init', description: 'Generate a skillgate.yml policy configuration file.', section: 'CLI Reference', keywords: ['init', 'config', 'policy file', 'yaml', 'skillgate.yml'] },
+  { href: '/cli/auth', title: 'auth', description: 'Login, logout, whoami — manage SkillGate credentials.', section: 'CLI Reference', keywords: ['auth', 'login', 'logout', 'whoami', 'credentials', 'token'] },
+  { href: '/cli/keys', title: 'keys', description: 'Generate and manage Ed25519 signing keypairs.', section: 'CLI Reference', keywords: ['keys', 'generate', 'ed25519', 'signing', 'keypair', 'list', 'export'] },
+  { href: '/cli/hooks', title: 'hooks', description: 'Install or remove git pre-commit hooks that run scan before commits.', section: 'CLI Reference', keywords: ['hooks', 'git', 'pre-commit', 'install', 'uninstall'] },
+  { href: '/cli/run', title: 'run', description: 'Wrap an agent CLI with runtime gateway enforcement. Checks policy, approvals, and reputation before execution.', section: 'CLI Reference', keywords: ['run', 'gateway', 'runtime', 'agent', 'enforcement', 'bom', 'approval', 'top'] },
+  { href: '/cli/simulate', title: 'simulate', description: 'Dry-run policy impact across bundles without enforcing.', section: 'CLI Reference', keywords: ['simulate', 'dry-run', 'impact', 'policy', 'org'] },
+  { href: '/cli/submit-scan', title: 'submit-scan', description: 'Submit a scan report JSON to the hosted API for storage.', section: 'CLI Reference', keywords: ['submit', 'upload', 'report', 'api', 'storage'] },
+  { href: '/cli/hunt', title: 'hunt', description: 'Search historical scan reports using the hunt DSL query language.', section: 'CLI Reference', keywords: ['hunt', 'search', 'historical', 'query', 'dsl', 'reports'] },
+  { href: '/cli/retroscan', title: 'retroscan', description: 'Replay historical scans with updated rules to see impact diffs.', section: 'CLI Reference', keywords: ['retroscan', 'replay', 'historical', 'rules', 'diff'] },
+  { href: '/cli/doctor', title: 'doctor', description: 'Diagnose installation, auth, and environment health.', section: 'CLI Reference', keywords: ['doctor', 'diagnose', 'health', 'troubleshoot', 'status'] },
+  { href: '/cli/approval', title: 'approval', description: 'Create and verify signed approval files for reviewer quorum enforcement.', section: 'CLI Reference', keywords: ['approval', 'sign', 'verify', 'quorum', 'reviewer', 'runtime'] },
+  { href: '/cli/gateway', title: 'gateway', description: 'Pre-execution checks and tool output poisoning scan for native agent integration.', section: 'CLI Reference', keywords: ['gateway', 'check', 'scan-output', 'top', 'tool output poisoning', 'hooks'] },
+  { href: '/cli/bom', title: 'bom', description: 'Import CycloneDX AI bills of materials and validate skill invocations.', section: 'CLI Reference', keywords: ['bom', 'cyclonedx', 'bill of materials', 'import', 'validate', 'ai-bom'] },
+  { href: '/cli/dag', title: 'dag', description: 'Session lineage DAG: show, verify, and compute transitive risk metrics.', section: 'CLI Reference', keywords: ['dag', 'lineage', 'session', 'artifact', 'risk', 'show', 'verify'] },
+  { href: '/cli/drift', title: 'drift', description: 'Baseline a snapshot and compare current state to detect capability drift.', section: 'CLI Reference', keywords: ['drift', 'baseline', 'check', 'comparison', 'snapshot'] },
+  { href: '/cli/reputation', title: 'reputation', description: 'Signed reputation graph: verify integrity, check bundle hashes, submit verdicts.', section: 'CLI Reference', keywords: ['reputation', 'verify', 'check', 'submit', 'verdict', 'bundle hash', 'graph'] },
+
+  // Detection Rules
+  { href: '/rules', title: 'Rule Catalog', description: '119 static analysis rules across 7 languages and 7 categories.', section: 'Detection Rules', keywords: ['rules', 'catalog', '119', 'detection', 'static analysis'] },
+  { href: '/rules/shell', title: 'Shell Rules (SG-SHELL-*)', description: 'subprocess, os.system, child_process.exec, rm -rf, pty.spawn detection.', section: 'Detection Rules', keywords: ['shell', 'subprocess', 'os.system', 'exec', 'rm', 'bash', 'command'] },
+  { href: '/rules/network', title: 'Network Rules (SG-NET-*)', description: 'urllib, requests, raw socket, DNS, FTP, SMTP, SSH egress detection.', section: 'Detection Rules', keywords: ['network', 'http', 'socket', 'dns', 'ftp', 'smtp', 'ssh', 'egress'] },
+  { href: '/rules/filesystem', title: 'Filesystem Rules (SG-FS-*)', description: 'File writes, deletes, /etc/passwd, ~/.ssh, ~/.aws credential path access.', section: 'Detection Rules', keywords: ['filesystem', 'write', 'delete', 'rmtree', 'passwd', 'ssh', 'credentials'] },
+  { href: '/rules/eval', title: 'Eval Rules (SG-EVAL-*)', description: 'eval(), exec(), pickle.loads(), yaml.load(), new Function() detection.', section: 'Detection Rules', keywords: ['eval', 'exec', 'pickle', 'yaml', 'dynamic', 'code execution', 'deserialize'] },
+  { href: '/rules/credentials', title: 'Credential Rules (SG-CRED-*)', description: 'Hardcoded passwords, API keys, AWS keys, GitHub tokens, PEM private keys.', section: 'Detection Rules', keywords: ['credentials', 'password', 'api key', 'aws', 'github', 'token', 'secret', 'pem'] },
+  { href: '/rules/injection', title: 'Injection Rules (SG-INJ-*)', description: 'Prompt injection, SQL injection, command injection, template injection.', section: 'Detection Rules', keywords: ['injection', 'sql', 'command', 'prompt', 'template', 'nosql', 'ldap'] },
+  { href: '/rules/obfuscation', title: 'Obfuscation Rules (SG-OBF-*)', description: 'base64 decode+exec, ROT13, hex decode, atob+eval, zlib decompress.', section: 'Detection Rules', keywords: ['obfuscation', 'base64', 'rot13', 'hex', 'atob', 'encoding'] },
+
+  // Policy
+  { href: '/policy', title: 'Policy Reference', description: 'Policy YAML schema, presets (development/staging/production/strict), resolution order.', section: 'Policy', keywords: ['policy', 'yaml', 'schema', 'preset', 'fail_on', 'threshold', 'max_score', 'enforce'] },
+
+  // Runtime
+  { href: '/runtime-control', title: 'Runtime Control', description: 'Block risky agent actions during execution with approvals, budgets, and signed lineage.', section: 'Runtime', keywords: ['runtime', 'control', 'gateway', 'preflight', 'lineage', 'budget', 'approval'] },
+  { href: '/artifacts', title: 'Artifact Coverage', description: 'Scan ZIP, PDF, DOCX, markdown, configs, and source directories with provenance tagging.', section: 'Runtime', keywords: ['artifacts', 'zip', 'pdf', 'docx', 'markdown', 'config', 'provenance'] },
+  { href: '/intelligence', title: 'Intelligence', description: 'Reputation signals, historical queries, and retroscans to prioritize findings.', section: 'Runtime', keywords: ['intelligence', 'reputation', 'hunt', 'retroscan', 'executive', 'explain'] },
+
+  // Enterprise
+  { href: '/enterprise', title: 'Enterprise', description: 'Enterprise hub for security review, compliance, deployment, and procurement.', section: 'Enterprise', keywords: ['enterprise', 'team', 'organization', 'sso', 'rbac', 'sla'] },
+  { href: '/enterprise/security', title: 'Enterprise Security', description: 'Threat model, identity controls, and incident readiness for enterprise review.', section: 'Enterprise', keywords: ['enterprise security', 'threat model', 'sso', 'saml', 'oidc', 'rbac', 'incident'] },
+  { href: '/enterprise/compliance', title: 'Enterprise Compliance', description: 'AI-BOM evidence, EU AI Act workflows, and signed runtime audit trails.', section: 'Enterprise', keywords: ['compliance', 'eu ai act', 'ai-bom', 'audit', 'cyclonedx', 'provenance'] },
+  { href: '/enterprise/deployment', title: 'Enterprise Deployment', description: 'SaaS, private relay, air-gap, and local deployment modes with rollout guidance.', section: 'Enterprise', keywords: ['deployment', 'saas', 'private relay', 'air-gap', 'rollout', 'network'] },
+  { href: '/enterprise/procurement', title: 'Enterprise Procurement', description: 'Commercial checklist, DPA review, and onboarding path for buyers.', section: 'Enterprise', keywords: ['procurement', 'commercial', 'dpa', 'sla', 'onboarding', 'legal'] },
+
+  // Integrations
+  { href: '/integrations', title: 'Integrations Overview', description: 'CI/CD integrations overview. GitHub Actions and GitLab CI.', section: 'Integrations', keywords: ['integrations', 'ci', 'cicd', 'github', 'gitlab'] },
+  { href: '/integrations/github-actions', title: 'GitHub Actions', description: 'Gate PRs with SkillGate. SARIF upload to Security tab. Matrix scans. Caching.', section: 'Integrations', keywords: ['github actions', 'workflow', 'sarif', 'security tab', 'pull request', 'matrix'] },
+  { href: '/integrations/gitlab-ci', title: 'GitLab CI', description: 'Add SkillGate to .gitlab-ci.yml. SAST artifact reports. MR enforcement.', section: 'Integrations', keywords: ['gitlab', 'gitlab ci', 'gitlab-ci.yml', 'sast', 'merge request'] },
+
+  // More
+  { href: '/security', title: 'Security', description: 'Baseline controls, data handling, and responsible disclosure process.', section: 'More', keywords: ['security', 'controls', 'disclosure', 'tls', 'attestation', 'data'] },
+  { href: '/migrations', title: 'Migrations', description: 'Upgrade guidance for self-hosted SkillGate deployments.', section: 'More', keywords: ['migrations', 'upgrade', 'alembic', 'database', 'rollback'] },
+  { href: '/changelog', title: 'Changelog', description: 'SkillGate release history: v1.0.0, v0.9.0, v0.7.0.', section: 'More', keywords: ['changelog', 'releases', 'version', 'history', 'updates'] },
+];
+
+export function searchIndex(query: string): SearchEntry[] {
+  if (!query.trim()) return [];
+  const q = query.toLowerCase().trim();
+  const terms = q.split(/\s+/);
+
+  return SEARCH_INDEX.filter((entry) => {
+    const haystack = [
+      entry.title,
+      entry.description,
+      entry.section,
+      ...(entry.keywords ?? []),
+    ]
+      .join(' ')
+      .toLowerCase();
+    return terms.every((term) => haystack.includes(term));
+  }).slice(0, 12);
+}

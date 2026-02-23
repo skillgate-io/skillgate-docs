@@ -1,0 +1,25 @@
+name: Link Check
+
+on:
+  pull_request:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Link checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --accept 200,206,429
+            --exclude-mail
+            '**/*.md' 'src/**/*.tsx'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

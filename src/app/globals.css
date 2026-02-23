@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #ffffff;
+    --sidebar-bg: #f8f9fc;
+    --border: #e5e7eb;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --accent: #059669;
+    --accent-hover: #047857;
+    --code-bg: #1e1e2e;
+    --nav-active-bg: rgba(5, 150, 105, 0.06);
+    --nav-active-border: #059669;
+    --nav-active-text: #059669;
+    --callout-info-bg: #eff6ff;
+    --callout-info-border: #3b82f6;
+    --callout-warning-bg: #fffbeb;
+    --callout-warning-border: #f59e0b;
+    --callout-tip-bg: #f0fdf4;
+    --callout-tip-border: #22c55e;
+    --callout-danger-bg: #fef2f2;
+    --callout-danger-border: #ef4444;
+  }
+
+  .dark {
+    --bg: #04060a;
+    --sidebar-bg: #080b11;
+    --border: rgba(255, 255, 255, 0.1);
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
+    --accent: #34d399;
+    --accent-hover: #6ee7b7;
+    --code-bg: #0f1117;
+    --nav-active-bg: rgba(52, 211, 153, 0.08);
+    --nav-active-border: #34d399;
+    --nav-active-text: #34d399;
+    --callout-info-bg: rgba(59, 130, 246, 0.08);
+    --callout-info-border: #3b82f6;
+    --callout-warning-bg: rgba(245, 158, 11, 0.08);
+    --callout-warning-border: #f59e0b;
+    --callout-tip-bg: rgba(52, 211, 153, 0.06);
+    --callout-tip-border: #34d399;
+    --callout-danger-bg: rgba(239, 68, 68, 0.08);
+    --callout-danger-border: #ef4444;
+  }
+
+  html {
+    @apply antialiased;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-inter, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: #fff;
+  }
+
+  .dark ::selection {
+    background-color: var(--accent);
+    color: #04060a;
+  }
+}
+
+@layer components {
+  .sg-link {
+    color: var(--accent);
+    text-decoration: none;
+    @apply transition-colors;
+  }
+  .sg-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  .sg-prose h1,
+  .sg-prose h2,
+  .sg-prose h3,
+  .sg-prose h4 {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .sg-prose p,
+  .sg-prose li {
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  .sg-prose code {
+    background: var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 0.875em;
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    color: var(--text);
+  }
+
+  .sg-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .sg-prose th {
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--sidebar-bg);
+    border-bottom: 2px solid var(--border);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .sg-prose td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .sg-prose tr:last-child td {
+    border-bottom: none;
+  }
+
+  .sg-prose blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 16px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Card link hover (CSS-only, usable in server components) */
+  .card-link {
+    display: block;
+    padding: 16px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--sidebar-bg);
+    text-decoration: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .card-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+}
