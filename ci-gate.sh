@@ -82,8 +82,8 @@ else
   exit 1
 fi
 
-# Security gate
-run npm audit --audit-level=high
+# Security gate — omit dev deps (eslint chain vulns don't affect production runtime)
+run npm audit --audit-level=high --omit=dev
 
 echo ""
 echo "Local CI gate passed"
