@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'SkillGate Docs — AI Agent Skill Security Scanner',
+  title: 'SkillGate Docs: AI Agent Skill Security Scanner',
   description:
     'Block malicious AI agent skills before they reach your OpenClaw gateway, MCP server, or orchestration pipeline. SkillGate scans across 7 languages with 119 detection rules, policy enforcement, and signed attestations.',
   alternates: { canonical: 'https://docs.skillgate.io' },
   openGraph: {
-    title: 'SkillGate Docs — AI Agent Skill Security Scanner',
+    title: 'SkillGate Docs: AI Agent Skill Security Scanner',
     description:
       'Stop compromised skills at the gate. 119 rules across Python, JS, TypeScript, Shell, Go, Rust, Ruby. Policy presets, signed attestations, GitHub Actions native.',
     url: 'https://docs.skillgate.io',
@@ -103,7 +103,7 @@ export default function HomePage() {
           reach your{' '}
           <strong style={{ color: 'var(--text)', fontWeight: 600 }}>OpenClaw gateway</strong>,
           MCP server, or any agent orchestration pipeline. Catch credential theft, shell injection,
-          and obfuscated payloads early — with deterministic policy enforcement and signed attestations.
+          and obfuscated payloads before they ship. Deterministic policy enforcement with signed attestations at every step.
         </p>
       </div>
 

@@ -13,7 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     template: '%s | SkillGate Docs',
-    default: 'SkillGate Docs — AI Agent Skill Security Scanner',
+    default: 'SkillGate Docs: AI Agent Skill Security Scanner',
   },
   description:
     'SkillGate is a CLI-first security scanner that blocks malicious AI agent skills before they reach your OpenClaw gateway, MCP server, or any AI agent orchestration pipeline. 119 detection rules, signed attestations, CI/CD native.',
@@ -40,14 +40,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'SkillGate Docs',
-    title: 'SkillGate — Block Malicious AI Agent Skills at the Gateway',
+    title: 'SkillGate: Block Malicious AI Agent Skills at the Gateway',
     description:
       'Stop compromised skills before they execute. SkillGate scans AI agent skills across 7 languages, enforces policy, and gates your OpenClaw or MCP pipeline with signed attestations.',
     url: 'https://docs.skillgate.io',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SkillGate — AI Agent Skill Security Scanner',
+    title: 'SkillGate: AI Agent Skill Security Scanner',
     description:
       'Block malicious AI agent skills before they reach your OpenClaw gateway or orchestration pipeline. 119 detection rules, policy presets, CI/CD native.',
   },
@@ -93,7 +93,7 @@ const jsonLd = {
       name: 'SkillGate Documentation',
       url: 'https://docs.skillgate.io',
       description:
-        'Official documentation for SkillGate — AI agent skill security scanner and policy enforcement.',
+        'Official documentation for SkillGate, the AI agent skill security scanner and policy enforcement tool.',
     },
   ],
 };
