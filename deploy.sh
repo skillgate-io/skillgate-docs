@@ -66,6 +66,11 @@ fi
 echo -e "${YELLOW}Running local CI gate...${NC}"
 npm run ci:gate
 
+# Clean local build artifacts so Netlify always does a fresh build
+# (ci:gate runs npm run build which leaves a stale .next; a second incremental
+#  build can miss .nft.json trace files, causing the Netlify plugin to error)
+rm -rf .next
+
 # Build deploy trace metadata for Netlify deploy message
 if command -v git &> /dev/null && git rev-parse --is-inside-work-tree &> /dev/null; then
     GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown-branch)"

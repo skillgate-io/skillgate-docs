@@ -2,9 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'SkillGate Docs',
+  title: 'SkillGate Docs — AI Agent Skill Security Scanner',
   description:
-    'SkillGate helps teams review AI agent skills, apply policy checks, and ship safely.',
+    'Block malicious AI agent skills before they reach your OpenClaw gateway, MCP server, or orchestration pipeline. SkillGate scans across 7 languages with 119 detection rules, policy enforcement, and signed attestations.',
+  alternates: { canonical: 'https://docs.skillgate.io' },
+  openGraph: {
+    title: 'SkillGate Docs — AI Agent Skill Security Scanner',
+    description:
+      'Stop compromised skills at the gate. 119 rules across Python, JS, TypeScript, Shell, Go, Rust, Ruby. Policy presets, signed attestations, GitHub Actions native.',
+    url: 'https://docs.skillgate.io',
+  },
 };
 
 const FEATURES = [
@@ -88,12 +95,15 @@ export default function HomePage() {
             fontSize: '1.15rem',
             color: 'var(--text-muted)',
             lineHeight: 1.7,
-            maxWidth: '600px',
+            maxWidth: '620px',
             margin: 0,
           }}
         >
-          SkillGate is a CLI-first security scanner and policy enforcement tool for AI agent skills.
-          It helps teams catch risky changes early and block unsafe deployments with clear policy checks.
+          SkillGate is a CLI-first security scanner that blocks malicious AI agent skills before they
+          reach your{' '}
+          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>OpenClaw gateway</strong>,
+          MCP server, or any agent orchestration pipeline. Catch credential theft, shell injection,
+          and obfuscated payloads early — with deterministic policy enforcement and signed attestations.
         </p>
       </div>
 
@@ -156,7 +166,7 @@ export default function HomePage() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
           gap: '12px',
           marginBottom: '48px',
         }}
@@ -178,6 +188,57 @@ export default function HomePage() {
         ))}
       </div>
 
+      {/* Target use cases — keyword-dense for SEO */}
+      <div
+        style={{
+          padding: '20px 24px',
+          borderRadius: '12px',
+          border: '1px solid var(--border)',
+          background: 'var(--sidebar-bg)',
+          marginBottom: '48px',
+        }}
+      >
+        <div
+          style={{
+            fontSize: '0.75rem',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            color: 'var(--text-muted)',
+            marginBottom: '12px',
+          }}
+        >
+          Protects
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          {[
+            'OpenClaw gateways',
+            'MCP servers',
+            'Agent orchestration pipelines',
+            'LangChain agents',
+            'AutoGen workflows',
+            'Custom skill registries',
+            'CI/CD skill deployments',
+            'Local AI dev environments',
+          ].map((tag) => (
+            <span
+              key={tag}
+              style={{
+                fontSize: '0.8rem',
+                padding: '4px 12px',
+                borderRadius: '20px',
+                border: '1px solid var(--border)',
+                color: 'var(--text)',
+                background: 'var(--bg)',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* Features grid */}
       <h2
         style={{
@@ -195,7 +256,7 @@ export default function HomePage() {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-          gap: '16px',
+          gap: '12px',
         }}
       >
         {FEATURES.map((f) => (
