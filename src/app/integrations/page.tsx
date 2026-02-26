@@ -75,7 +75,7 @@ export default function IntegrationsPage() {
           Tested on real public agent repositories
         </h2>
         <p style={{ marginTop: '8px', color: 'var(--text-muted)', lineHeight: 1.7 }}>
-          SkillGate replayed 3,352 testbed invocations from real public agent ecosystems with authenticated sidecar enforcement. Use this evidence page to review corpus size, replay outcomes, and proof visuals.
+          SkillGate replayed 3,470 testbed invocations from real public agent ecosystems with authenticated sidecar enforcement. Use this evidence page to review corpus size, replay outcomes, and proof visuals.
         </p>
         <div
           style={{
@@ -95,6 +95,20 @@ export default function IntegrationsPage() {
           <Image
             src="/images/validation-evidence/antigravity-proof-card.svg"
             alt="SkillGate testbed proof for antigravity-awesome-skills"
+            width={1280}
+            height={720}
+            style={{ width: '100%', height: 'auto', border: '1px solid var(--border)', borderRadius: '8px' }}
+          />
+          <Image
+            src="/images/validation-evidence/openclaw-proof-card.svg"
+            alt="SkillGate testbed proof for openclaw skills corpus"
+            width={1280}
+            height={720}
+            style={{ width: '100%', height: 'auto', border: '1px solid var(--border)', borderRadius: '8px' }}
+          />
+          <Image
+            src="/images/validation-evidence/nanobot-proof-card.svg"
+            alt="SkillGate testbed proof for nanobot skills corpus"
             width={1280}
             height={720}
             style={{ width: '100%', height: 'auto', border: '1px solid var(--border)', borderRadius: '8px' }}

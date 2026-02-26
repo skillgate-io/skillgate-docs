@@ -5,26 +5,30 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Validation Evidence',
   description:
-    'See real SkillGate validation evidence generated from public agent repositories with authenticated sidecar replay and corpus-level statistics.',
+    'See real SkillGate validation evidence from official OpenClaw skills, Nanobot skills, and other public agent repositories with authenticated sidecar replay statistics.',
   alternates: { canonical: 'https://docs.skillgate.io/validation-evidence' },
   openGraph: {
     title: 'SkillGate Validation Evidence',
     description:
-      'Public repo testbed results, corpus size metrics, and authenticated replay evidence for local AI agent security.',
+      'OpenClaw and Nanobot testbed results, corpus size metrics, and authenticated replay evidence for local AI agent security.',
     url: 'https://docs.skillgate.io/validation-evidence',
   },
 };
 
 const STATS = [
-  { label: 'Total testbed corpus', value: '3,352 invocations' },
+  { label: 'Total testbed corpus', value: '3,470 invocations' },
   { label: 'awesome-llm-apps corpus', value: '496 invocations' },
   { label: 'antigravity corpus', value: '2,856 invocations' },
-  { label: 'Authenticated sidecar replay', value: '1,676 baseline invocations' },
+  { label: 'openclaw corpus', value: '106 invocations' },
+  { label: 'nanobot corpus', value: '12 invocations' },
+  { label: 'Authenticated sidecar replay', value: '1,735 baseline invocations' },
 ];
 
 const REPOS = [
   { name: 'shubhamsaboo/awesome-llm-apps', href: 'https://github.com/shubhamsaboo/awesome-llm-apps' },
   { name: 'sickn33/antigravity-awesome-skills', href: 'https://github.com/sickn33/antigravity-awesome-skills' },
+  { name: 'openclaw/openclaw', href: 'https://github.com/openclaw/openclaw' },
+  { name: 'HKUDS/nanobot', href: 'https://github.com/HKUDS/nanobot' },
 ];
 
 export default function ValidationEvidencePage() {
@@ -97,6 +101,20 @@ export default function ValidationEvidencePage() {
           height={720}
           style={{ width: '100%', height: 'auto', border: '1px solid var(--border)', borderRadius: '10px' }}
         />
+        <Image
+          src="/images/validation-evidence/openclaw-proof-card.svg"
+          alt="SkillGate testbed evidence for openclaw skills replay"
+          width={1280}
+          height={720}
+          style={{ width: '100%', height: 'auto', border: '1px solid var(--border)', borderRadius: '10px' }}
+        />
+        <Image
+          src="/images/validation-evidence/nanobot-proof-card.svg"
+          alt="SkillGate testbed evidence for nanobot skills replay"
+          width={1280}
+          height={720}
+          style={{ width: '100%', height: 'auto', border: '1px solid var(--border)', borderRadius: '10px' }}
+        />
       </div>
 
       <Image
@@ -121,6 +139,7 @@ export default function ValidationEvidencePage() {
           <li>Security claims are tied to reproducible evidence artifacts.</li>
           <li>Replay data uses authenticated sidecar policy paths, not mock-only checks.</li>
           <li>You can map these numbers to your own OpenClaw, Claude Code, Codex, and MCP rollout plan.</li>
+          <li>ClawHub-related workflow coverage is represented through the public Nanobot skill corpus, not direct site scraping.</li>
         </ul>
       </div>
 
