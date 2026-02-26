@@ -1,59 +1,63 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { IntegrationLogos } from '@/components/branding/IntegrationLogos';
 
 export const metadata: Metadata = {
-  title: 'SkillGate Docs: AI Agent Skill Security Scanner',
+  title: 'SkillGate Docs: Runtime Security for OpenClaw, Claude, and Codex',
   description:
-    'Block malicious AI agent skills before they reach your OpenClaw gateway, MCP server, or orchestration pipeline. SkillGate scans across 7 languages with 119 detection rules, policy enforcement, and signed attestations.',
+    'Protect OpenClaw gateways and local agent runtimes from unsafe tool actions, malicious instructions, and untrusted providers.',
   alternates: { canonical: 'https://docs.skillgate.io' },
   openGraph: {
-    title: 'SkillGate Docs: AI Agent Skill Security Scanner',
+    title: 'SkillGate Docs: Runtime Security for OpenClaw, Claude, and Codex',
     description:
-      'Stop compromised skills at the gate. 119 rules across Python, JS, TypeScript, Shell, Go, Rust, Ruby. Policy presets, signed attestations, GitHub Actions native.',
+      'Stop compromised skills before tools execute with policy checks for OpenClaw, Claude Code, Codex CLI, and MCP.',
     url: 'https://docs.skillgate.io',
   },
 };
 
 const FEATURES = [
   {
-    icon: '🔍',
-    title: '119 Detection Rules',
-    desc: 'Coverage across Python, JavaScript, TypeScript, Shell, Go, Rust, and Ruby with clear, repeatable findings.',
-  },
-  {
-    icon: '⚡',
-    title: 'Fast by Default',
-    desc: 'Cold start under 2 seconds. Scans 10 files in under 3 seconds. Zero network calls during local analysis.',
+    icon: '🛡️',
+    title: 'Block Risky Tool Actions',
+    desc: 'Check shell, network, and file operations before execution so unsafe actions are stopped early.',
   },
   {
     icon: '🔐',
-    title: 'Signed Attestations',
-    desc: 'Signed reports help teams share evidence and confirm policy checks were completed.',
+    title: 'Reliable Access Controls',
+    desc: 'Keep protections active with secure session checks and safe behavior during connectivity issues.',
   },
   {
-    icon: '🚦',
-    title: 'Policy Presets',
-    desc: 'Ship with development, staging, production, and strict presets. Override with a single YAML file.',
+    icon: '🔌',
+    title: 'MCP Protection Layer',
+    desc: 'Approve trusted MCP providers, catch risky tool descriptions, and prevent surprise permission changes.',
   },
   {
-    icon: '🔗',
-    title: 'CI/CD Native',
-    desc: 'First-class GitHub Actions and GitLab CI support. SARIF output for the GitHub Security tab.',
+    icon: '📄',
+    title: 'Instruction Safety',
+    desc: 'Detect prompt and instruction injection in AGENTS.md, CLAUDE.md, slash commands, and memory files.',
   },
   {
-    icon: '📦',
-    title: 'Multi-Artifact',
-    desc: 'Review source folders, archives, and common document formats in one workflow.',
+    icon: '⚙️',
+    title: 'Safer Codex Sessions',
+    desc: 'Run Codex with policy checks that prevent unsafe config changes and untrusted provider use.',
+  },
+  {
+    icon: '🧾',
+    title: 'Signed Evidence and SARIF',
+    desc: 'Export machine-readable proofs for CI gates, audit trails, and security tooling workflows.',
   },
 ];
 
 const QUICK_LINKS = [
   { href: '/quickstart', label: 'Quickstart', desc: 'Scan your first skill in 5 minutes.' },
-  { href: '/installation', label: 'Installation', desc: 'All install channels: pipx, pip, brew, winget.' },
+  { href: '/validation-evidence', label: 'Validation Evidence', desc: 'See proof images and real replay stats from public agent testbeds.' },
+  { href: '/installation', label: 'Installation', desc: 'All install channels: pipx, pip, brew, and winget.' },
+  { href: '/runtime-control', label: 'Runtime Control', desc: 'Learn how runtime checks, approvals, and policy outcomes work.' },
+  { href: '/agent-gateway', label: 'Agent Gateway', desc: 'Protect Claude and Codex workflows with pre-execution policy checks.' },
   { href: '/cli/scan', label: 'scan command', desc: 'Full reference for flags, output formats, and examples.' },
+  { href: '/cli/codex', label: 'codex command', desc: 'Codex command guardrails, safe defaults for CI, and provider trust controls.' },
   { href: '/rules', label: 'Rule Catalog', desc: '119 rules across 7 languages and 7 categories.' },
   { href: '/policy', label: 'Policy Reference', desc: 'Schema, presets, and enforcement behavior.' },
-  { href: '/integrations/github-actions', label: 'GitHub Actions', desc: 'Gate CI pipelines with one workflow step.' },
 ];
 
 export default function HomePage() {
@@ -99,12 +103,43 @@ export default function HomePage() {
             margin: 0,
           }}
         >
-          SkillGate is a CLI-first security scanner that blocks malicious AI agent skills before they
-          reach your{' '}
-          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>OpenClaw gateway</strong>,
-          MCP server, or any agent orchestration pipeline. Catch credential theft, shell injection,
-          and obfuscated payloads before they ship. Deterministic policy enforcement with signed attestations at every step.
+          SkillGate is the runtime control plane for teams securing local AI gateways and agent tools.
+          Protect your{' '}
+          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>OpenClaw gateway</strong>,{' '}
+          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>MCP servers</strong>,{' '}
+          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>Claude Code hooks</strong>, and{' '}
+          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>Codex CLI sessions</strong> before risky tools execute.
         </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '16px' }}>
+          {['OpenClaw', 'Claude Code', 'Codex CLI', 'MCP Gateway'].map((item) => (
+            <span
+              key={item}
+              style={{
+                fontSize: '0.78rem',
+                padding: '4px 12px',
+                borderRadius: '20px',
+                border: '1px solid var(--border)',
+                color: 'var(--text)',
+                background: 'var(--sidebar-bg)',
+              }}
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+        <div
+          style={{
+            marginTop: '14px',
+            fontSize: '0.9rem',
+            color: 'var(--text-muted)',
+            lineHeight: 1.7,
+          }}
+        >
+          Evidence-backed rollout: 3,352 testbed invocations replayed from public agent repositories with authenticated sidecar enforcement.
+          <Link href="/validation-evidence" style={{ marginLeft: '8px', color: 'var(--accent)', textDecoration: 'none', fontWeight: 600 }}>
+            View evidence
+          </Link>
+        </div>
       </div>
 
       {/* Quick start banner */}
@@ -149,6 +184,7 @@ export default function HomePage() {
           </svg>
         </Link>
       </div>
+      <IntegrationLogos />
 
       {/* Quick links grid */}
       <h2
@@ -172,6 +208,50 @@ export default function HomePage() {
         }}
       >
         {QUICK_LINKS.map((link) => (
+          <Link key={link.href} href={link.href} className="card-link">
+            <div
+              style={{
+                fontWeight: 600,
+                fontSize: '0.9rem',
+                color: 'var(--accent)',
+                marginBottom: '4px',
+              }}
+            >
+              {link.label}
+            </div>
+            <div style={{ fontSize: '0.825rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>{link.desc}</div>
+          </Link>
+        ))}
+      </div>
+
+      <h2
+        style={{
+          fontSize: '1rem',
+          fontWeight: 600,
+          color: 'var(--text-muted)',
+          textTransform: 'uppercase',
+          letterSpacing: '0.06em',
+          marginBottom: '16px',
+        }}
+      >
+        Protection map
+      </h2>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+          gap: '12px',
+          marginBottom: '48px',
+        }}
+      >
+        {[
+          { href: '/runtime-control', label: 'Runtime Sidecar Controls', desc: 'Policy checks before shell, network, and file actions run.' },
+          { href: '/agent-gateway', label: 'Agent Gateway Wrapper', desc: 'Guard OpenClaw and other local AI agents through skillgate run.' },
+          { href: '/integrations/codex-cli', label: 'Codex CLI Protection', desc: 'Config safety checks and provider trust controls.' },
+          { href: '/integrations/claude-code', label: 'Claude Code Protection', desc: 'Hooks, instruction files, plugins, and settings controls.' },
+          { href: '/integrations/mcp-gateway', label: 'MCP Gateway Protection', desc: 'Trusted provider allowlists and metadata safety checks.' },
+          { href: '/operations', label: 'Operator Runbook', desc: 'Incident triage, remediations, and performance guardrails.' },
+        ].map((link) => (
           <Link key={link.href} href={link.href} className="card-link">
             <div
               style={{
@@ -213,8 +293,10 @@ export default function HomePage() {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
           {[
             'OpenClaw gateways',
-            'MCP servers',
-            'Agent orchestration pipelines',
+          'MCP servers',
+          'Claude Code workspaces',
+          'Codex CLI workflows',
+          'Agent orchestration pipelines',
             'LangChain agents',
             'AutoGen workflows',
             'Custom skill registries',
@@ -237,6 +319,27 @@ export default function HomePage() {
             </span>
           ))}
         </div>
+      </div>
+
+      <h2
+        style={{
+          fontSize: '1rem',
+          fontWeight: 600,
+          color: 'var(--text-muted)',
+          textTransform: 'uppercase',
+          letterSpacing: '0.06em',
+          marginBottom: '16px',
+        }}
+      >
+        What teams use SkillGate for
+      </h2>
+      <div style={{ marginBottom: '48px', border: '1px solid var(--border)', borderRadius: '10px', background: 'var(--sidebar-bg)', padding: '18px 20px' }}>
+        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--text-muted)', lineHeight: 1.9 }}>
+          <li>Protect local AI tools without slowing down developers.</li>
+          <li>Approve trusted providers and block unknown or changed integrations.</li>
+          <li>Prevent instruction injection across agent config and prompt files.</li>
+          <li>Produce clear evidence for incident response and compliance teams.</li>
+        </ul>
       </div>
 
       {/* Features grid */}

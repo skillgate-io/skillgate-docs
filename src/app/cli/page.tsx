@@ -15,11 +15,14 @@ const COMMANDS = [
   { cmd: 'keys', path: '/cli/keys', desc: 'Generate and manage Ed25519 signing keypairs in ~/.skillgate/keys/.' },
   { cmd: 'hooks', path: '/cli/hooks', desc: 'Install or remove git pre-commit hooks that run scan before each commit.' },
   { cmd: 'rules', path: '/rules', desc: 'List all available detection rules with their IDs, severity, and categories.' },
-  { cmd: 'run', path: '#run', desc: 'Run an agent CLI through runtime gateway enforcement (Enterprise).' },
-  { cmd: 'gateway', path: '#gateway', desc: 'Native hook commands for agent integrations and pre-execution checks.' },
-  { cmd: 'bom', path: '#bom', desc: 'Import and validate AI Bill of Materials (CycloneDX format).' },
-  { cmd: 'hunt', path: '#hunt', desc: 'Search historical scan reports by rule ID, severity, or file pattern.' },
-  { cmd: 'version', path: '#version', desc: 'Show the installed version, build metadata, and runtime info.' },
+  { cmd: 'run', path: '/cli/run', desc: 'Run an agent CLI through runtime gateway enforcement (Enterprise).' },
+  { cmd: 'mcp', path: '/cli/mcp', desc: 'Manage trusted MCP providers, audits, and permission change checks.' },
+  { cmd: 'claude', path: '/cli/claude', desc: 'Protect Claude hooks, plugins, settings, and instruction files.' },
+  { cmd: 'codex', path: '/cli/codex', desc: 'Run Codex with safer defaults, provider trust checks, and CI protections.' },
+  { cmd: 'gateway', path: '/cli/gateway', desc: 'Native hook commands for agent integrations and pre-execution checks.' },
+  { cmd: 'bom', path: '/cli/bom', desc: 'Import and validate trusted component manifests (CycloneDX format).' },
+  { cmd: 'hunt', path: '/cli/hunt', desc: 'Search historical scan reports by rule ID, severity, or file pattern.' },
+  { cmd: 'version', path: '/cli', desc: 'Show the installed version, build metadata, and runtime info.' },
 ];
 
 export default function CLIPage() {
@@ -53,8 +56,11 @@ Auth & keys:
 Developer:
   hooks        Manage git pre-commit hooks
   run          Agent runtime gateway enforcement
+  mcp          MCP governance commands
+  claude       Claude ecosystem governance commands
+  codex        Codex protections for local and CI runs
   gateway      Native hook commands
-  bom          AI-BOM import and validation
+  bom          Trusted component manifest import and validation
   hunt         Search historical scan reports`}
       />
 
@@ -101,10 +107,10 @@ Developer:
             </thead>
             <tbody>
               {[
-                { code: '0', meaning: 'Success — scan passed, no violations.' },
-                { code: '1', meaning: 'Policy violation — one or more findings exceeded the policy threshold.' },
-                { code: '2', meaning: 'Internal error — unexpected failure during analysis.' },
-                { code: '3', meaning: 'Invalid input — bad arguments, missing files, or malformed policy.' },
+                { code: '0', meaning: 'Success: scan passed, no violations.' },
+                { code: '1', meaning: 'Policy violation: one or more findings exceeded the policy threshold.' },
+                { code: '2', meaning: 'Internal error: unexpected failure during analysis.' },
+                { code: '3', meaning: 'Invalid input: bad arguments, missing files, or malformed policy.' },
               ].map((row, i) => (
                 <tr key={row.code} style={{ borderBottom: i < 3 ? '1px solid var(--border)' : 'none' }}>
                   <td style={{ padding: '8px 14px', fontFamily: 'monospace', fontWeight: 600, color: 'var(--text)' }}>{row.code}</td>

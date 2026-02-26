@@ -53,6 +53,10 @@ const ROUTES: Array<{ path: string; priority: number; freq: MetadataRoute.Sitema
   { path: '/enterprise/procurement', priority: 0.6, freq: 'monthly' },
   // Integrations
   { path: '/integrations', priority: 0.8, freq: 'monthly' },
+  { path: '/validation-evidence', priority: 0.9, freq: 'weekly' },
+  { path: '/integrations/codex-cli', priority: 0.8, freq: 'monthly' },
+  { path: '/integrations/claude-code', priority: 0.8, freq: 'monthly' },
+  { path: '/integrations/mcp-gateway', priority: 0.8, freq: 'monthly' },
   { path: '/integrations/github-actions', priority: 0.8, freq: 'monthly' },
   { path: '/integrations/gitlab-ci', priority: 0.8, freq: 'monthly' },
   // More

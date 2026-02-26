@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<rect width="1280" height="720" fill="#05070b"/>
+<text x="70" y="100" fill="#f9fafb" font-size="40" font-family="Arial, Helvetica, sans-serif" font-weight="700">SkillGate Testbed Corpus Sizes</text>
+<text x="70" y="140" fill="#94a3b8" font-size="22" font-family="Arial, Helvetica, sans-serif">Real repositories used for local evidence generation</text>
+<text x="70" y="190" fill="#e5e7eb" font-size="24" font-family="Arial, Helvetica, sans-serif">shubhamsaboo/awesome-llm-apps</text>
+<rect x="70" y="210" width="131" height="64" rx="12" fill="#22c55e"/>
+<text x="221" y="252" fill="#e5e7eb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">496</text>
+<text x="70" y="360" fill="#e5e7eb" font-size="24" font-family="Arial, Helvetica, sans-serif">sickn33/antigravity-awesome-skills</text>
+<rect x="70" y="380" width="760" height="64" rx="12" fill="#60a5fa"/>
+<text x="850" y="422" fill="#e5e7eb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">2856</text>
+</svg>

@@ -8,7 +8,7 @@ export interface SearchEntry {
 
 export const SEARCH_INDEX: SearchEntry[] = [
   // Getting Started
-  { href: '/', title: 'Overview', description: 'SkillGate documentation home. 119 rules, signed attestations, CI/CD native.', section: 'Getting Started', keywords: ['home', 'overview', 'introduction'] },
+  { href: '/', title: 'Overview', description: 'SkillGate runtime security docs for OpenClaw, Claude Code, Codex CLI, and MCP governance.', section: 'Getting Started', keywords: ['home', 'overview', 'introduction', 'openclaw', 'claude code', 'codex', 'mcp'] },
   { href: '/quickstart', title: 'Quickstart', description: 'Scan your first skill in 5 minutes. Install, set API key, run scan.', section: 'Getting Started', keywords: ['install', 'start', 'first scan', 'pipx'] },
   { href: '/installation', title: 'Installation', description: 'Install via pipx, pip, Homebrew, winget, or npm shim. All platforms.', section: 'Getting Started', keywords: ['pipx', 'pip', 'brew', 'homebrew', 'winget', 'npm', 'install', 'setup'] },
   { href: '/concepts', title: 'Core Concepts', description: 'How SkillGate works: rules, risk scoring, policy enforcement, attestations.', section: 'Getting Started', keywords: ['pipeline', 'scoring', 'attestation', 'ed25519', 'deterministic'] },
@@ -30,6 +30,9 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { href: '/cli/approval', title: 'approval', description: 'Create and verify signed approval files for reviewer quorum enforcement.', section: 'CLI Reference', keywords: ['approval', 'sign', 'verify', 'quorum', 'reviewer', 'runtime'] },
   { href: '/cli/gateway', title: 'gateway', description: 'Pre-execution checks and tool output poisoning scan for native agent integration.', section: 'CLI Reference', keywords: ['gateway', 'check', 'scan-output', 'top', 'tool output poisoning', 'hooks'] },
   { href: '/cli/bom', title: 'bom', description: 'Import CycloneDX AI bills of materials and validate skill invocations.', section: 'CLI Reference', keywords: ['bom', 'cyclonedx', 'bill of materials', 'import', 'validate', 'ai-bom'] },
+  { href: '/cli/mcp', title: 'mcp', description: 'Manage MCP provider allowlists, registry drift controls, and settings governance checks.', section: 'CLI Reference', keywords: ['mcp', 'allow', 'deny', 'inspect', 'audit', 'settings-check', 'tool poisoning'] },
+  { href: '/cli/claude', title: 'claude', description: 'Govern Claude ecosystem surfaces: hooks, plugins, settings, instruction files, and policy packs.', section: 'CLI Reference', keywords: ['claude', 'hooks', 'plugins', 'settings', 'instruction injection', 'policy packs'] },
+  { href: '/cli/codex', title: 'codex', description: 'Run Codex with safer defaults, configuration safety checks, and trusted provider controls.', section: 'CLI Reference', keywords: ['codex', 'safe codex', 'ci', 'agents.md', 'configuration safety', 'trustedproviders'] },
   { href: '/cli/dag', title: 'dag', description: 'Session lineage DAG: show, verify, and compute transitive risk metrics.', section: 'CLI Reference', keywords: ['dag', 'lineage', 'session', 'artifact', 'risk', 'show', 'verify'] },
   { href: '/cli/drift', title: 'drift', description: 'Baseline a snapshot and compare current state to detect capability drift.', section: 'CLI Reference', keywords: ['drift', 'baseline', 'check', 'comparison', 'snapshot'] },
   { href: '/cli/reputation', title: 'reputation', description: 'Signed reputation graph: verify integrity, check bundle hashes, submit verdicts.', section: 'CLI Reference', keywords: ['reputation', 'verify', 'check', 'submit', 'verdict', 'bundle hash', 'graph'] },
@@ -48,7 +51,8 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { href: '/policy', title: 'Policy Reference', description: 'Policy YAML schema, presets (development/staging/production/strict), resolution order.', section: 'Policy', keywords: ['policy', 'yaml', 'schema', 'preset', 'fail_on', 'threshold', 'max_score', 'enforce'] },
 
   // Runtime
-  { href: '/runtime-control', title: 'Runtime Control', description: 'Block risky agent actions during execution with approvals, budgets, and signed lineage.', section: 'Runtime', keywords: ['runtime', 'control', 'gateway', 'preflight', 'lineage', 'budget', 'approval'] },
+  { href: '/runtime-control', title: 'Runtime Control', description: 'Runtime policy flow, block reasons, budgets, fallback modes, and evidence verification.', section: 'Runtime', keywords: ['runtime', 'control', 'gateway', 'preflight', 'lineage', 'budget', 'approval', 'fallback', 'access'] },
+  { href: '/agent-gateway', title: 'Agent Gateway', description: 'Route Claude and Codex execution through skillgate run for enforced runtime policy.', section: 'Runtime', keywords: ['agent gateway', 'claude code', 'codex cli', 'skillgate run', 'runtime guardrails'] },
   { href: '/artifacts', title: 'Artifact Coverage', description: 'Scan ZIP, PDF, DOCX, markdown, configs, and source directories with provenance tagging.', section: 'Runtime', keywords: ['artifacts', 'zip', 'pdf', 'docx', 'markdown', 'config', 'provenance'] },
   { href: '/intelligence', title: 'Intelligence', description: 'Reputation signals, historical queries, and retroscans to prioritize findings.', section: 'Runtime', keywords: ['intelligence', 'reputation', 'hunt', 'retroscan', 'executive', 'explain'] },
 
@@ -60,7 +64,11 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { href: '/enterprise/procurement', title: 'Enterprise Procurement', description: 'Commercial checklist, DPA review, and onboarding path for buyers.', section: 'Enterprise', keywords: ['procurement', 'commercial', 'dpa', 'sla', 'onboarding', 'legal'] },
 
   // Integrations
-  { href: '/integrations', title: 'Integrations Overview', description: 'CI/CD integrations overview. GitHub Actions and GitLab CI.', section: 'Integrations', keywords: ['integrations', 'ci', 'cicd', 'github', 'gitlab'] },
+  { href: '/integrations', title: 'Integrations Overview', description: 'Integrations for OpenClaw, Codex CLI, Claude Code, MCP Gateway, GitHub Actions, and GitLab CI.', section: 'Integrations', keywords: ['integrations', 'openclaw', 'local ai agents', 'codex', 'claude', 'mcp', 'ci', 'cicd', 'github', 'gitlab'] },
+  { href: '/validation-evidence', title: 'Validation Evidence', description: 'Real testbed evidence with corpus sizes and authenticated sidecar replay statistics from public agent repositories.', section: 'Integrations', keywords: ['validation evidence', 'testbed', 'openclaw security testing', 'claude code security testing', 'codex cli security testing', 'mcp security testing', 'agent security proof'] },
+  { href: '/integrations/codex-cli', title: 'Codex CLI Integration', description: 'Run Codex with SkillGate safety checks, trusted providers, and CI-ready defaults.', section: 'Integrations', keywords: ['codex', 'codex cli', 'integration', 'provider trust', 'ci', 'local ai agent security'] },
+  { href: '/integrations/claude-code', title: 'Claude Code Integration', description: 'Protect Claude hooks, settings, plugins, and instruction files with SkillGate policy checks.', section: 'Integrations', keywords: ['claude code', 'integration', 'hooks', 'plugins', 'instruction safety', 'agent guardrails'] },
+  { href: '/integrations/mcp-gateway', title: 'MCP Gateway Integration', description: 'Approve trusted MCP providers and block unsafe capability expansion.', section: 'Integrations', keywords: ['mcp', 'gateway', 'integration', 'provider trust', 'permissions', 'openclaw gateway security'] },
   { href: '/integrations/github-actions', title: 'GitHub Actions', description: 'Gate PRs with SkillGate. SARIF upload to Security tab. Matrix scans. Caching.', section: 'Integrations', keywords: ['github actions', 'workflow', 'sarif', 'security tab', 'pull request', 'matrix'] },
   { href: '/integrations/gitlab-ci', title: 'GitLab CI', description: 'Add SkillGate to .gitlab-ci.yml. SAST artifact reports. MR enforcement.', section: 'Integrations', keywords: ['gitlab', 'gitlab ci', 'gitlab-ci.yml', 'sast', 'merge request'] },
 

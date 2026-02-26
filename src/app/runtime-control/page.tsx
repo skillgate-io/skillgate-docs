@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
   title: 'Runtime Control',
-  description: 'Control AI agent actions at runtime with approvals, capability limits, and verification steps.',
+  description: 'Control local AI agent actions at runtime with policy checks, trusted access, and auditable records for OpenClaw, Claude, Codex, and MCP workflows.',
 };
 
 export default function RuntimeControlPage() {
@@ -15,9 +15,15 @@ export default function RuntimeControlPage() {
           Runtime Control
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          Block risky agent actions during execution, not just at code review. Every run is checked against
-          policy, approvals, and capability limits before commands execute.
+          Block risky agent actions during execution, not just at code review. Every run is checked against policy, approvals, access state, and capability limits before commands execute.
         </p>
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
+        {['Runtime Protection', 'Access Checks', 'MCP Path', 'Codex Workflows'].map((item) => (
+          <span key={item} style={{ fontSize: '0.78rem', padding: '4px 10px', borderRadius: '999px', border: '1px solid var(--border)', background: 'var(--sidebar-bg)', color: 'var(--text)' }}>
+            {item}
+          </span>
+        ))}
       </div>
 
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Runtime enforcement flow</h2>
@@ -32,7 +38,7 @@ export default function RuntimeControlPage() {
               [Allow / Block]
                              |
                              v
-              [Session Record]
+              [Signed Decision Record]
                              |
                              v
                 [Risk Summary]`} />
@@ -71,14 +77,22 @@ skillgate dag verify .skillgate/runtime/session.json
 # Compute transitive risk metrics
 skillgate dag risk .skillgate/runtime/session.json --output json`} />
 
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '32px', marginBottom: '16px' }}>Performance and fallback targets</h2>
+      <ul>
+        <li>Sidecar latency target: P95 at or below 20ms and P99 at or below 50ms.</li>
+        <li>MCP gateway overhead target: P95 at or below 25ms.</li>
+        <li>Codex bridge overhead target: P95 at or below 30ms.</li>
+        <li>Offline behavior uses cached policy snapshots and explicit block reasons.</li>
+      </ul>
+
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '32px', marginBottom: '12px' }}>Related commands</h2>
       <ul style={{ color: 'var(--text-muted)', lineHeight: 2.2, paddingLeft: '20px' }}>
         {[
-          'skillgate run — wrap agent CLI commands with full gateway enforcement',
-          'skillgate gateway check — pre-execution preflight check for individual tool calls',
-          'skillgate gateway scan-output — scan tool output for injection before LLM re-entry',
-          'skillgate approval sign / verify — manage reviewer quorum approvals',
-          'skillgate dag show / verify / risk — inspect signed session records',
+          'skillgate run: wrap agent CLI commands with full gateway enforcement',
+          'skillgate gateway check: pre-execution preflight check for individual tool calls',
+          'skillgate gateway scan-output: scan tool output for injection before LLM re-entry',
+          'skillgate approval sign / verify: manage reviewer quorum approvals',
+          'skillgate dag show / verify / risk: inspect signed session records',
         ].map((item) => (
           <li key={item} style={{ fontSize: '0.9rem' }}>{item}</li>
         ))}

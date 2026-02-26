@@ -5,7 +5,7 @@ import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
   title: 'Agent Gateway',
-  description: 'Run agent CLIs through skillgate run to enforce checks before execution.',
+  description: 'Run OpenClaw, Claude Code, Codex CLI, and other local AI agents through skillgate run to enforce checks before execution.',
 };
 
 export default function AgentGatewayPage() {
@@ -20,6 +20,13 @@ export default function AgentGatewayPage() {
           Route Codex, Claude, and other agent CLIs through <code>skillgate run</code> so policy and runtime checks execute before commands run.
         </p>
       </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
+        {['Claude Code', 'Codex CLI', 'OpenClaw Gateway', 'MCP Runtime'].map((item) => (
+          <span key={item} style={{ fontSize: '0.78rem', padding: '4px 10px', borderRadius: '999px', border: '1px solid var(--border)', background: 'var(--sidebar-bg)', color: 'var(--text)' }}>
+            {item}
+          </span>
+        ))}
+      </div>
 
       <h2>Basic usage</h2>
       <CodeBlock
@@ -31,7 +38,7 @@ skillgate run -- codex exec "scan this repository"
 skillgate run --env strict -- codex exec "run deploy script"`}
       />
 
-      <h2>AI-BOM validation at runtime</h2>
+      <h2>Runtime trust validation</h2>
       <CodeBlock
         language="bash"
         code={`skillgate bom import ./bom.cyclonedx.json --output .skillgate/bom/approved.json
@@ -50,6 +57,16 @@ skillgate run \
         code={`skillgate run --env dev -- codex exec "summarize outputs"
 skillgate run --top-outcome annotate -- codex exec "review logs"
 skillgate run --top-outcome block -- codex exec "review logs"`}
+      />
+
+      <h2>Codex startup safety checks</h2>
+      <CodeBlock
+        language="bash"
+        code={`# Harden Codex startup and execution in CI
+skillgate codex --ci --output sarif --directory . exec "review deployment changes"
+
+# Approve a local provider after review
+skillgate codex approve filesystem --permissions fs.read,fs.write --directory .`}
       />
 
       <Callout variant="info" title="Execution boundary">

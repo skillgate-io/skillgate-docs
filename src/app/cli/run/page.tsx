@@ -51,7 +51,7 @@ export default function RunPage() {
             {flags.map(([flag, def, desc]) => (
               <tr key={flag} style={{ borderBottom: '1px solid var(--border)' }}>
                 <td style={{ padding: '8px 14px', fontFamily: 'monospace', fontSize: '0.78rem', color: 'var(--accent)', whiteSpace: 'nowrap' }}>{flag}</td>
-                <td style={{ padding: '8px 14px', fontFamily: 'monospace', fontSize: '0.78rem', color: 'var(--text-muted)' }}>{def || '—'}</td>
+                <td style={{ padding: '8px 14px', fontFamily: 'monospace', fontSize: '0.78rem', color: 'var(--text-muted)' }}>{def || '-'}</td>
                 <td style={{ padding: '8px 14px', color: 'var(--text-muted)' }}>{desc}</td>
               </tr>
             ))}
