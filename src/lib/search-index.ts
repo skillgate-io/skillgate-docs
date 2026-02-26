@@ -13,6 +13,14 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { href: '/installation', title: 'Installation', description: 'Install via pipx, pip, Homebrew, winget, or npm shim. All platforms.', section: 'Getting Started', keywords: ['pipx', 'pip', 'brew', 'homebrew', 'winget', 'npm', 'install', 'setup'] },
   { href: '/concepts', title: 'Core Concepts', description: 'How SkillGate works: rules, risk scoring, policy enforcement, attestations.', section: 'Getting Started', keywords: ['pipeline', 'scoring', 'attestation', 'ed25519', 'deterministic'] },
 
+  // Use Cases
+  { href: '/use-cases', title: 'Use Cases', description: 'Task-first guides for local AI agent security across OpenClaw, Claude Code, Codex CLI, MCP, and CI.', section: 'Use Cases', keywords: ['use cases', 'workflow', 'task first', 'local ai security', 'agent security'] },
+  { href: '/use-cases/openclaw-gateway', title: 'Protect OpenClaw Gateway', description: 'Secure OpenClaw gateway execution paths with runtime policy checks and signed evidence.', section: 'Use Cases', keywords: ['openclaw gateway security', 'openclaw runtime protection', 'tool execution policy'] },
+  { href: '/use-cases/claude-code', title: 'Protect Claude Code', description: 'Protect Claude Code hooks, settings, plugins, and instruction files with policy enforcement.', section: 'Use Cases', keywords: ['claude code security', 'claude hooks protection', 'agents.md security', 'claude.md security'] },
+  { href: '/use-cases/codex-cli', title: 'Protect Codex CLI', description: 'Protect Codex CLI sessions with CI guard mode, trusted providers, and instruction safety checks.', section: 'Use Cases', keywords: ['codex cli security', 'openai codex security', 'trusted providers', 'ci guard mode'] },
+  { href: '/use-cases/mcp-gateway', title: 'Protect MCP Gateway', description: 'Protect MCP gateway provider trust and block unsafe metadata expansion.', section: 'Use Cases', keywords: ['mcp security', 'mcp gateway security', 'tool description poisoning', 'provider allowlist'] },
+  { href: '/use-cases/ci-gating', title: 'Secure CI Gating', description: 'Secure pull requests and release pipelines with deterministic SkillGate policy enforcement.', section: 'Use Cases', keywords: ['ci security gate', 'github actions security gate', 'gitlab ci security gate', 'signed evidence'] },
+
   // CLI Reference
   { href: '/cli', title: 'CLI Commands', description: 'All SkillGate CLI commands. Exit codes and environment variables reference.', section: 'CLI Reference', keywords: ['commands', 'cli', 'terminal', 'exit codes', 'env vars'] },
   { href: '/cli/scan', title: 'scan', description: 'Scan a skill bundle. Fleet mode, watch mode, signing, SARIF output.', section: 'CLI Reference', keywords: ['scan', 'fleet', 'enforce', 'sarif', 'json', 'sign', 'watch', 'explain', 'mode', 'output'] },

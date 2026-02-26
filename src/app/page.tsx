@@ -49,15 +49,17 @@ const FEATURES = [
 ];
 
 const QUICK_LINKS = [
+  { href: '/use-cases', label: 'Use Cases', desc: 'Task-first guides for OpenClaw, Claude Code, Codex CLI, MCP, and CI pipelines.' },
+  { href: '/use-cases/openclaw-gateway', label: 'Protect OpenClaw Gateway', desc: 'Apply runtime checks before local agent tools execute.' },
+  { href: '/use-cases/codex-cli', label: 'Protect Codex CLI', desc: 'Guard Codex sessions with CI-safe defaults and trust controls.' },
+  { href: '/use-cases/claude-code', label: 'Protect Claude Code', desc: 'Protect hooks, plugins, settings, and instruction files.' },
   { href: '/quickstart', label: 'Quickstart', desc: 'Scan your first skill in 5 minutes.' },
   { href: '/validation-evidence', label: 'Validation Evidence', desc: 'See proof images and real replay stats from public agent testbeds.' },
   { href: '/installation', label: 'Installation', desc: 'All install channels: pipx, pip, brew, and winget.' },
   { href: '/runtime-control', label: 'Runtime Control', desc: 'Learn how runtime checks, approvals, and policy outcomes work.' },
   { href: '/agent-gateway', label: 'Agent Gateway', desc: 'Protect Claude and Codex workflows with pre-execution policy checks.' },
   { href: '/cli/scan', label: 'scan command', desc: 'Full reference for flags, output formats, and examples.' },
-  { href: '/cli/codex', label: 'codex command', desc: 'Codex command guardrails, safe defaults for CI, and provider trust controls.' },
   { href: '/rules', label: 'Rule Catalog', desc: '119 rules across 7 languages and 7 categories.' },
-  { href: '/policy', label: 'Policy Reference', desc: 'Schema, presets, and enforcement behavior.' },
 ];
 
 export default function HomePage() {

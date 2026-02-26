@@ -9,6 +9,13 @@ const ROUTES: Array<{ path: string; priority: number; freq: MetadataRoute.Sitema
   { path: '/quickstart', priority: 0.9, freq: 'monthly' },
   { path: '/installation', priority: 0.9, freq: 'monthly' },
   { path: '/concepts', priority: 0.8, freq: 'monthly' },
+  // Use cases
+  { path: '/use-cases', priority: 0.9, freq: 'weekly' },
+  { path: '/use-cases/openclaw-gateway', priority: 0.9, freq: 'weekly' },
+  { path: '/use-cases/claude-code', priority: 0.9, freq: 'weekly' },
+  { path: '/use-cases/codex-cli', priority: 0.9, freq: 'weekly' },
+  { path: '/use-cases/mcp-gateway', priority: 0.9, freq: 'weekly' },
+  { path: '/use-cases/ci-gating', priority: 0.8, freq: 'weekly' },
   // CLI reference
   { path: '/cli', priority: 0.9, freq: 'monthly' },
   { path: '/cli/scan', priority: 0.8, freq: 'monthly' },

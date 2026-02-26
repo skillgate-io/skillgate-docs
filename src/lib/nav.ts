@@ -11,7 +11,7 @@ export interface NavSection {
 
 export const NAV: NavSection[] = [
   {
-    title: 'Getting Started',
+    title: 'Start',
     items: [
       { href: '/', label: 'Overview' },
       { href: '/get-started', label: 'Get Started' },
@@ -21,7 +21,33 @@ export const NAV: NavSection[] = [
     ],
   },
   {
-    title: 'CLI Reference',
+    title: 'Use Cases',
+    items: [
+      { href: '/use-cases', label: 'Overview' },
+      { href: '/use-cases/openclaw-gateway', label: 'Protect OpenClaw Gateway' },
+      { href: '/use-cases/claude-code', label: 'Protect Claude Code' },
+      { href: '/use-cases/codex-cli', label: 'Protect Codex CLI' },
+      { href: '/use-cases/mcp-gateway', label: 'Protect MCP Gateway' },
+      { href: '/use-cases/ci-gating', label: 'Secure CI Gating' },
+    ],
+  },
+  {
+    title: 'Integrations',
+    items: [
+      { href: '/integrations', label: 'Overview' },
+      { href: '/integrations/codex-cli', label: 'Codex CLI' },
+      { href: '/integrations/claude-code', label: 'Claude Code' },
+      { href: '/integrations/mcp-gateway', label: 'MCP Gateway' },
+      { href: '/integrations/github-actions', label: 'GitHub Actions' },
+      { href: '/integrations/gitlab-ci', label: 'GitLab CI' },
+    ],
+  },
+  {
+    title: 'Validation',
+    items: [{ href: '/validation-evidence', label: 'Validation Evidence' }],
+  },
+  {
+    title: 'CLI',
     items: [
       { href: '/cli', label: 'Commands' },
       { href: '/cli/scan', label: 'scan' },
@@ -65,12 +91,15 @@ export const NAV: NavSection[] = [
     items: [{ href: '/policy', label: 'Policy Reference' }],
   },
   {
-    title: 'Runtime',
+    title: 'Security and Governance',
     items: [
       { href: '/agent-gateway', label: 'Agent Gateway' },
       { href: '/runtime-control', label: 'Runtime Control' },
       { href: '/artifacts', label: 'Artifact Coverage' },
       { href: '/intelligence', label: 'Intelligence' },
+      { href: '/governance', label: 'Governance' },
+      { href: '/operations', label: 'Operations' },
+      { href: '/security', label: 'Security' },
     ],
   },
   {
@@ -84,24 +113,10 @@ export const NAV: NavSection[] = [
     ],
   },
   {
-    title: 'Integrations',
-    items: [
-      { href: '/integrations', label: 'Overview' },
-      { href: '/validation-evidence', label: 'Validation Evidence' },
-      { href: '/integrations/codex-cli', label: 'Codex CLI' },
-      { href: '/integrations/claude-code', label: 'Claude Code' },
-      { href: '/integrations/mcp-gateway', label: 'MCP Gateway' },
-      { href: '/integrations/github-actions', label: 'GitHub Actions' },
-      { href: '/integrations/gitlab-ci', label: 'GitLab CI' },
-    ],
-  },
-  {
     title: 'More',
     items: [
-      { href: '/governance', label: 'Governance' },
       { href: '/legal', label: 'Legal' },
       { href: '/product', label: 'Product' },
-      { href: '/security', label: 'Security' },
       { href: '/changelog', label: 'Changelog' },
     ],
   },
