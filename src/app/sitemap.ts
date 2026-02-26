@@ -61,6 +61,7 @@ const ROUTES: Array<{ path: string; priority: number; freq: MetadataRoute.Sitema
   // Integrations
   { path: '/integrations', priority: 0.8, freq: 'monthly' },
   { path: '/validation-evidence', priority: 0.9, freq: 'weekly' },
+  { path: '/integrations/skillgate-agents', priority: 0.9, freq: 'weekly' },
   { path: '/integrations/codex-cli', priority: 0.8, freq: 'monthly' },
   { path: '/integrations/claude-code', priority: 0.8, freq: 'monthly' },
   { path: '/integrations/mcp-gateway', priority: 0.8, freq: 'monthly' },

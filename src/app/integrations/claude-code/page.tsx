@@ -49,6 +49,7 @@ skillgate claude scan --directory ~/.claude --surface settings,instruction-files
 
       <h2>Related pages</h2>
       <ul>
+        <li><Link href="/integrations/skillgate-agents" className="sg-link">SkillGate Agents plugin guide</Link></li>
         <li><Link href="/cli/claude" className="sg-link">claude command reference</Link></li>
         <li><Link href="/agent-gateway" className="sg-link">Agent Gateway</Link></li>
       </ul>

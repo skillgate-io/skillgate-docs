@@ -35,6 +35,7 @@ export const NAV: NavSection[] = [
     title: 'Integrations',
     items: [
       { href: '/integrations', label: 'Overview' },
+      { href: '/integrations/skillgate-agents', label: 'SkillGate Agents' },
       { href: '/integrations/codex-cli', label: 'Codex CLI' },
       { href: '/integrations/claude-code', label: 'Claude Code' },
       { href: '/integrations/mcp-gateway', label: 'MCP Gateway' },

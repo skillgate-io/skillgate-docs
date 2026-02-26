@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const INTEGRATIONS = [
   {
+    href: '/integrations/skillgate-agents',
+    title: 'SkillGate Agents (Claude Plugin)',
+    desc: 'Install the Claude Code plugin package for hook governance, instruction safety, and runtime enforcement.',
+    status: 'Available',
+  },
+  {
     href: '/integrations/codex-cli',
     title: 'Codex CLI',
     desc: 'Run Codex with pre-execution safety checks, trusted providers, and CI-ready defaults.',
