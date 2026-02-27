@@ -1,27 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { SearchModal } from './SearchModal';
+import { useEffect } from 'react';
+import { useSearchModal } from '@/components/ui/SearchModalContext';
 
 export function SearchTrigger() {
-  const [open, setOpen] = useState(false);
+  const { openSearch, close, isOpen } = useSearchModal();
 
   // Cmd+K / Ctrl+K global shortcut
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
-        setOpen((o) => !o);
+        if (isOpen) close();
+        else openSearch();
       }
     };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
-  }, []);
+  }, [close, isOpen, openSearch]);
 
   return (
     <>
       <button
-        onClick={() => setOpen(true)}
+        onClick={openSearch}
         aria-label="Search docs"
         style={{
           display: 'flex',
@@ -61,8 +62,6 @@ export function SearchTrigger() {
           ⌘K
         </kbd>
       </button>
-
-      <SearchModal open={open} onClose={() => setOpen(false)} />
     </>
   );
 }

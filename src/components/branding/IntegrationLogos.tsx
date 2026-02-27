@@ -38,13 +38,33 @@ export function IntegrationLogos() {
             }}
           >
             {item === 'openclaw' && (
-              <Image
-                src="/images/integrations/openclaw-icon.svg"
-                alt="OpenClaw"
-                width={42}
-                height={42}
-                style={{ height: '42px', width: '42px', objectFit: 'contain' }}
-              />
+              <>
+                <div
+                  className="block dark:hidden"
+                  style={{
+                    background: '#1a1a1a',
+                    borderRadius: '6px',
+                    padding: '4px 10px',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Image
+                    src="/images/integrations/openclaw.png"
+                    alt="OpenClaw"
+                    width={1768}
+                    height={363}
+                    style={{ height: '26px', width: 'auto', objectFit: 'contain' }}
+                  />
+                </div>
+                <Image
+                  src="/images/integrations/openclaw.png"
+                  alt="OpenClaw"
+                  width={1768}
+                  height={363}
+                  className="hidden dark:block"
+                  style={{ height: '34px', width: 'auto', objectFit: 'contain' }}
+                />
+              </>
             )}
 
             {item === 'claude' && (

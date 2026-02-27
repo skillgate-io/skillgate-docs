@@ -3,11 +3,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { searchIndex, type SearchEntry } from '@/lib/search-index';
+import { DocsAssistantConversation } from '@/components/ui/DocsAssistantConversation';
+import { useDocsAssistant } from '@/components/ui/DocsAssistantContext';
 
 interface SearchModalProps {
   open: boolean;
   onClose: () => void;
+  /** When true, opens directly in Ask Docs mode */
+  initialMode?: 'search' | 'ask';
 }
+
+type Mode = 'search' | 'ask';
 
 const SECTION_COLORS: Record<string, string> = {
   'Getting Started': '#22c55e',
@@ -18,7 +24,9 @@ const SECTION_COLORS: Record<string, string> = {
   'More': 'var(--text-muted)',
 };
 
-export function SearchModal({ open, onClose }: SearchModalProps) {
+export function SearchModal({ open, onClose, initialMode = 'search' }: SearchModalProps) {
+  const { resetConversation } = useDocsAssistant();
+  const [mode, setMode] = useState<Mode>(initialMode);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchEntry[]>([]);
   const [selected, setSelected] = useState(0);
@@ -28,12 +36,13 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
   // Reset on open
   useEffect(() => {
     if (open) {
+      setMode(initialMode);
       setQuery('');
       setResults([]);
       setSelected(0);
       setTimeout(() => inputRef.current?.focus(), 50);
     }
-  }, [open]);
+  }, [open, initialMode]);
 
   // Search on query change
   useEffect(() => {
@@ -48,19 +57,19 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
-      } else if (e.key === 'ArrowDown') {
+      } else if (mode === 'search' && e.key === 'ArrowDown') {
         e.preventDefault();
         setSelected((s) => Math.min(s + 1, results.length - 1));
-      } else if (e.key === 'ArrowUp') {
+      } else if (mode === 'search' && e.key === 'ArrowUp') {
         e.preventDefault();
         setSelected((s) => Math.max(s - 1, 0));
-      } else if (e.key === 'Enter' && results[selected]) {
+      } else if (mode === 'search' && e.key === 'Enter' && results[selected]) {
         navigate(results[selected].href);
       }
     };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
-  }, [open, results, selected]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [mode, onClose, open, results, selected]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const navigate = (href: string) => {
     router.push(href);
@@ -100,79 +109,163 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
           overflow: 'hidden',
         }}
       >
-        {/* Input row */}
+        {/* Mode tabs */}
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            padding: '14px 16px',
-            borderBottom: query && results.length ? '1px solid var(--border)' : 'none',
+            borderBottom: '1px solid var(--border)',
+            padding: '6px 8px 0',
+            gap: '4px',
           }}
         >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="var(--text-muted)"
-            strokeWidth="2"
-            style={{ flexShrink: 0 }}
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            ref={inputRef}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search docs..."
-            style={{
-              flex: 1,
-              background: 'none',
-              border: 'none',
-              outline: 'none',
-              fontSize: '1rem',
-              color: 'var(--text)',
-              lineHeight: '1.5',
-            }}
-          />
-          {query && (
+          {(['search', 'ask'] as Mode[]).map((m) => (
             <button
-              onClick={() => setQuery('')}
+              key={m}
+              onClick={() => setMode(m)}
               style={{
-                background: 'none',
+                padding: '6px 14px',
                 border: 'none',
+                borderBottom: mode === m ? '2px solid var(--accent)' : '2px solid transparent',
+                background: 'none',
+                color: mode === m ? 'var(--nav-active-text)' : 'var(--text-muted)',
+                fontSize: '0.82rem',
+                fontWeight: mode === m ? 600 : 400,
                 cursor: 'pointer',
-                color: 'var(--text-muted)',
-                padding: '2px',
-                display: 'flex',
-                alignItems: 'center',
+                transition: 'color 0.15s',
+                marginBottom: '-1px',
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+              {m === 'search' ? 'Search' : 'Ask Docs'}
             </button>
-          )}
-          <kbd
+          ))}
+          <div
             style={{
-              fontSize: '0.7rem',
-              padding: '2px 6px',
-              borderRadius: '4px',
-              border: '1px solid var(--border)',
-              color: 'var(--text-muted)',
-              background: 'var(--sidebar-bg)',
-              flexShrink: 0,
+              marginLeft: 'auto',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              paddingRight: '4px',
             }}
           >
-            esc
-          </kbd>
+            {mode === 'ask' && (
+              <button
+                onClick={resetConversation}
+                aria-label="Clear chat"
+                title="Clear chat"
+                style={{
+                  background: 'none',
+                  border: '1px solid var(--border)',
+                  borderRadius: '6px',
+                  color: 'var(--text-muted)',
+                  cursor: 'pointer',
+                  width: '26px',
+                  height: '22px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: 0,
+                }}
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M23 4v6h-6" />
+                  <path d="M1 20v-6h6" />
+                  <path d="M3.51 9a9 9 0 0 1 14.13-3.36L23 10" />
+                  <path d="M20.49 15A9 9 0 0 1 6.36 18.36L1 14" />
+                </svg>
+              </button>
+            )}
+            <span
+              style={{
+                fontSize: '0.68rem',
+                color: 'var(--text-muted)',
+                alignSelf: 'center',
+              }}
+            >
+              <kbd style={{ padding: '1px 4px', borderRadius: '3px', border: '1px solid var(--border)', background: 'var(--sidebar-bg)' }}>Esc</kbd> close
+            </span>
+          </div>
         </div>
 
-        {/* Results */}
-        {query && (
+        {mode === 'search' && (
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '14px 16px',
+              borderBottom: query && results.length ? '1px solid var(--border)' : 'none',
+            }}
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--text-muted)"
+              strokeWidth="2"
+              style={{ flexShrink: 0 }}
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              ref={inputRef}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search docs..."
+              style={{
+                flex: 1,
+                background: 'none',
+                border: 'none',
+                outline: 'none',
+                fontSize: '1rem',
+                color: 'var(--text)',
+                lineHeight: '1.5',
+              }}
+            />
+            {query && (
+              <button
+                onClick={() => setQuery('')}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: 'var(--text-muted)',
+                  padding: '2px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            )}
+            <kbd
+              style={{
+                fontSize: '0.7rem',
+                padding: '2px 6px',
+                borderRadius: '4px',
+                border: '1px solid var(--border)',
+                color: 'var(--text-muted)',
+                background: 'var(--sidebar-bg)',
+                flexShrink: 0,
+              }}
+            >
+              esc
+            </kbd>
+          </div>
+        )}
+
+        {mode === 'ask' && (
+          <div style={{ display: 'flex', flexDirection: 'column', height: 'min(72vh, 620px)' }}>
+            <DocsAssistantConversation surface="modal" />
+          </div>
+        )}
+
+        {/* Results (search mode only) */}
+        {mode === 'search' && query && (
           <div style={{ maxHeight: '420px', overflowY: 'auto' }}>
             {results.length === 0 ? (
               <div
@@ -274,8 +367,8 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
           </div>
         )}
 
-        {/* Footer */}
-        {!query && (
+        {/* Footer (search mode only) */}
+        {mode === 'search' && !query && (
           <div
             style={{
               padding: '20px',
@@ -316,8 +409,8 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
           </div>
         )}
 
-        {/* Keyboard hints */}
-        {results.length > 0 && (
+        {/* Keyboard hints (search mode only) */}
+        {mode === 'search' && results.length > 0 && (
           <div
             style={{
               padding: '8px 16px',

@@ -1,12 +1,49 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { HeadingAnchors } from '@/components/ui/HeadingAnchors';
+import { DocsAssistant } from '@/components/ui/DocsAssistant';
+import { DocsAssistantProvider, useDocsAssistant } from '@/components/ui/DocsAssistantContext';
+import { SearchModal } from '@/components/ui/SearchModal';
+import { SearchModalProvider, useSearchModal } from '@/components/ui/SearchModalContext';
 
 export function DocLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <DocsAssistantProvider>
+      <SearchModalProvider>
+        <DocLayoutInner sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}>
+          {children}
+        </DocLayoutInner>
+      </SearchModalProvider>
+    </DocsAssistantProvider>
+  );
+}
+
+function DocLayoutInner({
+  children,
+  sidebarOpen,
+  setSidebarOpen,
+}: {
+  children: React.ReactNode;
+  sidebarOpen: boolean;
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const { isOpen, mode, close } = useSearchModal();
+  const { markPanelOpened, markPanelClosed } = useDocsAssistant();
+  const didInitRef = useRef(false);
+
+  useEffect(() => {
+    if (!didInitRef.current) {
+      didInitRef.current = true;
+      return;
+    }
+    if (isOpen) markPanelOpened();
+    else markPanelClosed();
+  }, [isOpen, markPanelOpened, markPanelClosed]);
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
@@ -39,6 +76,8 @@ export function DocLayout({ children }: { children: React.ReactNode }) {
           }
         }
       `}</style>
+      <DocsAssistant />
+      <SearchModal open={isOpen} onClose={close} initialMode={mode} />
     </div>
   );
 }
