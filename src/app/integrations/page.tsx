@@ -5,10 +5,22 @@ import { IntegrationLogos } from '@/components/branding/IntegrationLogos';
 
 export const metadata: Metadata = {
   title: 'Integrations',
-  description: 'Integrate SkillGate with OpenClaw, Codex CLI, Claude Code, MCP Gateway, GitHub Actions, and GitLab CI. Review real validation evidence and corpus-level security replay stats.',
+  description: 'Integrate SkillGate with VS Code extension, Python SDK, OpenClaw, Codex CLI, Claude Code, MCP Gateway, GitHub Actions, and GitLab CI. Review real validation evidence and corpus-level security replay stats.',
 };
 
 const INTEGRATIONS = [
+  {
+    href: '/integrations/vscode-extension',
+    title: 'VS Code Extension',
+    desc: 'Shift-left workspace diagnostics and onboarding checks for Claude Code and Codex environments.',
+    status: 'Available',
+  },
+  {
+    href: '/integrations/python-sdk',
+    title: 'Python SDK',
+    desc: 'Decorator-based runtime gating with sidecar policy decisions for app-level AI tools.',
+    status: 'Available',
+  },
   {
     href: '/integrations/skillgate-agents',
     title: 'SkillGate Agents (Claude Plugin)',
@@ -56,7 +68,7 @@ export default function IntegrationsPage() {
           Integrations
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          SkillGate integrates with runtime agent ecosystems and CI platforms. Choose an integration guide based on your stack, including OpenClaw and other local AI agents.
+          SkillGate integrates with editor, SDK, runtime agent ecosystems, and CI platforms. Choose an integration guide based on your stack, including OpenClaw and other local AI agents.
         </p>
       </div>
       <IntegrationLogos />

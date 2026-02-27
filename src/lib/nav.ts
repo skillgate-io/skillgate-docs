@@ -35,6 +35,8 @@ export const NAV: NavSection[] = [
     title: 'Integrations',
     items: [
       { href: '/integrations', label: 'Overview' },
+      { href: '/integrations/vscode-extension', label: 'VS Code Extension' },
+      { href: '/integrations/python-sdk', label: 'Python SDK' },
       { href: '/integrations/skillgate-agents', label: 'SkillGate Agents' },
       { href: '/integrations/codex-cli', label: 'Codex CLI' },
       { href: '/integrations/claude-code', label: 'Claude Code' },

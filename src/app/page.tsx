@@ -51,6 +51,8 @@ const FEATURES = [
 const QUICK_LINKS = [
   { href: '/use-cases', label: 'Use Cases', desc: 'Task-first guides for OpenClaw, Claude Code, Codex CLI, MCP, and CI pipelines.' },
   { href: '/use-cases/openclaw-gateway', label: 'Protect OpenClaw Gateway', desc: 'Apply runtime checks before local agent tools execute.' },
+  { href: '/integrations/vscode-extension', label: 'VS Code Extension', desc: 'Shift-left editor diagnostics with setup preflight and status panel.' },
+  { href: '/integrations/python-sdk', label: 'Python SDK', desc: 'Decorator-based runtime sidecar enforcement for production Python tools.' },
   { href: '/use-cases/codex-cli', label: 'Protect Codex CLI', desc: 'Guard Codex sessions with CI-safe defaults and trust controls.' },
   { href: '/use-cases/claude-code', label: 'Protect Claude Code', desc: 'Protect hooks, plugins, settings, and instruction files.' },
   { href: '/quickstart', label: 'Quickstart', desc: 'Scan your first skill in 5 minutes.' },
@@ -251,6 +253,8 @@ export default function HomePage() {
           { href: '/agent-gateway', label: 'Agent Gateway Wrapper', desc: 'Guard OpenClaw and other local AI agents through skillgate run.' },
           { href: '/integrations/codex-cli', label: 'Codex CLI Protection', desc: 'Config safety checks and provider trust controls.' },
           { href: '/integrations/claude-code', label: 'Claude Code Protection', desc: 'Hooks, instruction files, plugins, and settings controls.' },
+          { href: '/integrations/vscode-extension', label: 'VS Code Shift-Left Moat', desc: 'Editor preflight + diagnostics before runtime and CI execution.' },
+          { href: '/integrations/python-sdk', label: 'Python Runtime SDK', desc: 'Application-level capability gating with sidecar-backed policy decisions.' },
           { href: '/integrations/mcp-gateway', label: 'MCP Gateway Protection', desc: 'Trusted provider allowlists and metadata safety checks.' },
           { href: '/operations', label: 'Operator Runbook', desc: 'Incident triage, remediations, and performance guardrails.' },
         ].map((link) => (

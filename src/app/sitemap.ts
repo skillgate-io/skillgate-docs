@@ -60,6 +60,8 @@ const ROUTES: Array<{ path: string; priority: number; freq: MetadataRoute.Sitema
   { path: '/enterprise/procurement', priority: 0.6, freq: 'monthly' },
   // Integrations
   { path: '/integrations', priority: 0.8, freq: 'monthly' },
+  { path: '/integrations/vscode-extension', priority: 0.9, freq: 'weekly' },
+  { path: '/integrations/python-sdk', priority: 0.9, freq: 'weekly' },
   { path: '/validation-evidence', priority: 0.9, freq: 'weekly' },
   { path: '/integrations/skillgate-agents', priority: 0.9, freq: 'weekly' },
   { path: '/integrations/codex-cli', priority: 0.8, freq: 'monthly' },

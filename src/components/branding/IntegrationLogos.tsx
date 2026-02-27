@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const ROW_ITEMS = ['openclaw', 'claude', 'codex', 'mcp', 'github', 'gitlab'] as const;
+const ROW_ITEMS = ['openclaw', 'vscode', 'claude', 'codex', 'mcp', 'github', 'gitlab'] as const;
 
 export function IntegrationLogos() {
   return (
@@ -66,6 +66,16 @@ export function IntegrationLogos() {
                   style={{ height: '34px', width: 'auto', objectFit: 'contain' }}
                 />
               </>
+            )}
+
+            {item === 'vscode' && (
+              <Image
+                src="/images/integrations/skillgate-vscode.svg"
+                alt="SkillGate VS Code Extension"
+                width={40}
+                height={40}
+                style={{ height: '40px', width: '40px', objectFit: 'contain' }}
+              />
             )}
 
             {item === 'codex' && (
