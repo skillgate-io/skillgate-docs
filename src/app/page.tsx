@@ -253,8 +253,8 @@ export default function HomePage() {
           { href: '/agent-gateway', label: 'Agent Gateway Wrapper', desc: 'Guard OpenClaw and other local AI agents through skillgate run.' },
           { href: '/integrations/codex-cli', label: 'Codex CLI Protection', desc: 'Config safety checks and provider trust controls.' },
           { href: '/integrations/claude-code', label: 'Claude Code Protection', desc: 'Hooks, instruction files, plugins, and settings controls.' },
-          { href: '/integrations/vscode-extension', label: 'VS Code Shift-Left Moat', desc: 'Editor preflight + diagnostics before runtime and CI execution.' },
-          { href: '/integrations/python-sdk', label: 'Python Runtime SDK', desc: 'Application-level capability gating with sidecar-backed policy decisions.' },
+          { href: '/integrations/vscode-extension', label: 'VS Code Extension Protection', desc: 'Editor setup checks and diagnostics before runtime and CI execution.' },
+          { href: '/integrations/python-sdk', label: 'Python SDK Protection', desc: 'Protect app tool calls before execution with clear policy outcomes.' },
           { href: '/integrations/mcp-gateway', label: 'MCP Gateway Protection', desc: 'Trusted provider allowlists and metadata safety checks.' },
           { href: '/operations', label: 'Operator Runbook', desc: 'Incident triage, remediations, and performance guardrails.' },
         ].map((link) => (
@@ -274,7 +274,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      {/* Target use cases — keyword-dense for SEO */}
+      {/* Target use cases for SEO discovery */}
       <div
         style={{
           padding: '20px 24px',

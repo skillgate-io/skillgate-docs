@@ -70,8 +70,8 @@ export function IntegrationLogos() {
 
             {item === 'vscode' && (
               <Image
-                src="/images/integrations/skillgate-vscode.svg"
-                alt="SkillGate VS Code Extension"
+                src="/images/integrations/vscode.svg"
+                alt="VS Code"
                 width={40}
                 height={40}
                 style={{ height: '40px', width: '40px', objectFit: 'contain' }}

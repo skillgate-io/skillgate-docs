@@ -6,7 +6,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 export const metadata: Metadata = {
   title: 'VS Code Extension Integration',
   description:
-    'SkillGate VS Code extension guide for enterprise shift-left agent security, preflight onboarding, and runtime-aware controls for Claude Code and Codex workspaces.',
+    'SkillGate VS Code extension guide for teams who want clear, early security feedback in Claude Code and Codex workspaces.',
 };
 
 export default function VsCodeExtensionIntegrationPage() {
@@ -18,6 +18,9 @@ export default function VsCodeExtensionIntegrationPage() {
         </div>
         <h1
           style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
             fontSize: '2rem',
             fontWeight: 800,
             letterSpacing: '-0.02em',
@@ -25,43 +28,21 @@ export default function VsCodeExtensionIntegrationPage() {
             margin: 0,
           }}
         >
+          <Image
+            src="/images/integrations/vscode.svg"
+            alt="VS Code logo"
+            width={32}
+            height={32}
+            style={{ height: '32px', width: '32px', objectFit: 'contain' }}
+          />
           VS Code Extension
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          Shift-left workspace governance for Claude Code and Codex projects with setup-aware runtime controls.
+          Catch risky changes in the editor before they become runtime or CI problems.
         </p>
       </div>
 
-      <div
-        style={{
-          border: '1px solid var(--border)',
-          borderRadius: '10px',
-          background: 'var(--sidebar-bg)',
-          padding: '16px',
-          marginBottom: '24px',
-        }}
-      >
-        <Image
-          src="/images/integrations/skillgate-vscode.svg"
-          alt="SkillGate VS Code extension logo"
-          width={72}
-          height={72}
-          style={{ height: '56px', width: '56px', objectFit: 'contain' }}
-        />
-        <p style={{ margin: '10px 0 0', color: 'var(--text-muted)', lineHeight: 1.7 }}>
-          Uses the same production logo and control-plane model as{' '}
-          <a href="https://skillgate.io" className="sg-link">
-            skillgate.io
-          </a>{' '}
-          and{' '}
-          <a href="https://docs.skillgate.io" className="sg-link">
-            docs.skillgate.io
-          </a>
-          .
-        </p>
-      </div>
-
-      <h2>Activation and coverage</h2>
+      <h2>Where it turns on</h2>
       <CodeBlock
         language="text"
         code={`Auto-activates on:
@@ -74,7 +55,7 @@ export default function VsCodeExtensionIntegrationPage() {
 - .claude/memory/**`}
       />
 
-      <h2>Preflight and onboarding flow</h2>
+      <h2>How setup checks work</h2>
       <CodeBlock
         language="text"
         code={`On activation:
@@ -86,7 +67,7 @@ Runtime/auth-dependent commands are gated until ready.
 Static diagnostics stay active even when runtime is unavailable.`}
       />
 
-      <h2>Enterprise rollout commands</h2>
+      <h2>Team setup commands</h2>
       <CodeBlock
         language="bash"
         code={`# Publish extension

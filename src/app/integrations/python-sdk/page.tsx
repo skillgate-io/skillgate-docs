@@ -5,7 +5,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 export const metadata: Metadata = {
   title: 'Python SDK Integration',
   description:
-    'SkillGate Python SDK guide with @enforce runtime policy checks, sidecar decision flow, AI-BOM registration, and enterprise fail-closed deployment patterns.',
+    'SkillGate Python SDK guide for teams that want safer tool calls in production apps.',
 };
 
 export default function PythonSdkIntegrationPage() {
@@ -27,7 +27,7 @@ export default function PythonSdkIntegrationPage() {
           Python SDK
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          Embed SkillGate runtime decisions directly in Python tools and agent framework adapters.
+          Protect your Python tool actions before they execute, with outcomes your team can review and trust.
         </p>
       </div>
 
@@ -46,7 +46,7 @@ export SKILLGATE_SIDECAR_URL="http://127.0.0.1:9911"`}
 
 @enforce(capabilities=["net.http"], package_version="1.2.3")
 def call_api(url: str) -> str:
-    ...
+    return "ok"
 
 # ALLOW -> function executes
 # DENY -> CapabilityDeniedError
@@ -66,7 +66,7 @@ Production recommendation:
 - fail_open only with explicit degraded-mode policy`}
       />
 
-      <h2>AI-BOM and registry flow</h2>
+      <h2>Audit and governance support</h2>
       <CodeBlock
         language="text"
         code={`When a wrapped tool runs:

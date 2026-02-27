@@ -12,13 +12,14 @@ const INTEGRATIONS = [
   {
     href: '/integrations/vscode-extension',
     title: 'VS Code Extension',
-    desc: 'Shift-left workspace diagnostics and onboarding checks for Claude Code and Codex environments.',
+    desc: 'Catch risky changes early in Claude Code and Codex workspaces with clear setup guidance.',
     status: 'Available',
+    logo: '/images/integrations/vscode.svg',
   },
   {
     href: '/integrations/python-sdk',
     title: 'Python SDK',
-    desc: 'Decorator-based runtime gating with sidecar policy decisions for app-level AI tools.',
+    desc: 'Protect app tool calls before they run and keep outcomes consistent across environments.',
     status: 'Available',
   },
   {
@@ -68,7 +69,8 @@ export default function IntegrationsPage() {
           Integrations
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          SkillGate integrates with editor, SDK, runtime agent ecosystems, and CI platforms. Choose an integration guide based on your stack, including OpenClaw and other local AI agents.
+          SkillGate integrates with your editor, app runtime, agent workflows, and CI pipelines.
+          Choose the guide that matches how your team works today.
         </p>
       </div>
       <IntegrationLogos />
@@ -155,9 +157,20 @@ export default function IntegrationsPage() {
               background: 'var(--sidebar-bg)', textDecoration: 'none',
             }}
           >
-            <div>
-              <div style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--text)', marginBottom: '4px' }}>{integ.title}</div>
-              <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{integ.desc}</div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+              {'logo' in integ ? (
+                <Image
+                  src={integ.logo as string}
+                  alt={`${integ.title} logo`}
+                  width={26}
+                  height={26}
+                  style={{ height: '26px', width: '26px', objectFit: 'contain', marginTop: '2px' }}
+                />
+              ) : null}
+              <div>
+                <div style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--text)', marginBottom: '4px' }}>{integ.title}</div>
+                <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{integ.desc}</div>
+              </div>
             </div>
             <span style={{
               fontSize: '0.7rem', fontWeight: 600, padding: '2px 8px',
