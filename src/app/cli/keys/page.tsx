@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
-  title: 'keys — CLI Reference',
+  title: 'keys - CLI Reference',
   description: 'Generate, inspect, and export Ed25519 signing keys for SkillGate attestation.',
 };
 

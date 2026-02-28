@@ -44,7 +44,7 @@ export default function PolicyPage() {
           Policy Reference
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          SkillGate applies policy checks consistently. A policy defines what findings cause a scan to fail —
+          SkillGate applies policy checks consistently. A policy defines what findings cause a scan to fail - 
           by severity level, by category, or by total risk score.
         </p>
       </div>
@@ -109,7 +109,7 @@ threshold:
             { n: '1', label: 'CLI flags', desc: '--policy, --enforce, and related flags override everything.', highlight: false },
             { n: '2', label: 'Project skillgate.yml', desc: 'A skillgate.yml in your project root overrides presets.', highlight: false },
             { n: '3', label: 'Named preset', desc: 'development, staging, production, or strict built-in preset.', highlight: false },
-            { n: '4', label: 'Built-in defaults', desc: 'Lowest priority — no enforcement by default without a preset.', highlight: false },
+            { n: '4', label: 'Built-in defaults', desc: 'Lowest priority - no enforcement by default without a preset.', highlight: false },
           ].map((s, i) => (
             <div key={s.n} style={{
               display: 'flex', gap: '16px', padding: '12px 16px',

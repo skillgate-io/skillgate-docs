@@ -123,26 +123,26 @@ def fetch_url(url: str) -> str:
         <h3 id="parameters">Parameters</h3>
         <ul>
           <li>
-            <code>capabilities</code> — list of capability strings this tool needs (see{' '}
+            <code>capabilities</code> - list of capability strings this tool needs (see{' '}
             <a href="#capabilities">capability reference</a> below).
           </li>
           <li>
-            <code>fail_open</code> — when <code>True</code>, the call is allowed if the sidecar is
+            <code>fail_open</code> - when <code>True</code>, the call is allowed if the sidecar is
             unreachable. Default is <code>False</code> (fail closed). Use fail open only for
             non-critical tooling or local development.
           </li>
           <li>
-            <code>risk_class</code> — a label attached to every invocation record.{' '}
+            <code>risk_class</code> - a label attached to every invocation record.{' '}
             <code>&quot;standard&quot;</code> by default. Set to <code>&quot;high&quot;</code> or{' '}
             <code>&quot;critical&quot;</code> for tools that touch sensitive systems.
           </li>
           <li>
-            <code>package_version</code> — semver string of your tool package. When this changes,
+            <code>package_version</code> - semver string of your tool package. When this changes,
             the SDK automatically updates the tool&apos;s AI-BOM in the registry so your team can
             see what version of each tool is running in production.
           </li>
           <li>
-            <code>client</code> — pass a custom <code>SkillGateClient</code> instance if you need
+            <code>client</code> - pass a custom <code>SkillGateClient</code> instance if you need
             per-tool sidecar URLs or timeout settings. The SDK uses a shared process-level client
             by default.
           </li>
@@ -204,7 +204,7 @@ except CapabilityDeniedError as e:
     # e.decision_code  -> e.g. "SG_DENY_BUDGET_EXCEEDED"
     # e.reason_codes   -> list of reasons, e.g. ["rate_limit_hit"]
     # e.budgets        -> current budget state per capability
-    print(f"Blocked: {e.decision_code} — {e.reason_codes}")
+    print(f"Blocked: {e.decision_code} - {e.reason_codes}")
 
 except ApprovalPendingError as e:
     # This capability requires a human approval before proceeding.
@@ -401,8 +401,8 @@ result = guarded_task.execute()`}
         {/* ── Direct client ── */}
         <h2 id="direct-client">Direct client usage</h2>
         <p>
-          If you need more control — custom timeouts, per-workspace sidecar URLs, or programmatic
-          access to enforcement decisions — use <code>SkillGateClient</code> directly.
+          If you need more control - custom timeouts, per-workspace sidecar URLs, or programmatic
+          access to enforcement decisions - use <code>SkillGateClient</code> directly.
         </p>
         <CodeBlock
           language="python"
@@ -537,12 +537,12 @@ async with AsyncSkillGateClient(timeout_ms=50) as client:
           </li>
           <li>
             <Link href="/cli/run" className="sg-link">
-              skillgate run — start the sidecar
+              skillgate run - start the sidecar
             </Link>
           </li>
           <li>
             <Link href="/cli/approval" className="sg-link">
-              skillgate approval — sign pending approvals
+              skillgate approval - sign pending approvals
             </Link>
           </li>
           <li>

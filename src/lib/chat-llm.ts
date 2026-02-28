@@ -1,7 +1,7 @@
 // Multi-provider LLM adapter for the SkillGate Docs Assistant.
 // Supports: Anthropic (claude-sonnet-4-6), OpenAI (gpt-4o), Groq (llama-3.3-70b-versatile),
 // Ollama (llama3.2 via local server). Provider selected via SKILLGATE_LLM_PROVIDER env var.
-// OpenAI SDK handles OpenAI, Groq, and Ollama — all are OpenAI-compatible APIs.
+// OpenAI SDK handles OpenAI, Groq, and Ollama - all are OpenAI-compatible APIs.
 
 export type LLMProvider = 'anthropic' | 'openai' | 'groq' | 'ollama';
 

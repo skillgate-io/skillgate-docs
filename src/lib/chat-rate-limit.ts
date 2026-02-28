@@ -11,7 +11,7 @@ interface WindowState {
 const WINDOW_MS = 60_000; // 1 minute
 const MAX_REQUESTS = 10;  // 10 per minute (public docs tier)
 
-// Module-level store — persists across requests within a process
+// Module-level store - persists across requests within a process
 const store = new Map<string, WindowState>();
 
 export interface RateLimitResult {
@@ -23,7 +23,7 @@ export interface RateLimitResult {
 
 /**
  * Check and increment rate limit for a client identifier (IP address).
- * Call once per inbound request — side-effectful.
+ * Call once per inbound request - side-effectful.
  */
 export function checkRateLimit(clientId: string): RateLimitResult {
   const now = Date.now();
@@ -81,7 +81,7 @@ export function peekRateLimit(clientId: string): RateLimitResult {
   return { allowed: true, remaining: MAX_REQUESTS - state.count };
 }
 
-/** Reset a client's window — useful in tests. */
+/** Reset a client's window - useful in tests. */
 export function resetRateLimit(clientId: string): void {
   store.delete(clientId);
 }

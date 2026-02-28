@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'approval — CLI Reference',
+  title: 'approval - CLI Reference',
   description: 'Create and verify signed approval files for reviewer quorum enforcement in runtime flows.',
 };
 
@@ -21,7 +21,8 @@ export default function ApprovalPage() {
       </div>
 
       <CodeBlock language="bash" code={`skillgate approval sign [OPTIONS]
-skillgate approval verify <approval-file> [OPTIONS]`} />
+skillgate approval verify <approval-file> [OPTIONS]
+skillgate approval request [OPTIONS]`} />
 
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '32px', marginBottom: '12px' }}>approval sign</h2>
       <p style={{ color: 'var(--text-muted)', marginBottom: '16px', lineHeight: 1.7 }}>
@@ -113,6 +114,17 @@ skillgate run \\
   --approval-file .skillgate/approvals/approval.json \\
   --required-reviewers 2 \\
   -- codex exec "deploy"`} />
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>approval request</h2>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
+        Create a local approval request artifact that can be reviewed and signed by your approvers.
+        Use this when a workflow needs explicit review before runtime execution.
+      </p>
+      <CodeBlock language="bash" code={`skillgate approval request \\
+  --skill-id my-agent-skill \\
+  --skill-hash <sha256> \\
+  --env prod \\
+  --reason "Deploy requires two reviewers"`} />
     </div>
   );
 }

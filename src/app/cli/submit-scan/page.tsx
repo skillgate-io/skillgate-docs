@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
-  title: 'submit-scan — CLI Reference',
+  title: 'submit-scan - CLI Reference',
   description: 'Submit a SkillGate JSON scan report to the hosted API for storage and search.',
 };
 

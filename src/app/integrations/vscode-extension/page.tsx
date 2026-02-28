@@ -28,6 +28,7 @@ export const metadata: Metadata = {
 const TOC = [
   { id: 'where-it-turns-on', label: 'Where it turns on' },
   { id: 'how-setup-checks-work', label: 'How setup checks work' },
+  { id: 'signed-report-proof', label: 'Signed report proof' },
   { id: 'team-setup-commands', label: 'Team setup' },
   { id: 'related-pages', label: 'Related pages' },
 ];
@@ -112,6 +113,36 @@ skillgate auth login
 python -m uvicorn skillgate.sidecar.app:create_sidecar_app \\
   --factory --host 127.0.0.1 --port 9911`}
         />
+
+        <h2 id="signed-report-proof">Signed report proof</h2>
+        <p>
+          Quick visual proof of signed report generation and verification using{' '}
+          <code>skillgate scan --sign</code> and <code>skillgate verify</code>.
+        </p>
+        <div
+          style={{
+            border: '1px solid var(--border)',
+            borderRadius: '10px',
+            overflow: 'hidden',
+            background: 'var(--sidebar-bg)',
+            marginBottom: '18px',
+          }}
+        >
+          <Image
+            src="/media/demo/risky-signed-report-verification.gif"
+            alt="Terminal walkthrough showing signed report scan and verification commands"
+            width={1280}
+            height={720}
+            unoptimized
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        </div>
+        <p style={{ marginTop: 0 }}>
+          Prefer full playback?{' '}
+          <a href="/media/demo/risky-signed-report-verification.mp4" target="_blank" rel="noreferrer" className="sg-link">
+            Open the MP4 capture
+          </a>.
+        </p>
 
         <h2 id="related-pages">Related pages</h2>
         <ul>

@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
-  title: 'hooks — CLI Reference',
+  title: 'hooks - CLI Reference',
   description: 'Install and manage git pre-commit hooks that run SkillGate before each commit.',
 };
 

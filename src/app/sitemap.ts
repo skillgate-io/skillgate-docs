@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 const BASE = 'https://docs.skillgate.io';
 
-// All routable pages — priority: 1.0 = home, 0.9 = top-level, 0.7 = sub-pages
+// All routable pages - priority: 1.0 = home, 0.9 = top-level, 0.7 = sub-pages
 const ROUTES: Array<{ path: string; priority: number; freq: MetadataRoute.Sitemap[number]['changeFrequency'] }> = [
   { path: '/', priority: 1.0, freq: 'weekly' },
   { path: '/get-started', priority: 0.9, freq: 'monthly' },
@@ -19,24 +19,32 @@ const ROUTES: Array<{ path: string; priority: number; freq: MetadataRoute.Sitema
   // CLI reference
   { path: '/cli', priority: 0.9, freq: 'monthly' },
   { path: '/cli/scan', priority: 0.8, freq: 'monthly' },
-  { path: '/cli/verify', priority: 0.7, freq: 'monthly' },
-  { path: '/cli/init', priority: 0.7, freq: 'monthly' },
   { path: '/cli/simulate', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/verify', priority: 0.7, freq: 'monthly' },
   { path: '/cli/submit-scan', priority: 0.7, freq: 'monthly' },
-  { path: '/cli/hunt', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/rules', priority: 0.7, freq: 'monthly' },
   { path: '/cli/retroscan', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/hunt', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/init', priority: 0.7, freq: 'monthly' },
   { path: '/cli/auth', priority: 0.7, freq: 'monthly' },
   { path: '/cli/keys', priority: 0.7, freq: 'monthly' },
   { path: '/cli/hooks', priority: 0.7, freq: 'monthly' },
   { path: '/cli/approval', priority: 0.7, freq: 'monthly' },
   { path: '/cli/run', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/integrate', priority: 0.7, freq: 'monthly' },
   { path: '/cli/gateway', priority: 0.8, freq: 'monthly' },
   { path: '/cli/bom', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/mcp', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/claude', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/codex', priority: 0.7, freq: 'monthly' },
   { path: '/cli/dag', priority: 0.7, freq: 'monthly' },
   { path: '/cli/drift', priority: 0.7, freq: 'monthly' },
   { path: '/cli/reputation', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/report', priority: 0.7, freq: 'monthly' },
+  { path: '/cli/export', priority: 0.7, freq: 'monthly' },
   { path: '/cli/doctor', priority: 0.7, freq: 'monthly' },
-  // Detection rules — high SEO value for "AI skill vulnerability" searches
+  { path: '/cli/version', priority: 0.7, freq: 'monthly' },
+  // Detection rules - high SEO value for "AI skill vulnerability" searches
   { path: '/rules', priority: 0.9, freq: 'monthly' },
   { path: '/rules/shell', priority: 0.8, freq: 'monthly' },
   { path: '/rules/network', priority: 0.8, freq: 'monthly' },

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'dag — CLI Reference',
+  title: 'dag - CLI Reference',
   description: 'Session lineage DAG: show, verify, and compute transitive risk metrics from signed runtime artifacts.',
 };
 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'drift — CLI Reference',
+  title: 'drift - CLI Reference',
   description: 'Baseline a skill snapshot and compare the current state to detect capability drift.',
 };
 

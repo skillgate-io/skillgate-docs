@@ -233,7 +233,7 @@ webhooks:
         </table>
         <CodeBlock
           language="yaml"
-          code={`# observability.yml — Datadog connector
+          code={`# observability.yml - Datadog connector
 siem:
   connector: datadog
   api_key_env: DD_API_KEY
@@ -254,7 +254,7 @@ audit_log:
   mode: metadata_only    # full | redacted | metadata_only
   # full: params included (default for Pro+)
   # redacted: params replaced with [REDACTED]
-  # metadata_only: tool name, timestamp, decision — no params`}
+  # metadata_only: tool name, timestamp, decision - no params`}
         />
 
         {/* ── Risk scoring ── */}
@@ -369,7 +369,7 @@ skillgate export audit \\
         <h2 id="config">Configuration reference</h2>
         <CodeBlock
           language="yaml"
-          code={`# observability.yml — full reference
+          code={`# observability.yml - full reference
 metrics:
   enabled: true
   port: 9911           # sidecar port; /metrics on same port

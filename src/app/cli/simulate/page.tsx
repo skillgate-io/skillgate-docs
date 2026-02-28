@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
-  title: 'simulate — CLI Reference',
+  title: 'simulate - CLI Reference',
   description: 'Dry-run policy impact across skill bundles without enforcing or blocking.',
 };
 

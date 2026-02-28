@@ -134,6 +134,50 @@ export default function ValidationEvidencePage() {
           marginBottom: '20px',
         }}
       >
+        <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: '8px' }}>
+          Signed report verification demo
+        </div>
+        <p style={{ color: 'var(--text-muted)', marginTop: 0, marginBottom: '12px', lineHeight: 1.7 }}>
+          Real terminal capture showing a signed report workflow with <code>skillgate scan --sign</code> and{' '}
+          <code>skillgate verify</code>.
+        </p>
+        <video
+          controls
+          preload="none"
+          playsInline
+          poster="/images/validation-evidence/openclaw-proof-card.svg"
+          style={{
+            width: '100%',
+            height: 'auto',
+            border: '1px solid var(--border)',
+            borderRadius: '8px',
+            background: '#000',
+          }}
+        >
+          <source src="/media/demo/risky-signed-report-verification.mp4" type="video/mp4" />
+          Your browser does not support embedded video.
+        </video>
+        <div style={{ marginTop: '10px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <a
+            href="/media/demo/risky-signed-report-verification.mp4"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: 'var(--accent)' }}
+          >
+            Open MP4
+          </a>
+        </div>
+      </div>
+
+      <div
+        style={{
+          border: '1px solid var(--border)',
+          borderRadius: '10px',
+          background: 'var(--sidebar-bg)',
+          padding: '16px',
+          marginBottom: '20px',
+        }}
+      >
         <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: '8px' }}>What this means for your team</div>
         <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--text-muted)', lineHeight: 1.8 }}>
           <li>Security claims are tied to reproducible evidence artifacts.</li>

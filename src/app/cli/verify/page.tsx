@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'verify — CLI Reference',
+  title: 'verify - CLI Reference',
   description: 'Verify a signed SkillGate attestation report.',
 };
 

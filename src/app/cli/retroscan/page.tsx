@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
-  title: 'retroscan — CLI Reference',
+  title: 'retroscan - CLI Reference',
   description: 'Replay historical SkillGate scan reports with updated rules and show impact diffs.',
 };
 
@@ -68,7 +68,7 @@ skillgate retroscan --data-dir ./reports --trigger rule_update --rule-ids SG-NET
 skillgate retroscan --data-dir ./reports --format json`} />
 
       <Callout variant="info">
-        Retroscan replays the original source code snapshots from the stored reports — it does not re-read the live filesystem. This makes it deterministic and safe to run against archived scan data.
+        Retroscan replays the original source code snapshots from the stored reports - it does not re-read the live filesystem. This makes it deterministic and safe to run against archived scan data.
       </Callout>
     </div>
   );

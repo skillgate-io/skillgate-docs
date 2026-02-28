@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'init — CLI Reference',
+  title: 'init - CLI Reference',
   description: 'Initialize a SkillGate policy configuration file.',
 };
 

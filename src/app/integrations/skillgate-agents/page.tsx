@@ -6,7 +6,7 @@ import { PageWithTOC } from '@/components/ui/PageWithTOC';
 export const metadata: Metadata = {
   title: 'SkillGate Agents for Claude Code | SkillGate',
   description:
-    'Install the SkillGate Agents Claude Code plugin to secure hooks, MCP tool descriptions, CLAUDE.md, and runtime tool calls — all from inside your Claude session.',
+    'Install the SkillGate Agents Claude Code plugin to secure hooks, MCP tool descriptions, CLAUDE.md, and runtime tool calls - all from inside your Claude session.',
   keywords: [
     'SkillGate Agents Claude Code plugin',
     'Claude Code security plugin',
@@ -56,7 +56,7 @@ export default function SkillGateAgentsIntegrationPage() {
           <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             SkillGate Agents is the Claude Code plugin for runtime enforcement and instruction
             safety. It secures plugin hooks, MCP tool descriptions, settings drift, and high-risk
-            tool calls — all from inside your Claude session.
+            tool calls - all from inside your Claude session.
           </p>
         </div>
 

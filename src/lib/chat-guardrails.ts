@@ -1,12 +1,12 @@
 // Security guardrails for the SkillGate Docs Assistant.
-// Pattern-based detection — runs before LLM call, no ML required.
+// Pattern-based detection - runs before LLM call, no ML required.
 
 import type { RefusalReason } from '@/types/chat';
 
 export interface GuardrailResult {
   blocked: boolean;
   reason?: RefusalReason;
-  /** Human-readable description for server-side logging only — never sent to client. */
+  /** Human-readable description for server-side logging only - never sent to client. */
   _logDetail?: string;
 }
 

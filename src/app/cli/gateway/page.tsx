@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'gateway — CLI Reference',
+  title: 'gateway - CLI Reference',
   description: 'Native agent gateway integration: pre-execution checks and tool output poisoning scans.',
 };
 

@@ -9,20 +9,31 @@ export const metadata: Metadata = {
 
 const COMMANDS = [
   { cmd: 'scan', path: '/cli/scan', desc: 'Scan a skill bundle for security risks. Supports local paths, archives, and ClawHub URLs.' },
+  { cmd: 'simulate', path: '/cli/simulate', desc: 'Preview policy impact across one or more bundles without blocking execution.' },
   { cmd: 'verify', path: '/cli/verify', desc: 'Verify a signed attestation report using the Ed25519 public key.' },
+  { cmd: 'submit-scan', path: '/cli/submit-scan', desc: 'Submit a saved JSON scan report to hosted storage for historical search.' },
+  { cmd: 'rules', path: '/cli/rules', desc: 'List available detection rules and filter by category, severity, or output format.' },
+  { cmd: 'retroscan', path: '/cli/retroscan', desc: 'Replay historical scans against newer rules to measure changed detection coverage.' },
+  { cmd: 'hunt', path: '/cli/hunt', desc: 'Search historical findings using rule IDs, severity, path filters, and date windows.' },
   { cmd: 'init', path: '/cli/init', desc: 'Generate a skillgate.yml policy configuration file in the current directory.' },
   { cmd: 'auth', path: '/cli/auth', desc: 'Log in, log out, and manage credentials for the SkillGate hosted service.' },
   { cmd: 'keys', path: '/cli/keys', desc: 'Generate and manage Ed25519 signing keypairs in ~/.skillgate/keys/.' },
   { cmd: 'hooks', path: '/cli/hooks', desc: 'Install or remove git pre-commit hooks that run scan before each commit.' },
-  { cmd: 'rules', path: '/rules', desc: 'List all available detection rules with their IDs, severity, and categories.' },
+  { cmd: 'approval', path: '/cli/approval', desc: 'Create approval requests and enforce reviewer quorum before runtime actions.' },
   { cmd: 'run', path: '/cli/run', desc: 'Run an agent CLI through runtime gateway enforcement (Enterprise).' },
+  { cmd: 'integrate', path: '/cli/integrate', desc: 'Generate framework-specific integration starter code for Python AI stacks.' },
   { cmd: 'mcp', path: '/cli/mcp', desc: 'Manage trusted MCP providers, audits, and permission change checks.' },
   { cmd: 'claude', path: '/cli/claude', desc: 'Protect Claude hooks, plugins, settings, and instruction files.' },
   { cmd: 'codex', path: '/cli/codex', desc: 'Run Codex with safer defaults, provider trust checks, and CI protections.' },
   { cmd: 'gateway', path: '/cli/gateway', desc: 'Native hook commands for agent integrations and pre-execution checks.' },
   { cmd: 'bom', path: '/cli/bom', desc: 'Import and validate trusted component manifests (CycloneDX format).' },
-  { cmd: 'hunt', path: '/cli/hunt', desc: 'Search historical scan reports by rule ID, severity, or file pattern.' },
-  { cmd: 'version', path: '/cli', desc: 'Show the installed version, build metadata, and runtime info.' },
+  { cmd: 'dag', path: '/cli/dag', desc: 'Inspect lineage DAG artifacts and compute transitive risk scores.' },
+  { cmd: 'drift', path: '/cli/drift', desc: 'Baseline skills and detect drift in permissions, hashes, and network intent.' },
+  { cmd: 'reputation', path: '/cli/reputation', desc: 'Verify reputation stores, check bundle verdicts, and submit signed signals.' },
+  { cmd: 'report', path: '/cli/report', desc: 'Generate governance reports for workspace-level capability and risk review.' },
+  { cmd: 'export', path: '/cli/export', desc: 'Export enforcement decision records to CSV, JSON, SARIF, or SIEM formats.' },
+  { cmd: 'doctor', path: '/cli/doctor', desc: 'Diagnose local install, auth state, and runtime environment readiness.' },
+  { cmd: 'version', path: '/cli/version', desc: 'Show the installed SkillGate CLI version.' },
 ];
 
 export default function CLIPage() {
@@ -44,25 +55,58 @@ export default function CLIPage() {
 
 Core:
   scan         Scan a skill bundle for security risks
+  simulate     Dry-run policy impact across one or more bundles
   verify       Verify a signed attestation report
-  init         Initialize a policy configuration file
+  submit-scan  Submit a scan report JSON to API storage
   rules        List available detection rules
+  retroscan    Replay historical scans with updated rules
+  hunt         Search historical scan reports
+  init         Initialize a policy configuration file
   version      Show version information
 
 Auth & keys:
   auth         Authentication commands
   keys         Manage signing keys
+  approval     Approval workflow commands
 
 Developer:
   hooks        Manage git pre-commit hooks
   run          Agent runtime gateway enforcement
+  integrate    Generate framework-specific SkillGate SDK integration code
   mcp          MCP governance commands
   claude       Claude ecosystem governance commands
   codex        Codex protections for local and CI runs
   gateway      Native hook commands
   bom          Trusted component manifest import and validation
-  hunt         Search historical scan reports`}
+  dag          Session lineage DAG artifact commands
+  drift        Skill drift baseline and comparison commands
+  reputation   Signed reputation graph commands
+  report       Compliance and governance reporting commands
+  export       Export enforcement decision records`}
       />
+
+      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>First 10 minutes</h2>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
+        New to SkillGate? Start here and you will have a working baseline quickly.
+      </p>
+      <CodeBlock
+        language="bash"
+        code={`# 1) Confirm install
+skillgate version
+
+# 2) Scan a project
+skillgate scan ./my-skill
+
+# 3) Enforce production policy
+skillgate scan ./my-skill --enforce --policy production
+
+# 4) Save JSON report for CI systems
+skillgate scan ./my-skill --output json --report-file report.json`}
+      />
+      <p style={{ color: 'var(--text-muted)', marginBottom: '24px', lineHeight: 1.7 }}>
+        If you see <code>SG-REP-MISS</code>, SkillGate is telling you no reputation file was found.
+        Your scan still runs. Add one later with <code>--reputation-store</code> when ready.
+      </p>
 
       <div style={{ marginTop: '32px' }}>
         {COMMANDS.map((c) => (

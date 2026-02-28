@@ -91,6 +91,18 @@ describe('retrieveChunks — relevant queries', () => {
     expect(results[0].chunk.id).toBe('enterprise-compliance');
   });
 
+  it('finds API key scopes docs', () => {
+    const results = retrieveChunks('what does team:read scope mean for api keys');
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.some((r) => r.chunk.id === 'api-key-scopes')).toBe(true);
+  });
+
+  it('finds integrate command docs for command-style query', () => {
+    const results = retrieveChunks('integrate command');
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.some((r) => r.chunk.url === '/cli/integrate')).toBe(true);
+  });
+
   it('returns scores between 0 and 1', () => {
     const results = retrieveChunks('skillgate scan');
     for (const { score } of results) {
@@ -143,7 +155,9 @@ describe('hasGrounding', () => {
     expect(hasGrounding('how to run skillgate scan')).toBe(true);
     expect(hasGrounding('github actions integration')).toBe(true);
     expect(hasGrounding('ed25519 signing attestation')).toBe(true);
+    expect(hasGrounding('api key scopes team read billing read')).toBe(true);
     expect(hasGrounding('SG-SHELL-001')).toBe(true);
+    expect(hasGrounding('integrate command')).toBe(true);
   });
 
   it('returns false for off-topic queries', () => {

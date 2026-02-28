@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'run — CLI Reference',
+  title: 'run - CLI Reference',
   description: 'Wrap an agent CLI with runtime gateway policy enforcement, capability limits, and signed session artifacts.',
 };
 
@@ -102,6 +102,19 @@ skillgate run \\
 
 # Wrap with TOP guard blocking on detected output poisoning
 skillgate run --env prod --top-outcome block -- my-agent-cli run`} />
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Reputation store troubleshooting</h2>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
+        If runtime output includes <code>SG-REP-MISS</code>, the configured reputation file was not
+        found. Runtime can continue, but without shared reputation verdicts.
+      </p>
+      <CodeBlock language="bash" code={`# Use default path in your project
+mkdir -p .skillgate/reputation
+# place signed reputation.json at:
+# .skillgate/reputation/reputation.json
+
+# Or pass an explicit store path
+skillgate run --env prod --reputation-store /path/to/reputation.json -- codex exec "review"`} />
     </div>
   );
 }

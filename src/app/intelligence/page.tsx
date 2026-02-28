@@ -72,8 +72,8 @@ skillgate retroscan --input ./reports --output ./retroscan-results`} />
       <ul style={{ color: 'var(--text-muted)', lineHeight: 2.2, paddingLeft: '20px' }}>
         {[
           'skillgate reputation verify / check / submit',
-          'skillgate hunt — DSL query over historical reports',
-          'skillgate retroscan — replay old reports with updated rules',
+          'skillgate hunt - DSL query over historical reports',
+          'skillgate retroscan - replay old reports with updated rules',
           'skillgate scan --explain --explain-mode executive',
         ].map((item) => (
           <li key={item} style={{ fontSize: '0.9rem' }}><code style={{ fontFamily: 'monospace', fontSize: '0.85em' }}>{item}</code></li>

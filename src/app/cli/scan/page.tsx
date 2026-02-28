@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
-  title: 'scan — CLI Reference',
+  title: 'scan - CLI Reference',
   description: 'Full reference for the skillgate scan command: all flags, output formats, fleet mode, watch mode, and examples.',
 };
 
@@ -89,7 +89,12 @@ Arguments:
       <CodeBlock language="bash" code={`skillgate scan ./skills/my-skill --enforce --policy production\nskillgate scan ./skills/my-skill --enforce --policy ./skillgate.yml`} />
 
       <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>Sign the report</h3>
-      <CodeBlock language="bash" code="skillgate scan ./skills/my-skill --sign --report-file report.json" />
+      <CodeBlock language="bash" code="skillgate scan ./skills/my-skill --sign --output json --report-file report.json" />
+      <Callout variant="tip" title="Signed reports require JSON output">
+        When you use <code>--sign</code> with <code>--report-file</code>, use{' '}
+        <code>--output json</code> so the saved report can be verified later with{' '}
+        <code>skillgate verify</code>.
+      </Callout>
 
       <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>Fleet mode</h3>
       <CodeBlock language="bash" code={`# Scan all bundles under ./skills/
@@ -128,6 +133,21 @@ skillgate scan ./skills/my-skill --explain --explain-mode executive`} />
 
       <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>CI quiet mode</h3>
       <CodeBlock language="bash" code="skillgate scan ./skills/my-skill --enforce --policy production --quiet" />
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Reputation store (first-time users)</h2>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
+        Reputation checks are optional on first use. If you see <code>SG-REP-MISS</code>, SkillGate
+        did not find a reputation file and continued safely without shared reputation intelligence.
+      </p>
+      <CodeBlock language="bash" code={`# Default location (relative to current project folder)
+.skillgate/reputation/reputation.json
+
+# Override per run
+skillgate scan ./skills/my-skill --reputation-store /path/to/reputation.json`} />
+      <Callout variant="info" title="Where to get a reputation store">
+        Most teams distribute this file from a central security pipeline. If you do not have one
+        yet, continue scanning normally and onboard reputation later.
+      </Callout>
 
       <Callout variant="info" title="Performance">
         Cold start under 2 seconds. 10 files in under 3 seconds. Fleet uses 4 parallel workers by default.

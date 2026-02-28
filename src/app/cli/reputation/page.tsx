@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'reputation — CLI Reference',
+  title: 'reputation - CLI Reference',
   description: 'Verify integrity of signed reputation graphs, check bundle hashes, and submit anonymized verdicts.',
 };
 
@@ -23,6 +23,24 @@ export default function ReputationPage() {
       <CodeBlock language="bash" code={`skillgate reputation verify <store>
 skillgate reputation check [OPTIONS]
 skillgate reputation submit [OPTIONS]`} />
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>First-time setup</h2>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
+        If your project does not have a signed reputation store yet, commands like{' '}
+        <code>scan</code> and <code>run</code> may show <code>SG-REP-MISS</code>. That means
+        SkillGate could not find the file and continued without shared reputation intelligence.
+      </p>
+      <CodeBlock language="bash" code={`# Default expected path (relative to current working directory)
+.skillgate/reputation/reputation.json
+
+# Override path at runtime
+skillgate scan ./skills/my-skill --reputation-store /absolute/or/relative/path.json
+skillgate run --env prod --reputation-store /absolute/or/relative/path.json -- codex exec "review"`} />
+      <p style={{ color: 'var(--text-muted)', marginBottom: '18px', lineHeight: 1.7 }}>
+        If you do not have this file yet, continue with scan and run normally. When your team is
+        ready, add a signed reputation file at the default path or pass a path with{' '}
+        <code>--reputation-store</code>.
+      </p>
 
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '32px', marginBottom: '12px' }}>reputation verify</h2>
       <p style={{ color: 'var(--text-muted)', marginBottom: '16px', lineHeight: 1.7 }}>

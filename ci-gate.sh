@@ -82,7 +82,7 @@ else
   exit 1
 fi
 
-# Security gate — omit dev deps (eslint chain vulns don't affect production runtime)
+# Security gate - omit dev deps (eslint chain vulns don't affect production runtime)
 run npm audit --audit-level=high --omit=dev
 
 echo ""

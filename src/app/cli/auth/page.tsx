@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
-  title: 'auth — CLI Reference',
+  title: 'auth - CLI Reference',
   description: 'Manage SkillGate authentication and credentials.',
 };
 
@@ -24,20 +24,36 @@ export default function AuthPage() {
 
       <div style={{ marginBottom: '32px' }}>
         <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>auth login</h3>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>Open a browser window to complete the login flow and store credentials locally.</p>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>
+          Use this when you are working locally and want to connect the CLI to your SkillGate account.
+          It opens a browser, completes sign-in, and stores credentials on your machine.
+        </p>
         <CodeBlock language="bash" code="skillgate auth login" />
       </div>
 
       <div style={{ marginBottom: '32px' }}>
         <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>auth logout</h3>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>Revoke the current session and remove stored credentials.</p>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>
+          Sign out from this machine and remove the saved local session.
+        </p>
         <CodeBlock language="bash" code="skillgate auth logout" />
       </div>
 
       <div style={{ marginBottom: '32px' }}>
+        <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>auth whoami</h3>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>
+          Show which account is currently active in this terminal session.
+        </p>
+        <CodeBlock language="bash" code="skillgate auth whoami" />
+      </div>
+
+      <div style={{ marginBottom: '32px' }}>
         <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>auth status</h3>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>Show the current authentication status, active tier, and remaining quota.</p>
-        <CodeBlock language="bash" code="skillgate auth status" />
+        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>
+          Show whether you are authenticated, plus your active tier and usage status.
+        </p>
+        <CodeBlock language="bash" code={`skillgate auth status
+skillgate auth whoami`} />
       </div>
 
       <Callout variant="tip">

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'doctor — CLI Reference',
+  title: 'doctor - CLI Reference',
   description: 'Diagnose SkillGate installation, auth, and environment health.',
 };
 

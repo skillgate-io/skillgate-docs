@@ -105,7 +105,9 @@ const DOMAIN_TOKENS = new Set([
   'openclaw', 'sdk', 'python', 'vscode', 'runtime', 'enterprise', 'compliance',
   'security', 'governance', 'skillgate.yml', 'sg-shell', 'sg-net', 'sg-fs', 'sg-eval',
   'sg-cred', 'sg-inj', 'sg-obf', 'quickstart', 'installation', 'doctor', 'auth', 'keys',
+  'api', 'apikey', 'scopes', 'scope', 'team', 'billing',
   'gateway', 'approval', 'bom', 'reputation', 'drift', 'retroscan', 'hunt', 'hooks',
+  'integrate', 'export', 'report', 'version', 'submit-scan', 'simulate', 'run',
 ]);
 
 const RULE_ID_TOKEN = /^sg-[a-z]+-\d+$/i;

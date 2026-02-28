@@ -1,4 +1,4 @@
-// POST /api/chat — SkillGate Docs Assistant API route.
+// POST /api/chat - SkillGate Docs Assistant API route.
 // Streams SSE tokens to the client and emits a final metadata event.
 // Architecture: Rate limit → Guardrails → Retrieve → Grounding check → LLM stream → Emit citations.
 
@@ -156,7 +156,7 @@ export async function POST(req: Request): Promise<Response> {
         // ── Build context ─────────────────────────────────────────────────────
         const contextLines = scored.map(({ chunk, score }) => {
           const sanitized = sanitizeChunk(chunk.content);
-          return `[${chunk.title} — ${chunk.section}]\n${sanitized}`;
+          return `[${chunk.title} - ${chunk.section}]\n${sanitized}`;
         });
 
         const systemPrompt = [

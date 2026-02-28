@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
-  title: 'bom — CLI Reference',
+  title: 'bom - CLI Reference',
   description: 'Import CycloneDX AI bills of materials and validate skill invocations against approved BOM stores.',
 };
 

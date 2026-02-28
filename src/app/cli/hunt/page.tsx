@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
-  title: 'hunt — CLI Reference',
+  title: 'hunt - CLI Reference',
   description: 'Search historical SkillGate scan reports using the hunt DSL query language.',
 };
 
@@ -98,7 +98,7 @@ skillgate hunt 'category:credential file:config.py' --data-file all-reports.json
 skillgate hunt 'severity:high after:2025-06-01' --data-dir ./reports --format json`} />
 
       <Callout variant="tip">
-        Combine multiple tokens with spaces — all tokens must match (AND semantics). For example, <code>rule:SG-NET-001 after:2025-01-01 severity:high</code> finds HIGH severity network findings from scans run in 2025.
+        Combine multiple tokens with spaces - all tokens must match (AND semantics). For example, <code>rule:SG-NET-001 after:2025-01-01 severity:high</code> finds HIGH severity network findings from scans run in 2025.
       </Callout>
     </div>
   );

@@ -50,7 +50,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         }}
         className={`sidebar ${open ? 'sidebar-open' : ''}`}
       >
-        {/* Search trigger — sits at top of sidebar */}
+        {/* Search trigger - sits at top of sidebar */}
         <div style={{ padding: '0 12px 8px' }}>
           <SearchTrigger />
         </div>
