@@ -2,70 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/Badge';
 import { CodeBlock } from '@/components/ui/CodeBlock';
+import {
+  CoreCategoryPrefix,
+  CORE_CATEGORY_COUNT,
+  getCatalogCoverageSummary,
+  getCoveredCoreRuleCount,
+  getCategoryRuleCount,
+  RULE_CATEGORIES,
+  TOTAL_RULE_COUNT,
+} from '@/lib/rule-catalog';
 
 export const metadata: Metadata = {
   title: 'Detection Rules',
-  description: 'SkillGate rule catalog with 119 rules across 7 languages and 7 categories.',
+  description: 'SkillGate rule catalog sourced from the live analyzer registry.',
 };
-
-const CATEGORIES = [
-  {
-    id: 'SG-SHELL-*',
-    label: 'Shell',
-    href: '/rules/shell',
-    count: '30+',
-    desc: 'Subprocess spawning, OS-level command execution, pipe chaining, and destructive shell operations.',
-    examples: ['subprocess.run()', 'os.system()', 'child_process.exec()', 'Runtime.exec()'],
-  },
-  {
-    id: 'SG-NET-*',
-    label: 'Network',
-    href: '/rules/network',
-    count: '20+',
-    desc: 'Network egress, DNS lookups, HTTP callbacks, raw socket connections, and data exfiltration patterns.',
-    examples: ['urllib.request', 'fetch()', 'net.Socket', 'dns.resolve()'],
-  },
-  {
-    id: 'SG-FS-*',
-    label: 'Filesystem',
-    href: '/rules/filesystem',
-    count: '15+',
-    desc: 'Filesystem writes, destructive deletes, and access to sensitive paths like /etc/passwd or ~/.ssh.',
-    examples: ['open(..., "w")', 'fs.writeFile()', 'shutil.rmtree()', '/etc/shadow'],
-  },
-  {
-    id: 'SG-EVAL-*',
-    label: 'Eval',
-    href: '/rules/eval',
-    count: '12+',
-    desc: 'Dynamic code execution, runtime evaluation, pickle deserialization, and unsafe template rendering.',
-    examples: ['eval()', 'exec()', 'pickle.loads()', '__import__()'],
-  },
-  {
-    id: 'SG-CRED-*',
-    label: 'Credentials',
-    href: '/rules/credentials',
-    count: '10+',
-    desc: 'Hardcoded credentials, secret exposure in logs, token leakage, and environment variable exfiltration.',
-    examples: ['password =', 'api_key =', 'SECRET_KEY', 'Authorization: Bearer'],
-  },
-  {
-    id: 'SG-INJ-*',
-    label: 'Injection',
-    href: '/rules/injection',
-    count: '12+',
-    desc: 'Prompt injection, SQL injection, command injection, and unsafe input-to-execution data flows.',
-    examples: ['f"SELECT {user}"', 'f"rm {path}"', 'system(input)', 'prompt + user_text'],
-  },
-  {
-    id: 'SG-OBF-*',
-    label: 'Obfuscation',
-    href: '/rules/obfuscation',
-    count: '8+',
-    desc: 'Base64-encoded payloads, ROT13, hex encoding, and other anti-analysis indicators.',
-    examples: ['base64.b64decode()', 'codecs.decode()', 'eval(atob())', '\\x41\\x42\\x43'],
-  },
-];
 
 export default function RulesPage() {
   return (
@@ -76,8 +26,8 @@ export default function RulesPage() {
           Rule Catalog
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          119 static analysis rules across 7 languages (Python, JavaScript, TypeScript, Shell, Go, Rust, Ruby)
-          and 7 risk categories. Every rule has a stable ID and fires only on relevant file types.
+          SkillGate currently ships with {TOTAL_RULE_COUNT} registry rules. This section covers the
+          7 core security categories used most often in policy reviews.
         </p>
       </div>
 
@@ -87,10 +37,10 @@ export default function RulesPage() {
         gap: '12px', marginBottom: '40px',
       }}>
         {[
-          { value: '119', label: 'Total rules' },
+          { value: String(TOTAL_RULE_COUNT), label: 'Total registry rules' },
           { value: '7', label: 'Languages' },
-          { value: '7', label: 'Categories' },
-          { value: '24/7', label: 'Docs availability' },
+          { value: String(CORE_CATEGORY_COUNT), label: 'Core categories here' },
+          { value: String(getCoveredCoreRuleCount()), label: 'Rules documented in this section' },
         ].map((s) => (
           <div key={s.label} style={{
             padding: '16px', borderRadius: '8px',
@@ -102,6 +52,9 @@ export default function RulesPage() {
           </div>
         ))}
       </div>
+      <p style={{ color: 'var(--text-muted)', marginTop: '-24px', marginBottom: '32px', fontSize: '0.85rem' }}>
+        Coverage note: {getCatalogCoverageSummary()}.
+      </p>
 
       {/* Rule metadata */}
       <section style={{ marginBottom: '40px' }}>
@@ -157,7 +110,7 @@ Score cap: 200`}
       <section>
         <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Categories</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {CATEGORIES.map((cat) => (
+          {RULE_CATEGORIES.map((cat) => (
             <Link
               key={cat.id}
               href={cat.href}
@@ -169,7 +122,9 @@ Score cap: 200`}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
                 <code style={{ fontSize: '0.85rem', color: 'var(--accent)', fontFamily: 'monospace', fontWeight: 600 }}>{cat.id}</code>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', background: 'var(--border)', padding: '1px 6px', borderRadius: '4px' }}>{cat.count} rules</span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', background: 'var(--border)', padding: '1px 6px', borderRadius: '4px' }}>
+                  {getCategoryRuleCount(cat.id.split('-')[1] as CoreCategoryPrefix)} rules
+                </span>
               </div>
               <div style={{ fontWeight: 600, color: 'var(--text)', marginBottom: '4px' }}>{cat.label}</div>
               <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '10px', lineHeight: 1.6 }}>{cat.desc}</div>

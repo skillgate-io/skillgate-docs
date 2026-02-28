@@ -79,6 +79,12 @@ describe('retrieveChunks — relevant queries', () => {
     expect(ids.some((id) => ['rules-shell', 'rules'].includes(id))).toBe(true);
   });
 
+  it('finds exact rule-id chunk', () => {
+    const results = retrieveChunks('SG-SHELL-001');
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.some((r) => r.chunk.title.includes('SG-SHELL-001'))).toBe(true);
+  });
+
   it('finds enterprise compliance', () => {
     const results = retrieveChunks('EU AI Act compliance audit cyclonedx');
     expect(results.length).toBeGreaterThan(0);
@@ -137,6 +143,7 @@ describe('hasGrounding', () => {
     expect(hasGrounding('how to run skillgate scan')).toBe(true);
     expect(hasGrounding('github actions integration')).toBe(true);
     expect(hasGrounding('ed25519 signing attestation')).toBe(true);
+    expect(hasGrounding('SG-SHELL-001')).toBe(true);
   });
 
   it('returns false for off-topic queries', () => {

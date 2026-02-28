@@ -2,6 +2,7 @@
 
 export type ChatOutcome = 'answered' | 'refused' | 'blocked' | 'error';
 export type ChatSurface = 'docs' | 'web_ui';
+export type ChatResponseStyle = 'concise' | 'steps' | 'example';
 
 export type RefusalReason =
   | 'no_relevant_docs'
@@ -40,6 +41,7 @@ export interface ChatRequest {
   surface: ChatSurface;
   conversationId: string;
   history?: ConversationTurn[];
+  responseStyle?: ChatResponseStyle;
 }
 
 // SSE events streamed from the API

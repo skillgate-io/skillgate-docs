@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import type { ChatMessage, ChatSSEEvent, ConversationTurn } from '@/types/chat';
+import type { ChatMessage, ChatResponseStyle, ChatSSEEvent, ConversationTurn } from '@/types/chat';
 
 interface State {
   messages: ChatMessage[];
@@ -63,10 +63,12 @@ function reducer(state: State, action: Action): State {
 
 const INITIAL_STATE: State = { messages: [], isStreaming: false, error: null };
 const RESUME_WINDOW_MS = 15 * 60 * 1000;
+const EXAMPLE_HINTS = /\b(example|sample|snippet|template|show me|code)\b/i;
+const STEPS_HINTS = /\b(how (do|to)|steps?|walk me through|setup|configure|install|integrate|migration)\b/i;
 
 interface DocsAssistantContextValue extends State {
   conversationId: string;
-  sendMessage: (text: string) => Promise<void>;
+  sendMessage: (text: string, style?: ChatResponseStyle) => Promise<void>;
   resetConversation: () => void;
   markPanelOpened: () => void;
   markPanelClosed: () => void;
@@ -80,13 +82,15 @@ export function DocsAssistantProvider({ children }: { children: React.ReactNode 
   const abortRef = useRef<AbortController | null>(null);
   const clearTimerRef = useRef<number | null>(null);
 
-  const sendMessage = useCallback(async (text: string) => {
+  const sendMessage = useCallback(async (text: string, style?: ChatResponseStyle) => {
     if (!text.trim() || state.isStreaming) return;
+    const trimmedText = text.trim();
+    const resolvedStyle = style ?? inferResponseStyle(trimmedText);
 
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
       role: 'user',
-      content: text.trim(),
+      content: trimmedText,
       timestamp: Date.now(),
     };
     dispatch({ type: 'USER_MESSAGE', message: userMessage });
@@ -109,11 +113,12 @@ export function DocsAssistantProvider({ children }: { children: React.ReactNode 
         headers: { 'Content-Type': 'application/json' },
         signal: abort.signal,
         body: JSON.stringify({
-          message: text.trim(),
+          message: trimmedText,
           mode: 'docs_only',
           surface: 'docs',
           conversationId,
           history,
+          responseStyle: resolvedStyle,
         }),
       });
 
@@ -202,6 +207,12 @@ export function DocsAssistantProvider({ children }: { children: React.ReactNode 
   );
 
   return <DocsAssistantContext.Provider value={value}>{children}</DocsAssistantContext.Provider>;
+}
+
+function inferResponseStyle(text: string): ChatResponseStyle {
+  if (EXAMPLE_HINTS.test(text)) return 'example';
+  if (STEPS_HINTS.test(text)) return 'steps';
+  return 'concise';
 }
 
 export function useDocsAssistant(): DocsAssistantContextValue {

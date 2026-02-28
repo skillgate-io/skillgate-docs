@@ -1,0 +1,966 @@
+{
+  "generated_at": "2026-02-28",
+  "total_rules": 120,
+  "rules": [
+    {
+      "id": "SG-CMD-001",
+      "name": "Curl Pipe to Shell",
+      "description": "curl output piped directly to shell (dangerous download-and-execute pattern)",
+      "severity": "CRITICAL",
+      "weight": 20,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CMD-002",
+      "name": "Wget Pipe to Shell",
+      "description": "wget output piped directly to shell (dangerous download-and-execute pattern)",
+      "severity": "CRITICAL",
+      "weight": 20,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CMD-003",
+      "name": "Inline Python Code Execution",
+      "description": "python -c with dynamic code execution (potential code injection vector)",
+      "severity": "HIGH",
+      "weight": 15,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CMD-004",
+      "name": "PowerShell Download and Execute",
+      "description": "PowerShell Invoke-Expression with remote content (download-exec pattern)",
+      "severity": "CRITICAL",
+      "weight": 20,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CMD-005",
+      "name": "Base64 Decode to Shell",
+      "description": "Base64 decode piped to shell execution (obfuscation pattern)",
+      "severity": "HIGH",
+      "weight": 15,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CMD-006",
+      "name": "Chained Dangerous Operations",
+      "description": "Destructive commands chained with && or ; (potential data loss)",
+      "severity": "CRITICAL",
+      "weight": 18,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CMD-007",
+      "name": "Sudo Password Bypass",
+      "description": "sudo with password bypass or NOPASSWD (privilege escalation vector)",
+      "severity": "HIGH",
+      "weight": 15,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CMD-008",
+      "name": "Shell History Disabled",
+      "description": "Command to disable shell history (anti-forensics pattern)",
+      "severity": "MEDIUM",
+      "weight": 10,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CMD-009",
+      "name": "Eval with Variable Substitution",
+      "description": "eval command with variable interpolation (code injection vector)",
+      "severity": "HIGH",
+      "weight": 14,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CMD-010",
+      "name": "Netcat Reverse Shell",
+      "description": "netcat reverse shell command (backdoor pattern)",
+      "severity": "CRITICAL",
+      "weight": 20,
+      "category": "CMD"
+    },
+    {
+      "id": "SG-CONFIG-001",
+      "name": "Hardcoded Secret in Config",
+      "description": "Hardcoded API key, password, or token in configuration",
+      "severity": "CRITICAL",
+      "weight": 20,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CONFIG-002",
+      "name": "Insecure Default Configuration",
+      "description": "Insecure default setting (debug mode, weak encryption, public access)",
+      "severity": "HIGH",
+      "weight": 15,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CONFIG-003",
+      "name": "Weak Encryption Configuration",
+      "description": "Weak encryption algorithm or key size configured",
+      "severity": "HIGH",
+      "weight": 14,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CONFIG-004",
+      "name": "Unrestricted CORS",
+      "description": "CORS configured with wildcard origin or credentials allowed from any origin",
+      "severity": "HIGH",
+      "weight": 15,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CONFIG-005",
+      "name": "Database Public Exposure",
+      "description": "Database configured to listen on public interface (0.0.0.0 or external IP)",
+      "severity": "CRITICAL",
+      "weight": 18,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CONFIG-006",
+      "name": "Default Credentials",
+      "description": "Default or placeholder username/password in config",
+      "severity": "CRITICAL",
+      "weight": 18,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CONFIG-007",
+      "name": "Sensitive Data Logging",
+      "description": "Configuration enables logging of sensitive data (passwords, tokens, PII)",
+      "severity": "MEDIUM",
+      "weight": 10,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CONFIG-008",
+      "name": "Rate Limiting Disabled",
+      "description": "Rate limiting disabled or set to unsafe high value",
+      "severity": "MEDIUM",
+      "weight": 10,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CONFIG-009",
+      "name": "Insecure Session Timeout",
+      "description": "Session timeout disabled or set too long (security risk)",
+      "severity": "MEDIUM",
+      "weight": 8,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CONFIG-010",
+      "name": "Unsafe File Permissions",
+      "description": "File permissions set to world-readable/writable",
+      "severity": "HIGH",
+      "weight": 12,
+      "category": "CONFIG"
+    },
+    {
+      "id": "SG-CRED-001",
+      "name": "env_variable",
+      "description": "Environment variable read detected",
+      "severity": "MEDIUM",
+      "weight": 20,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-002",
+      "name": "api_key_pattern",
+      "description": "Possible hardcoded API key or token",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-003",
+      "name": "ssh_key_read",
+      "description": "SSH key access detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-004",
+      "name": "aws_credentials",
+      "description": "AWS credential access detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-005",
+      "name": "keychain_access",
+      "description": "OS keychain access detected",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-006",
+      "name": "token_exfil",
+      "description": "Credential exfiltration pattern detected",
+      "severity": "CRITICAL",
+      "weight": 60,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-010",
+      "name": "go_env_access",
+      "description": "Go environment variable access",
+      "severity": "MEDIUM",
+      "weight": 20,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-011",
+      "name": "go_hardcoded_key",
+      "description": "Hardcoded API key in Go code",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-020",
+      "name": "rust_env_access",
+      "description": "Rust environment variable access",
+      "severity": "MEDIUM",
+      "weight": 20,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-021",
+      "name": "rust_hardcoded_key",
+      "description": "Hardcoded API key in Rust code",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-CRED-030",
+      "name": "ruby_env_access",
+      "description": "Ruby environment variable access",
+      "severity": "MEDIUM",
+      "weight": 20,
+      "category": "CRED"
+    },
+    {
+      "id": "SG-EVAL-001",
+      "name": "python_eval",
+      "description": "Python eval() detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-002",
+      "name": "python_exec",
+      "description": "Python exec() detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-003",
+      "name": "js_eval",
+      "description": "JavaScript eval() detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-004",
+      "name": "js_function",
+      "description": "Dynamic function creation via new Function()",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-005",
+      "name": "compile",
+      "description": "Python compile() detected",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-006",
+      "name": "importlib",
+      "description": "Dynamic import via importlib detected",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-010",
+      "name": "go_reflect_call",
+      "description": "Go reflection-based function call",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-011",
+      "name": "go_plugin_open",
+      "description": "Go dynamic plugin loading",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-020",
+      "name": "rust_unsafe",
+      "description": "Rust unsafe block",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-021",
+      "name": "rust_dynamic_load",
+      "description": "Rust dynamic library loading",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-030",
+      "name": "ruby_eval",
+      "description": "Ruby dynamic code evaluation",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-031",
+      "name": "ruby_send",
+      "description": "Ruby dynamic method dispatch",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-032",
+      "name": "ruby_const_get",
+      "description": "Ruby dynamic constant lookup",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-040",
+      "name": "js_eval_ast",
+      "description": "eval() usage detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-041",
+      "name": "js_new_function_ast",
+      "description": "new Function() constructor detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-EVAL-050",
+      "name": "shell_eval_ast",
+      "description": "Shell eval command detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "EVAL"
+    },
+    {
+      "id": "SG-FS-001",
+      "name": "file_write",
+      "description": "File write operation detected",
+      "severity": "MEDIUM",
+      "weight": 15,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-002",
+      "name": "path_traversal",
+      "description": "Path traversal attempt detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-003",
+      "name": "sensitive_read",
+      "description": "Sensitive file access detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-004",
+      "name": "tmp_execution",
+      "description": "Staged execution pattern: write to /tmp then execute",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-005",
+      "name": "glob_expansion",
+      "description": "Suspicious directory enumeration detected",
+      "severity": "MEDIUM",
+      "weight": 20,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-006",
+      "name": "symlink_creation",
+      "description": "Symbolic link creation detected",
+      "severity": "MEDIUM",
+      "weight": 20,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-010",
+      "name": "go_file_write",
+      "description": "Go file write operation",
+      "severity": "MEDIUM",
+      "weight": 15,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-011",
+      "name": "go_file_delete",
+      "description": "Go file/directory deletion",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-012",
+      "name": "go_path_traversal",
+      "description": "Go path traversal attempt",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-020",
+      "name": "rust_file_write",
+      "description": "Rust file write operation",
+      "severity": "MEDIUM",
+      "weight": 15,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-021",
+      "name": "rust_file_delete",
+      "description": "Rust file/directory deletion",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-022",
+      "name": "rust_path_traversal",
+      "description": "Rust path traversal attempt",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-030",
+      "name": "ruby_file_write",
+      "description": "Ruby file write operation",
+      "severity": "MEDIUM",
+      "weight": 15,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-031",
+      "name": "ruby_file_delete",
+      "description": "Ruby file deletion",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-032",
+      "name": "ruby_path_traversal",
+      "description": "Ruby path traversal attempt",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-040",
+      "name": "js_fs_ast",
+      "description": "Filesystem operation detected",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-050",
+      "name": "shell_chmod_ast",
+      "description": "File permission modification detected",
+      "severity": "MEDIUM",
+      "weight": 20,
+      "category": "FS"
+    },
+    {
+      "id": "SG-FS-051",
+      "name": "shell_rm_ast",
+      "description": "File deletion command detected",
+      "severity": "HIGH",
+      "weight": 30,
+      "category": "FS"
+    },
+    {
+      "id": "SG-INJ-001",
+      "name": "prompt_override",
+      "description": "Prompt injection attempt detected",
+      "severity": "HIGH",
+      "weight": 30,
+      "category": "INJ"
+    },
+    {
+      "id": "SG-INJ-002",
+      "name": "command_injection",
+      "description": "Command injection vector detected",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "INJ"
+    },
+    {
+      "id": "SG-INJ-003",
+      "name": "sql_injection",
+      "description": "SQL injection vector detected",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "INJ"
+    },
+    {
+      "id": "SG-INJ-004",
+      "name": "template_injection",
+      "description": "Template injection vector detected",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "INJ"
+    },
+    {
+      "id": "SG-INJ-010",
+      "name": "go_sql_injection",
+      "description": "SQL injection via string formatting in Go",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "INJ"
+    },
+    {
+      "id": "SG-INJ-020",
+      "name": "rust_sql_injection",
+      "description": "SQL injection via string formatting in Rust",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "INJ"
+    },
+    {
+      "id": "SG-INJ-030",
+      "name": "ruby_sql_injection",
+      "description": "SQL injection via string interpolation in Ruby",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "INJ"
+    },
+    {
+      "id": "SG-NET-001",
+      "name": "http_request",
+      "description": "Outbound HTTP request detected",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-002",
+      "name": "socket_connection",
+      "description": "Raw socket connection detected",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-003",
+      "name": "dns_lookup",
+      "description": "DNS lookup operation detected",
+      "severity": "LOW",
+      "weight": 15,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-004",
+      "name": "webhook_post",
+      "description": "Data exfiltration vector: HTTP POST with payload",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-005",
+      "name": "hardcoded_ip",
+      "description": "Hardcoded IP address detected",
+      "severity": "MEDIUM",
+      "weight": 20,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-006",
+      "name": "ftp_connection",
+      "description": "FTP/SFTP connection detected",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-010",
+      "name": "go_http_request",
+      "description": "Go outbound HTTP request",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-011",
+      "name": "go_net_dial",
+      "description": "Go raw network dial",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-012",
+      "name": "go_http_listen",
+      "description": "Go HTTP server listener",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-020",
+      "name": "rust_http_client",
+      "description": "Rust outbound HTTP request",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-021",
+      "name": "rust_tcp_connect",
+      "description": "Rust raw TCP connection",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-022",
+      "name": "rust_tcp_listener",
+      "description": "Rust TCP server listener",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-030",
+      "name": "ruby_http_client",
+      "description": "Ruby outbound HTTP request",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-031",
+      "name": "ruby_socket",
+      "description": "Ruby raw socket connection",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-040",
+      "name": "js_fetch_ast",
+      "description": "HTTP request detected",
+      "severity": "MEDIUM",
+      "weight": 20,
+      "category": "NET"
+    },
+    {
+      "id": "SG-NET-050",
+      "name": "shell_curl_ast",
+      "description": "Network download command detected",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "NET"
+    },
+    {
+      "id": "SG-OBF-001",
+      "name": "base64_payload",
+      "description": "Possible base64-encoded payload detected",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "OBF"
+    },
+    {
+      "id": "SG-OBF-002",
+      "name": "char_code_concat",
+      "description": "Character code obfuscation detected",
+      "severity": "HIGH",
+      "weight": 45,
+      "category": "OBF"
+    },
+    {
+      "id": "SG-OBF-003",
+      "name": "hex_encoding",
+      "description": "Hex-encoded content detected",
+      "severity": "MEDIUM",
+      "weight": 30,
+      "category": "OBF"
+    },
+    {
+      "id": "SG-OBF-004",
+      "name": "string_reversal",
+      "description": "String reversal obfuscation detected",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "OBF"
+    },
+    {
+      "id": "SG-OBF-005",
+      "name": "minified_payload",
+      "description": "Possible minified malicious code detected",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "OBF"
+    },
+    {
+      "id": "SG-PROMPT-001",
+      "name": "DAN Jailbreak Pattern",
+      "description": "DAN (Do Anything Now) jailbreak instruction",
+      "severity": "CRITICAL",
+      "weight": 20,
+      "category": "PROMPT"
+    },
+    {
+      "id": "SG-PROMPT-002",
+      "name": "Ignore Previous Instructions",
+      "description": "Instruction to ignore previous prompts or constraints",
+      "severity": "HIGH",
+      "weight": 15,
+      "category": "PROMPT"
+    },
+    {
+      "id": "SG-PROMPT-003",
+      "name": "System Prompt Override",
+      "description": "Attempt to override system prompts or developer mode",
+      "severity": "HIGH",
+      "weight": 15,
+      "category": "PROMPT"
+    },
+    {
+      "id": "SG-PROMPT-004",
+      "name": "Unrestricted Roleplay Jailbreak",
+      "description": "Instruction to roleplay as unrestricted character",
+      "severity": "HIGH",
+      "weight": 12,
+      "category": "PROMPT"
+    },
+    {
+      "id": "SG-PROMPT-005",
+      "name": "Prompt Token Leakage",
+      "description": "Request to reveal system prompts, tokens, or internal instructions",
+      "severity": "MEDIUM",
+      "weight": 10,
+      "category": "PROMPT"
+    },
+    {
+      "id": "SG-PROMPT-006",
+      "name": "Guardrail Bypass Attempt",
+      "description": "Attempt to bypass safety guardrails or content filters",
+      "severity": "HIGH",
+      "weight": 15,
+      "category": "PROMPT"
+    },
+    {
+      "id": "SG-PROMPT-007",
+      "name": "Embedded Command Injection",
+      "description": "Suspicious command embedded in natural language",
+      "severity": "HIGH",
+      "weight": 14,
+      "category": "PROMPT"
+    },
+    {
+      "id": "SG-PROMPT-008",
+      "name": "Obfuscated Jailbreak",
+      "description": "Base64 or ROT13 encoded jailbreak pattern",
+      "severity": "MEDIUM",
+      "weight": 10,
+      "category": "PROMPT"
+    },
+    {
+      "id": "SG-SHELL-001",
+      "name": "subprocess_call",
+      "description": "Direct subprocess execution detected",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-002",
+      "name": "os_system",
+      "description": "OS-level command execution detected",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-003",
+      "name": "os_popen",
+      "description": "OS pipe command execution detected",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-004",
+      "name": "shell_true",
+      "description": "Shell injection vector: shell=True parameter",
+      "severity": "CRITICAL",
+      "weight": 50,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-005",
+      "name": "backtick_exec",
+      "description": "Backtick command execution (JS/Shell)",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-006",
+      "name": "child_process",
+      "description": "Node.js child process execution",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-007",
+      "name": "shutil_operations",
+      "description": "Destructive file operations via shutil",
+      "severity": "MEDIUM",
+      "weight": 25,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-008",
+      "name": "os_system_alias",
+      "description": "OS-level command execution via aliased os.system detected",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-010",
+      "name": "go_exec_command",
+      "description": "Go exec.Command() process execution",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-011",
+      "name": "go_exec_output",
+      "description": "Go command output capture",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-020",
+      "name": "rust_command_new",
+      "description": "Rust Command::new() process execution",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-021",
+      "name": "rust_command_output",
+      "description": "Rust command output capture",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-030",
+      "name": "ruby_system_call",
+      "description": "Ruby system() command execution",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-031",
+      "name": "ruby_exec",
+      "description": "Ruby exec() command execution",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-032",
+      "name": "ruby_backtick",
+      "description": "Ruby backtick command execution",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-033",
+      "name": "ruby_io_popen",
+      "description": "Ruby pipe command execution",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-034",
+      "name": "ruby_process_spawn",
+      "description": "Ruby process spawning",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-040",
+      "name": "js_child_process_ast",
+      "description": "child_process module usage detected",
+      "severity": "HIGH",
+      "weight": 40,
+      "category": "SHELL"
+    },
+    {
+      "id": "SG-SHELL-050",
+      "name": "shell_sudo_ast",
+      "description": "Privileged command execution detected",
+      "severity": "HIGH",
+      "weight": 35,
+      "category": "SHELL"
+    }
+  ]
+}

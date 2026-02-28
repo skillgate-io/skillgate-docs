@@ -51,7 +51,11 @@ export function DocsAssistantConversation({ surface }: DocsAssistantConversation
         aria-live="polite"
         aria-relevant="additions"
       >
-        {isEmpty ? <InitialState onPrompt={sendMessage} /> : messages.map((message) => <MessageBubble key={message.id} message={message} />)}
+        {isEmpty ? (
+          <InitialState onPrompt={(text) => sendMessage(text)} />
+        ) : (
+          messages.map((message) => <MessageBubble key={message.id} message={message} />)
+        )}
         <div ref={messagesEndRef} />
       </div>
 
@@ -126,15 +130,30 @@ export function DocsAssistantConversation({ surface }: DocsAssistantConversation
   );
 }
 
-function InitialState({ onPrompt }: { onPrompt: (text: string) => Promise<void> }) {
+function InitialState({
+  onPrompt,
+}: {
+  onPrompt: (text: string) => Promise<void>;
+}) {
   const prompts = [
-    'How do I get started with SkillGate in my repository?',
-    'How can SkillGate help secure Claude Code or Codex CLI usage?',
-    'Which integration should I use for GitHub Actions, GitLab CI, or VS Code?',
+    'How do I install SkillGate and run my first secure scan?',
+    'How do I use SkillGate with GitHub Actions or GitLab CI?',
+    'Which command should I use to verify signed attestation output?',
   ];
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', paddingTop: '8px' }}>
+      <div>
+        <p style={{ fontSize: '1rem', color: 'var(--text)', lineHeight: 1.4, margin: 0, fontWeight: 600 }}>
+          Hi!
+        </p>
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: '6px 0 0 0' }}>
+          I answer from SkillGate docs only.
+        </p>
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: '4px 0 0 0' }}>
+          Ask about setup, CLI commands, policies, integrations, or enterprise workflows.
+        </p>
+      </div>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
         Answers are grounded only in SkillGate docs.
       </p>

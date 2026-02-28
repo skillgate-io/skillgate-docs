@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { IntegrationLogos } from '@/components/branding/IntegrationLogos';
+import { CORE_CATEGORY_COUNT, TOTAL_RULE_COUNT } from '@/lib/rule-catalog';
 
 export const metadata: Metadata = {
   title: 'SkillGate Docs: Runtime Security for OpenClaw, Claude, and Codex',
@@ -61,7 +62,7 @@ const QUICK_LINKS = [
   { href: '/runtime-control', label: 'Runtime Control', desc: 'Learn how runtime checks, approvals, and policy outcomes work.' },
   { href: '/agent-gateway', label: 'Agent Gateway', desc: 'Protect Claude and Codex workflows with pre-execution policy checks.' },
   { href: '/cli/scan', label: 'scan command', desc: 'Full reference for flags, output formats, and examples.' },
-  { href: '/rules', label: 'Rule Catalog', desc: '119 rules across 7 languages and 7 categories.' },
+  { href: '/rules', label: 'Rule Catalog', desc: `${TOTAL_RULE_COUNT} registry rules across 7 languages and ${CORE_CATEGORY_COUNT} core categories.` },
 ];
 
 export default function HomePage() {

@@ -20,7 +20,7 @@ export const KNOWLEDGE_CORPUS: KnowledgeChunk[] = SEARCH_INDEX.map((entry) => ({
   id: slugify(entry.href, entry.title),
   title: entry.title,
   section: entry.section,
-  content: `${entry.description} Path: ${entry.href}.`,
+  content: `${entry.title}. ${entry.description} Section: ${entry.section}. Path: ${entry.href}.`,
   url: entry.href,
   keywords: entry.keywords ?? [],
   indexedAt: INDEXED_AT,
@@ -32,7 +32,7 @@ const TOP_K = 5;
 export function retrieveChunks(query: string): { chunk: KnowledgeChunk; score: number }[] {
   const tokens = tokenize(query);
   if (tokens.length === 0) return [];
-  if (!tokens.some((token) => DOMAIN_TOKENS.has(token))) return [];
+  if (!tokens.some((token) => DOMAIN_TOKENS.has(token) || RULE_ID_TOKEN.test(token))) return [];
 
   const scored = KNOWLEDGE_CORPUS.map((chunk) => {
     const chunkTokens = tokenize([chunk.title, chunk.section, chunk.content, ...chunk.keywords].join(' '));
@@ -107,3 +107,5 @@ const DOMAIN_TOKENS = new Set([
   'sg-cred', 'sg-inj', 'sg-obf', 'quickstart', 'installation', 'doctor', 'auth', 'keys',
   'gateway', 'approval', 'bom', 'reputation', 'drift', 'retroscan', 'hunt', 'hooks',
 ]);
+
+const RULE_ID_TOKEN = /^sg-[a-z]+-\d+$/i;

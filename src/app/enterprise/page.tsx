@@ -55,13 +55,13 @@ export default function EnterprisePage() {
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Enterprise features</h2>
       <ul style={{ color: 'var(--text-muted)', lineHeight: 2.2, paddingLeft: '20px' }}>
         {[
-          'SSO / SAML / OIDC identity integration.',
+          'OAuth SSO available today; enterprise SAML/OIDC integration is on the roadmap.',
           'RBAC scopes for team-level policy authority.',
           'Private relay and air-gap deployment modes.',
-          'Signed runtime records for compliance audit.',
+          'Signed runtime decision/session records with tamper-evident audit chains.',
           'AI-BOM (CycloneDX) import and validation.',
           'Organization-scoped capability budgets.',
-          'SLA-backed support with dedicated escalation contacts.',
+          'Enterprise support plans with SLA and escalation contacts (contract-based).',
         ].map((item) => (
           <li key={item} style={{ fontSize: '0.9rem' }}>{item}</li>
         ))}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Callout } from '@/components/ui/Callout';
+import { TOTAL_RULE_COUNT } from '@/lib/rule-catalog';
 
 export const metadata: Metadata = {
   title: 'Quickstart',
@@ -145,7 +146,7 @@ export default function QuickstartPage() {
           { href: '/installation', label: 'All install methods', desc: 'brew, winget, npm, Docker' },
           { href: '/cli/scan', label: 'scan reference', desc: 'All flags and output formats' },
           { href: '/integrations/github-actions', label: 'GitHub Actions', desc: 'Block CI on violations' },
-          { href: '/rules', label: 'Rule catalog', desc: '119 rules across 7 languages' },
+          { href: '/rules', label: 'Rule catalog', desc: `${TOTAL_RULE_COUNT} rules across 7 languages` },
         ].map((link) => (
           <Link
             key={link.href}

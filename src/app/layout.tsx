@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { DocLayout } from '@/components/layout/DocLayout';
+import { TOTAL_RULE_COUNT } from '@/lib/rule-catalog';
 import './globals.css';
 
 const inter = Inter({
@@ -93,7 +94,7 @@ const jsonLd = {
       sameAs: ['https://docs.skillgate.io', 'https://github.com/skillgate-io'],
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       featureList: [
-        '119 detection rules across Python, JavaScript, TypeScript, Shell, Go, Rust, Ruby',
+        `${TOTAL_RULE_COUNT} detection rules across Python, JavaScript, TypeScript, Shell, Go, Rust, Ruby`,
         'OpenClaw gateway skill protection',
         'MCP server security scanning',
         'Claude Code ecosystem governance',

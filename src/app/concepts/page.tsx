@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 import { Badge } from '@/components/ui/Badge';
+import { CORE_CATEGORY_COUNT, TOTAL_RULE_COUNT } from '@/lib/rule-catalog';
 
 export const metadata: Metadata = {
   title: 'Core Concepts',
@@ -61,7 +62,8 @@ export default function ConceptsPage() {
       <section style={{ marginBottom: '48px' }}>
         <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>Detection rules</h2>
         <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '16px' }}>
-          SkillGate includes 119 rules across 7 categories. Each rule has a stable ID, severity, and weight.
+          SkillGate includes {TOTAL_RULE_COUNT} registry rules, with {CORE_CATEGORY_COUNT} primary
+          categories documented in detail. Each rule has a stable ID, severity, and weight.
         </p>
         <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
           See the full <Link href="/rules" className="sg-link">Rule Catalog</Link>.

@@ -50,6 +50,8 @@ const ROUTES: Array<{ path: string; priority: number; freq: MetadataRoute.Sitema
   // Runtime
   { path: '/agent-gateway', priority: 0.9, freq: 'monthly' },
   { path: '/runtime-control', priority: 0.8, freq: 'monthly' },
+  { path: '/observability', priority: 0.9, freq: 'weekly' },
+  { path: '/control-plane', priority: 0.9, freq: 'weekly' },
   { path: '/artifacts', priority: 0.7, freq: 'monthly' },
   { path: '/intelligence', priority: 0.7, freq: 'monthly' },
   // Enterprise
@@ -62,6 +64,7 @@ const ROUTES: Array<{ path: string; priority: number; freq: MetadataRoute.Sitema
   { path: '/integrations', priority: 0.8, freq: 'monthly' },
   { path: '/integrations/vscode-extension', priority: 0.9, freq: 'weekly' },
   { path: '/integrations/python-sdk', priority: 0.9, freq: 'weekly' },
+  { path: '/integrations/language-shims', priority: 0.9, freq: 'weekly' },
   { path: '/validation-evidence', priority: 0.9, freq: 'weekly' },
   { path: '/integrations/skillgate-agents', priority: 0.9, freq: 'weekly' },
   { path: '/integrations/codex-cli', priority: 0.8, freq: 'monthly' },

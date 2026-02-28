@@ -37,6 +37,7 @@ export const NAV: NavSection[] = [
       { href: '/integrations', label: 'Overview' },
       { href: '/integrations/vscode-extension', label: 'VS Code Extension' },
       { href: '/integrations/python-sdk', label: 'Python SDK' },
+      { href: '/integrations/language-shims', label: 'Language Shims' },
       { href: '/integrations/skillgate-agents', label: 'SkillGate Agents' },
       { href: '/integrations/codex-cli', label: 'Codex CLI' },
       { href: '/integrations/claude-code', label: 'Claude Code' },
@@ -98,6 +99,8 @@ export const NAV: NavSection[] = [
     items: [
       { href: '/agent-gateway', label: 'Agent Gateway' },
       { href: '/runtime-control', label: 'Runtime Control' },
+      { href: '/observability', label: 'Observability' },
+      { href: '/control-plane', label: 'Control Plane' },
       { href: '/artifacts', label: 'Artifact Coverage' },
       { href: '/intelligence', label: 'Intelligence' },
       { href: '/governance', label: 'Governance' },

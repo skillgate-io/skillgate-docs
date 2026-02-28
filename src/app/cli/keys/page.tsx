@@ -4,7 +4,7 @@ import { Callout } from '@/components/ui/Callout';
 
 export const metadata: Metadata = {
   title: 'keys — CLI Reference',
-  description: 'Manage Ed25519 signing keys for SkillGate attestation.',
+  description: 'Generate, inspect, and export Ed25519 signing keys for SkillGate attestation.',
 };
 
 export default function KeysPage() {
@@ -27,19 +27,30 @@ export default function KeysPage() {
         <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>
           Generate a new Ed25519 keypair. The private key is stored in <code>~/.skillgate/keys/</code>.
         </p>
-        <CodeBlock language="bash" code={`skillgate keys generate\nskillgate keys generate --name team-key`} />
+        <CodeBlock language="bash" code={`skillgate keys generate\nskillgate keys generate --key-dir ./.skillgate/keys --force`} />
       </div>
 
       <div style={{ marginBottom: '32px' }}>
         <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>keys list</h3>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>Show all managed keypairs.</p>
-        <CodeBlock language="bash" code="skillgate keys list" />
+        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>
+          Check whether your signing keys exist and view the public key fingerprint.
+        </p>
+        <CodeBlock language="bash" code={`skillgate keys list\nskillgate keys list --output json`} />
       </div>
 
       <div style={{ marginBottom: '32px' }}>
         <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>keys export</h3>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>Print the public key in PEM format for sharing with verifiers.</p>
-        <CodeBlock language="bash" code={`skillgate keys export\nskillgate keys export --name team-key`} />
+        <p style={{ color: 'var(--text-muted)', marginBottom: '8px', fontSize: '0.9rem' }}>
+          Export your public key for verifiers. Private key export is opt-in and should be used only for secure migration workflows.
+        </p>
+        <CodeBlock
+          language="bash"
+          code={`# Public key export (recommended)
+skillgate keys export --output json --output-file ./artifacts/public-key.json
+
+# Include private key only when you explicitly need secure migration
+skillgate keys export --include-private --output json --output-file ./secure/key-backup.json`}
+        />
       </div>
 
       <Callout variant="danger" title="Private key security">
