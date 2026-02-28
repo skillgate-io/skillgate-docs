@@ -1,61 +1,40 @@
 # SkillGate Docs (`docs.skillgate.io`)
 
-Enterprise-grade documentation site starter for SkillGate.
+Documentation site for SkillGate product and integrations.
 
-## Canonical URLs
+<p>
+  <img src="../web-ui/public/images/hero-shield.svg" alt="SkillGate shield" width="64" />
+</p>
 
-- `/rules`
-- `/policy`
+## Product message
 
-These routes are first-class and should remain stable.
+Secure every AI tool before it executes.
 
-## Local Development
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Quality Gates
+## Quality gate
 
 ```bash
-npm run lint
-npm run type-check
-npm run build
 npm run ci:gate
 ```
 
-`npm run ci:gate` runs the full local gate: lint, type-check, build, Lychee link checks, and npm audit.
-
-## Deploy (Local Script + Netlify)
-
-This repo is configured for local operator-driven deploys (not GitHub auto-deploy).
+## Deploy (Netlify)
 
 ```bash
-# one-time: link local folder to your Netlify site
 netlify link
-
-# preview deploy
 ./deploy.sh preview
-
-# production deploy
 ./deploy.sh prod
 ```
 
-`deploy.sh` runs `npm run ci:gate` first, then runs Netlify build and publish using your local Netlify CLI session.
+## Release alignment
 
-## Governance
+Ensure docs changes are synced with release docs in `../docs/Release`.
 
-- CODEOWNERS at `.github/CODEOWNERS`
-- CI checks in `.github/workflows/ci.yml`
-- Link checks in `.github/workflows/link-check.yml`
-- Security checks in `.github/workflows/security.yml`
-- No GitHub deploy workflow (deployment is local-script only)
+## SEO Keywords
 
-## DNS Cutover
-
-Point `docs.skillgate.io` CNAME to your hosting provider target and verify TLS before changing product links.
-
-## License
-
-Proprietary. All rights reserved. See [LICENSE](./LICENSE).
+`skillgate docs`, `ai agent security docs`, `runtime policy firewall docs`, `claude code governance docs`.
