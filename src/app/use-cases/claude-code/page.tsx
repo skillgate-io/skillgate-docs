@@ -13,25 +13,29 @@ export default function UseCaseClaudePage() {
     <div style={{ maxWidth: '740px' }} className="sg-prose">
       <h1>Protect Claude Code</h1>
       <p>
-        Route Claude operations through SkillGate checks and scan Claude workspace surfaces so risky config changes do not silently expand permissions.
+        Use this workflow when your team relies on Claude hooks, plugins, and shared instruction files.
       </p>
 
-      <h2>What to protect</h2>
-      <ul>
-        <li>Hooks and plugin workflows.</li>
-        <li>Instruction files such as AGENTS.md and CLAUDE.md.</li>
-        <li>Settings files that expand risky permissions.</li>
-      </ul>
+      <h2>Command order</h2>
+      <p><strong>Step 1:</strong> scan Claude surfaces so instruction and hook risks are visible before runtime.</p>
+      <CodeBlock language="bash" code={`skillgate claude scan --directory . --surface all --output json`} />
 
-      <h2>Commands to run</h2>
+      <p><strong>Step 2:</strong> run guarded execution for day-to-day prompts.</p>
+      <CodeBlock language="bash" code={`skillgate run --env ci -- claude -p "review this pull request"`} />
+
+      <p><strong>Step 3:</strong> enforce approval checks for protected files in CI.</p>
       <CodeBlock
         language="bash"
-        code={`# Guarded execution
-skillgate run --env ci -- claude -p "review this pull request"
-
-# Scan Claude surfaces
-skillgate claude scan --directory . --surface all --output json`}
+        code={`skillgate claude approvals baseline --directory .
+skillgate claude approvals check --directory . --ci`}
       />
+
+      <h2>Why this order works</h2>
+      <ul>
+        <li>Static risk is handled before interactive runtime usage.</li>
+        <li>Runtime controls block unsafe actions at execution time.</li>
+        <li>Approval checks keep sensitive config changes auditable.</li>
+      </ul>
 
       <h2>Next step</h2>
       <ul>

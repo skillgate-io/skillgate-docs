@@ -6,31 +6,41 @@ export function DocsAssistant() {
   const { openAsk } = useSearchModal();
 
   return (
-    <button
-      onClick={openAsk}
-      aria-label="Ask SkillGate Docs"
-      style={{
-        position: 'fixed',
-        bottom: '24px',
-        right: '24px',
-        zIndex: 200,
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        padding: '10px 16px',
-        borderRadius: '24px',
-        background: 'var(--accent)',
-        color: '#fff',
-        border: 'none',
-        cursor: 'pointer',
-        fontSize: '0.85rem',
-        fontWeight: 600,
-        boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
-      }}
-    >
-      <ChatIcon />
-      <span>Ask Docs</span>
-    </button>
+    <>
+      <button
+        onClick={openAsk}
+        aria-label="Ask SkillGate Docs"
+        className="docs-assistant-trigger"
+        style={{
+          position: 'fixed',
+          bottom: 'max(24px, calc(env(safe-area-inset-bottom) + 12px))',
+          right: 'max(24px, calc(env(safe-area-inset-right) + 12px))',
+          zIndex: 200,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '10px 16px',
+          borderRadius: '24px',
+          background: 'var(--accent)',
+          color: '#fff',
+          border: 'none',
+          cursor: 'pointer',
+          fontSize: '0.85rem',
+          fontWeight: 600,
+          boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
+        }}
+      >
+        <ChatIcon />
+        <span>Ask Docs</span>
+      </button>
+      <style>{`
+        @media (max-width: 768px) {
+          .docs-assistant-trigger {
+            display: none !important;
+          }
+        }
+      `}</style>
+    </>
   );
 }
 

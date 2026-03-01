@@ -13,28 +13,25 @@ export default function UseCaseCodexPage() {
     <div style={{ maxWidth: '740px' }} className="sg-prose">
       <h1>Protect Codex CLI</h1>
       <p>
-        Use SkillGate to govern Codex CLI before tools execute. This keeps local sessions and CI runs aligned to your policy.
+        Use this workflow when you want local development and CI runs to follow the same policy gates.
       </p>
 
-      <h2>What to protect</h2>
+      <h2>Command order</h2>
+      <p><strong>Step 1:</strong> run Codex with default guarded execution in your repository.</p>
+      <CodeBlock language="bash" code={`skillgate codex --directory . exec "review this repository"`} />
+
+      <p><strong>Step 2:</strong> run CI mode for stricter automated checks.</p>
+      <CodeBlock language="bash" code={`skillgate codex --ci --output sarif --directory . exec "run release checks"`} />
+
+      <p><strong>Step 3:</strong> run direct runtime wrap for production-like preflight control.</p>
+      <CodeBlock language="bash" code={`skillgate run --env prod --reputation-store .skillgate/reputation/reputation.json -- codex exec "deploy release"`} />
+
+      <h2>Why this order works</h2>
       <ul>
-        <li>Shell, file write, and network tool calls from Codex sessions.</li>
-        <li>Settings changes that expand allowed commands or trusted providers.</li>
-        <li>Instruction files such as AGENTS.md and codex.md that can carry injected prompts.</li>
+        <li>Developers get immediate feedback during local work.</li>
+        <li>CI applies deterministic gates with machine-readable output.</li>
+        <li>Production paths use runtime preflight checks before tool execution.</li>
       </ul>
-
-      <h2>Commands to run</h2>
-      <CodeBlock
-        language="bash"
-        code={`# Run Codex through SkillGate in local development
-skillgate codex -- codex
-
-# CI guard mode with fail-closed provider controls
-skillgate codex --ci-guard -- codex exec "review pull request"
-
-# Scan Codex instruction surfaces
-skillgate codex scan --directory . --output json`}
-      />
 
       <h2>Next step</h2>
       <ul>

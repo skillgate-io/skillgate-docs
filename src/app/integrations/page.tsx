@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IntegrationLogos } from '@/components/branding/IntegrationLogos';
+import { PageWithTOC } from '@/components/ui/PageWithTOC';
 
 export const metadata: Metadata = {
   title: 'Integrations',
@@ -60,10 +61,18 @@ const INTEGRATIONS = [
   },
 ];
 
+const TOC = [
+  { id: 'integration-overview', label: 'Overview' },
+  { id: 'validation-evidence', label: 'Validation evidence' },
+  { id: 'integration-guides', label: 'Integration guides' },
+  { id: 'other-platforms', label: 'Other platforms' },
+];
+
 export default function IntegrationsPage() {
   return (
-    <div style={{ maxWidth: '720px' }} className="sg-prose">
-      <div style={{ marginBottom: '32px' }}>
+    <PageWithTOC items={TOC}>
+      <div style={{ maxWidth: '720px' }} className="sg-prose">
+      <div id="integration-overview" style={{ marginBottom: '32px' }}>
         <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '8px' }}>Integrations</div>
         <h1 style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text)', margin: 0 }}>
           Integrations
@@ -76,6 +85,7 @@ export default function IntegrationsPage() {
       <IntegrationLogos />
 
       <div
+        id="validation-evidence"
         style={{
           border: '1px solid var(--border)',
           borderRadius: '10px',
@@ -145,6 +155,9 @@ export default function IntegrationsPage() {
         </Link>
       </div>
 
+      <h2 id="integration-guides" style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>
+        Integration guides
+      </h2>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '40px' }}>
         {INTEGRATIONS.map((integ) => (
           <Link
@@ -182,11 +195,12 @@ export default function IntegrationsPage() {
         ))}
       </div>
 
-      <div style={{ padding: '20px', borderRadius: '10px', border: '1px solid var(--border)', background: 'var(--sidebar-bg)', fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
+      <div id="other-platforms" style={{ padding: '20px', borderRadius: '10px', border: '1px solid var(--border)', background: 'var(--sidebar-bg)', fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
         <strong style={{ color: 'var(--text)' }}>Other platforms:</strong> SkillGate works anywhere you can run a shell command.
         Use <code>skillgate scan --enforce --quiet</code> and check the exit code.
         Exit 0 means pass; exit 1 means violation.
       </div>
-    </div>
+      </div>
+    </PageWithTOC>
   );
 }

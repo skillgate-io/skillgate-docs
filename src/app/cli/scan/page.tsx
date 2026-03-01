@@ -136,23 +136,34 @@ skillgate scan ./skills/my-skill --explain --explain-mode executive`} />
 
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Reputation store (first-time users)</h2>
       <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
-        Reputation checks are optional on first use. If you see <code>SG-REP-MISS</code>, SkillGate
-        did not find a reputation file and continued safely without shared reputation intelligence.
+        Set up the reputation store once, then keep using the same path in scan commands.
       </p>
-      <CodeBlock language="bash" code={`# Default location (relative to current project folder)
-.skillgate/reputation/reputation.json
+      <CodeBlock language="bash" code={`# One-time setup
+skillgate reputation init --store .skillgate/reputation/reputation.json
 
-# Override per run
-skillgate scan ./skills/my-skill --reputation-store /path/to/reputation.json`} />
+# Use in scan
+skillgate scan ./skills/my-skill --reputation-store .skillgate/reputation/reputation.json`} />
       <Callout variant="info" title="Where to get a reputation store">
-        Most teams distribute this file from a central security pipeline. If you do not have one
-        yet, continue scanning normally and onboard reputation later.
+        Teams that run centralized security can still point scans to a shared store with{' '}
+        <code>--reputation-store /path/to/reputation.json</code>.
       </Callout>
 
       <Callout variant="info" title="Performance">
         Cold start under 2 seconds. 10 files in under 3 seconds. Fleet uses 4 parallel workers by default.
         Files over 100KB are skipped with a warning. Zero network calls during local scan.
       </Callout>
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Command order by scenario</h2>
+      <CodeBlock language="bash" code={`# Scenario 1: local baseline
+skillgate reputation init --store .skillgate/reputation/reputation.json
+skillgate scan ./my-skill --reputation-store .skillgate/reputation/reputation.json
+
+# Scenario 2: CI gate with policy enforcement
+skillgate scan ./my-skill --enforce --policy production --output json --report-file /tmp/scan-report.json
+
+# Scenario 3: signed evidence for downstream verification
+skillgate scan ./my-skill --sign --report-file /tmp/scan-signed.json
+skillgate verify /tmp/scan-signed.json`} />
     </div>
   );
 }

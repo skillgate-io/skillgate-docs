@@ -76,6 +76,17 @@ skillgate simulate ./skills --policy strict --fail-on-failures`} />
       <Callout variant="info">
         <code>simulate</code> never writes reports, signs output, or submits to the API. It is a read-only preview command. No enforcement happens regardless of flags.
       </Callout>
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Command order by scenario</h2>
+      <CodeBlock language="bash" code={`# Scenario 1: evaluate a policy update before rollout
+skillgate simulate ./skills --policy staging
+skillgate simulate ./skills --policy production --fail-on-failures
+
+# Scenario 2: assess impact across an org-wide scope
+skillgate simulate --org github:acme/* --policy strict --output json
+
+# Scenario 3: move from preview to enforcement
+skillgate scan ./skills --enforce --policy production`} />
     </div>
   );
 }

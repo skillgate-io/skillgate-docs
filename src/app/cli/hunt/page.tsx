@@ -100,6 +100,17 @@ skillgate hunt 'severity:high after:2025-06-01' --data-dir ./reports --format js
       <Callout variant="tip">
         Combine multiple tokens with spaces - all tokens must match (AND semantics). For example, <code>rule:SG-NET-001 after:2025-01-01 severity:high</code> finds HIGH severity network findings from scans run in 2025.
       </Callout>
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Command order by scenario</h2>
+      <CodeBlock language="bash" code={`# Scenario 1: find critical findings for incident response
+skillgate hunt 'severity:critical' --data-dir ./reports
+
+# Scenario 2: investigate one rule across time
+skillgate hunt 'rule:SG-SHELL-001 after:2025-01-01' --data-dir ./reports --format json
+
+# Scenario 3: convert findings into replay and policy updates
+skillgate hunt 'category:network severity:high' --data-dir ./reports
+skillgate retroscan --data-dir ./reports --trigger rule_update --rule-ids SG-NET-001`} />
     </div>
   );
 }

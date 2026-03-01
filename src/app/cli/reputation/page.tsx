@@ -3,7 +3,7 @@ import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
   title: 'reputation - CLI Reference',
-  description: 'Verify integrity of signed reputation graphs, check bundle hashes, and submit anonymized verdicts.',
+  description: 'Initialize, verify, check, and submit signed reputation records so runtime decisions can use trusted shared risk signals.',
 };
 
 export default function ReputationPage() {
@@ -20,27 +20,33 @@ export default function ReputationPage() {
         </p>
       </div>
 
-      <CodeBlock language="bash" code={`skillgate reputation verify <store>
+      <CodeBlock language="bash" code={`skillgate reputation init [OPTIONS]
+skillgate reputation verify <store>
 skillgate reputation check [OPTIONS]
 skillgate reputation submit [OPTIONS]`} />
 
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>First-time setup</h2>
       <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
-        If your project does not have a signed reputation store yet, commands like{' '}
-        <code>scan</code> and <code>run</code> may show <code>SG-REP-MISS</code>. That means
-        SkillGate could not find the file and continued without shared reputation intelligence.
+        Run one command to create a signed baseline store before your first runtime or scan workflow.
+        This avoids <code>SG-REP-MISS</code> and makes reputation checks available immediately.
       </p>
-      <CodeBlock language="bash" code={`# Default expected path (relative to current working directory)
-.skillgate/reputation/reputation.json
+      <CodeBlock language="bash" code={`# Run once per repository
+skillgate reputation init --store .skillgate/reputation/reputation.json
 
-# Override path at runtime
-skillgate scan ./skills/my-skill --reputation-store /absolute/or/relative/path.json
-skillgate run --env prod --reputation-store /absolute/or/relative/path.json -- codex exec "review"`} />
+# Optional: verify integrity before using it in CI or runtime
+skillgate reputation verify .skillgate/reputation/reputation.json`} />
       <p style={{ color: 'var(--text-muted)', marginBottom: '18px', lineHeight: 1.7 }}>
-        If you do not have this file yet, continue with scan and run normally. When your team is
-        ready, add a signed reputation file at the default path or pass a path with{' '}
-        <code>--reputation-store</code>.
+        If your team stores reputation data in a shared location, keep using that path with{' '}
+        <code>--reputation-store</code> in <code>scan</code> and <code>run</code>.
       </p>
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>reputation init</h2>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '16px', lineHeight: 1.7 }}>
+        Creates a signed baseline reputation store. If no keypair exists yet, SkillGate creates one
+        automatically so you can continue without extra setup steps.
+      </p>
+      <CodeBlock language="bash" code={`skillgate reputation init --store .skillgate/reputation/reputation.json
+skillgate reputation init --store /secure/shared/reputation.json --key-dir /secure/keydir`} />
 
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '32px', marginBottom: '12px' }}>reputation verify</h2>
       <p style={{ color: 'var(--text-muted)', marginBottom: '16px', lineHeight: 1.7 }}>
@@ -138,6 +144,21 @@ skillgate reputation submit \\
   --bundle-hash <sha256> \\
   --verdict known_safe \\
   --confidence 1.0`} />
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Common command sequences</h2>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
+        Use these ordered sequences when onboarding teams to reputation-backed enforcement.
+      </p>
+      <CodeBlock language="bash" code={`# Scenario 1: first-time local setup
+skillgate reputation init --store .skillgate/reputation/reputation.json
+skillgate scan ./skills/my-skill --reputation-store .skillgate/reputation/reputation.json
+
+# Scenario 2: CI with strict checks
+skillgate reputation verify .skillgate/reputation/reputation.json
+skillgate scan ./skills/my-skill --enforce --policy production --reputation-store .skillgate/reputation/reputation.json
+
+# Scenario 3: runtime gate with shared reputation
+skillgate run --env prod --reputation-store .skillgate/reputation/reputation.json -- codex exec "review"`} />
     </div>
   );
 }

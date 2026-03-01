@@ -107,7 +107,8 @@ const DOMAIN_TOKENS = new Set([
   'sg-cred', 'sg-inj', 'sg-obf', 'quickstart', 'installation', 'doctor', 'auth', 'keys',
   'api', 'apikey', 'scopes', 'scope', 'team', 'billing',
   'gateway', 'approval', 'bom', 'reputation', 'drift', 'retroscan', 'hunt', 'hooks',
-  'integrate', 'export', 'report', 'version', 'submit-scan', 'simulate', 'run',
+  'integrate', 'export', 'report', 'version', 'submit-scan', 'simulate', 'run', 'init',
+  'workflow', 'scenario', 'sequence', 'order', 'commands', 'use-cases',
 ]);
 
 const RULE_ID_TOKEN = /^sg-[a-z]+-\d+$/i;

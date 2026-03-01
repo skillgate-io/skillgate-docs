@@ -105,16 +105,13 @@ skillgate run --env prod --top-outcome block -- my-agent-cli run`} />
 
       <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Reputation store troubleshooting</h2>
       <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
-        If runtime output includes <code>SG-REP-MISS</code>, the configured reputation file was not
-        found. Runtime can continue, but without shared reputation verdicts.
+        If runtime output includes <code>SG-REP-MISS</code>, initialize a local signed store first.
       </p>
-      <CodeBlock language="bash" code={`# Use default path in your project
-mkdir -p .skillgate/reputation
-# place signed reputation.json at:
-# .skillgate/reputation/reputation.json
+      <CodeBlock language="bash" code={`# One-time setup
+skillgate reputation init --store .skillgate/reputation/reputation.json
 
-# Or pass an explicit store path
-skillgate run --env prod --reputation-store /path/to/reputation.json -- codex exec "review"`} />
+# Run with local store
+skillgate run --env prod --reputation-store .skillgate/reputation/reputation.json -- codex exec "review"`} />
     </div>
   );
 }

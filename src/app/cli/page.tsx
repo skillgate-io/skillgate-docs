@@ -105,7 +105,8 @@ skillgate scan ./my-skill --output json --report-file report.json`}
       />
       <p style={{ color: 'var(--text-muted)', marginBottom: '24px', lineHeight: 1.7 }}>
         If you see <code>SG-REP-MISS</code>, SkillGate is telling you no reputation file was found.
-        Your scan still runs. Add one later with <code>--reputation-store</code> when ready.
+        Run <code>skillgate reputation init --store .skillgate/reputation/reputation.json</code>{' '}
+        once, then continue scanning with <code>--reputation-store</code>.
       </p>
 
       <div style={{ marginTop: '32px' }}>
@@ -137,6 +138,29 @@ skillgate scan ./my-skill --output json --report-file report.json`}
             <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem', lineHeight: 1.6 }}>{c.desc}</span>
           </div>
         ))}
+      </div>
+
+      <div style={{ marginTop: '32px' }}>
+        <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)', marginBottom: '12px' }}>Common workflows by scenario</h2>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.7 }}>
+          These command sequences are ordered for real team workflows so new users can move from first scan to production policy without guesswork.
+        </p>
+        <CodeBlock
+          language="bash"
+          code={`# Scenario 1: first-day baseline
+skillgate version
+skillgate reputation init --store .skillgate/reputation/reputation.json
+skillgate scan ./my-skill --reputation-store .skillgate/reputation/reputation.json
+
+# Scenario 2: CI gate with signed evidence
+skillgate scan ./my-skill --enforce --policy production --reputation-store .skillgate/reputation/reputation.json
+skillgate scan ./my-skill --sign --report-file /tmp/scan-report.json
+skillgate verify /tmp/scan-report.json
+
+# Scenario 3: runtime rollout for agent commands
+skillgate run --env ci --reputation-store .skillgate/reputation/reputation.json -- codex exec "review changed files"
+skillgate run --env prod --approval-file .skillgate/approvals/approval.json --required-reviewers 2 --reputation-store .skillgate/reputation/reputation.json -- codex exec "deploy release"`}
+        />
       </div>
 
       <div style={{ marginTop: '32px' }}>

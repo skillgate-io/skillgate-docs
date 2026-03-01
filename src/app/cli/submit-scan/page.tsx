@@ -62,6 +62,19 @@ skillgate submit-scan report.json`} />
       <Callout variant="tip">
         If you want to scan and submit in one step, use <code>skillgate scan --submit</code> instead.
       </Callout>
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Command order by scenario</h2>
+      <CodeBlock language="bash" code={`# Scenario 1: manual upload from a local report
+skillgate scan ./my-skill --output json --report-file /tmp/scan-report.json
+skillgate submit-scan /tmp/scan-report.json
+
+# Scenario 2: signed evidence with verification before submit
+skillgate scan ./my-skill --sign --report-file /tmp/scan-signed.json
+skillgate verify /tmp/scan-signed.json
+skillgate submit-scan /tmp/scan-signed.json
+
+# Scenario 3: quiet mode for scripted pipelines
+skillgate submit-scan /tmp/scan-report.json --quiet`} />
     </div>
   );
 }

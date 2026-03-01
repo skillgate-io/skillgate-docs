@@ -58,6 +58,18 @@ Arguments:
         The report is serialized as canonical JSON (sorted keys, no whitespace), hashed with SHA-256, and the signature is verified
         against the public key. A successful verify confirms the report has not been modified since it was signed.
       </p>
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Command order by scenario</h2>
+      <CodeBlock language="bash" code={`# Scenario 1: verify a signed report created in CI
+skillgate scan ./my-skill --sign --report-file /tmp/scan-signed.json
+skillgate verify /tmp/scan-signed.json
+
+# Scenario 2: verify with a team-managed public key
+skillgate verify /tmp/scan-signed.json --public-key ./keys/team.pub
+
+# Scenario 3: verify before submitting historical evidence
+skillgate verify /tmp/scan-signed.json
+skillgate submit-scan /tmp/scan-signed.json`} />
     </div>
   );
 }

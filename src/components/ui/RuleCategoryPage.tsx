@@ -46,6 +46,13 @@ export function RuleCategoryPage({ category, categoryId, description, languages,
         </div>
       </div>
 
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '8px' }}>Category overview</h2>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '18px', lineHeight: 1.7 }}>
+        Review these rules when you tune policy thresholds and investigate findings in this category.
+      </p>
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '12px' }}>Rule list</h2>
+
       <div style={{ border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden', fontSize: '0.85rem' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>

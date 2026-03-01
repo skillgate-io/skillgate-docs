@@ -70,6 +70,17 @@ skillgate retroscan --data-dir ./reports --format json`} />
       <Callout variant="info">
         Retroscan replays the original source code snapshots from the stored reports - it does not re-read the live filesystem. This makes it deterministic and safe to run against archived scan data.
       </Callout>
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Command order by scenario</h2>
+      <CodeBlock language="bash" code={`# Scenario 1: baseline replay before adding new rules
+skillgate retroscan --data-dir ./reports --trigger manual
+
+# Scenario 2: verify impact after rule additions
+skillgate retroscan --data-dir ./reports --trigger rule_add --rule-ids SG-SHELL-099
+
+# Scenario 3: investigate replay deltas and tune policy
+skillgate retroscan --data-dir ./reports --format json
+skillgate simulate ./skills --policy production`} />
     </div>
   );
 }

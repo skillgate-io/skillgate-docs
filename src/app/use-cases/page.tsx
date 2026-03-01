@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata: Metadata = {
   title: 'Use Cases',
@@ -66,6 +67,35 @@ export default function UseCasesPage() {
           </Link>
         ))}
       </div>
+
+      <h2 style={{ marginTop: '32px' }}>Command order by scenario</h2>
+      <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
+        Use these sequences when your team asks what to run first, what to run next, and what to run before production rollout.
+      </p>
+
+      <h3 style={{ marginTop: '20px' }}>Scenario 1: first secure scan in a new repository</h3>
+      <CodeBlock
+        language="bash"
+        code={`skillgate version
+skillgate reputation init --store .skillgate/reputation/reputation.json
+skillgate scan ./my-skill --reputation-store .skillgate/reputation/reputation.json
+skillgate scan ./my-skill --enforce --policy production --reputation-store .skillgate/reputation/reputation.json`}
+      />
+
+      <h3 style={{ marginTop: '20px' }}>Scenario 2: CI policy gate with signed evidence</h3>
+      <CodeBlock
+        language="bash"
+        code={`skillgate scan ./my-skill --enforce --policy production --output json --report-file /tmp/scan-report.json
+skillgate verify /tmp/scan-report.json
+skillgate submit-scan /tmp/scan-report.json`}
+      />
+
+      <h3 style={{ marginTop: '20px' }}>Scenario 3: runtime enforcement for agent commands</h3>
+      <CodeBlock
+        language="bash"
+        code={`skillgate run --env ci --reputation-store .skillgate/reputation/reputation.json -- codex exec "review changed files"
+skillgate run --env prod --approval-file .skillgate/approvals/approval.json --required-reviewers 2 --reputation-store .skillgate/reputation/reputation.json -- codex exec "deploy release"`}
+      />
     </div>
   );
 }

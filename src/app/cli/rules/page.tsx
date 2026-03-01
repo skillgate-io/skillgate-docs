@@ -43,6 +43,18 @@ skillgate rules --output json > skillgate-rules.json`}
         For detailed rule-by-rule guidance and examples, see the{' '}
         <Link href="/rules" className="sg-link">Detection Rules catalog</Link>.
       </p>
+
+      <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginTop: '28px', marginBottom: '12px' }}>Command order by scenario</h2>
+      <CodeBlock language="bash" code={`# Scenario 1: review detection coverage before rollout
+skillgate rules
+skillgate rules --category shell
+
+# Scenario 2: export rule inventory for governance review
+skillgate rules --output json > skillgate-rules.json
+
+# Scenario 3: tune policy after reviewing rule scope
+skillgate init
+skillgate scan ./my-skill --enforce --policy production`} />
     </div>
   );
 }

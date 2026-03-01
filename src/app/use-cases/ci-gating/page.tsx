@@ -13,28 +13,32 @@ export default function UseCaseCiGatingPage() {
     <div style={{ maxWidth: '740px' }} className="sg-prose">
       <h1>Secure CI Gating</h1>
       <p>
-        Use SkillGate in CI to block risky changes before merge. Keep signed evidence linked to every pipeline decision.
+        Use this workflow when you need consistent pass and fail policy decisions in pull requests and release pipelines.
       </p>
 
-      <h2>What to protect</h2>
-      <ul>
-        <li>Pull requests that introduce unsafe shell, network, or file operations.</li>
-        <li>Pipeline paths that skip policy checks on generated or script content.</li>
-        <li>Release workflows that need consistent pass and fail behavior.</li>
-      </ul>
-
-      <h2>Commands to run</h2>
+      <h2>Command order</h2>
+      <p><strong>Step 1:</strong> run an enforced scan and save machine-readable output for CI artifacts.</p>
       <CodeBlock
         language="bash"
-        code={`# Standard CI enforcement
-skillgate scan --enforce --report report.json --format json .
-
-# Verify signed output in a downstream job
-skillgate verify report.sig report.json public_key.pem
-
-# Optional runtime gate in integration tests
-skillgate run --env ci -- openclaw exec "run integration tests"`}
+        code={`skillgate scan ./my-skill \\
+  --enforce \\
+  --policy production \\
+  --output json \\
+  --report-file /tmp/scan-report.json`}
       />
+
+      <p><strong>Step 2:</strong> verify signed evidence before downstream jobs consume the report.</p>
+      <CodeBlock language="bash" code={`skillgate verify /tmp/scan-report.json`} />
+
+      <p><strong>Step 3:</strong> submit the report so security and compliance teams can query history.</p>
+      <CodeBlock language="bash" code={`skillgate submit-scan /tmp/scan-report.json`} />
+
+      <h2>Why this order works</h2>
+      <ul>
+        <li>Policy enforcement happens before merge.</li>
+        <li>Verification protects downstream automation from tampered artifacts.</li>
+        <li>Historical storage supports audits and retroscans.</li>
+      </ul>
 
       <h2>Next step</h2>
       <ul>

@@ -10,9 +10,10 @@ export interface TocItem {
 
 interface Props {
   items: TocItem[];
+  className?: string;
 }
 
-export function TableOfContents({ items }: Props) {
+export function TableOfContents({ items, className }: Props) {
   const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export function TableOfContents({ items }: Props) {
     <>
       <nav
         aria-label="On this page"
-        className="sg-toc"
+        className={className ? `sg-toc ${className}` : 'sg-toc'}
         style={{
           width: '200px',
           flexShrink: 0,

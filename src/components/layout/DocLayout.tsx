@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { HeadingAnchors } from '@/components/ui/HeadingAnchors';
+import { AutoTableOfContents } from '@/components/ui/AutoTableOfContents';
 import { DocsAssistant } from '@/components/ui/DocsAssistant';
 import { DocsAssistantProvider, useDocsAssistant } from '@/components/ui/DocsAssistantContext';
 import { SearchModal } from '@/components/ui/SearchModal';
@@ -66,13 +67,16 @@ function DocLayoutInner({
           className="doc-main"
         >
           <HeadingAnchors />
-          {children}
+          <div style={{ display: 'flex', gap: '56px', alignItems: 'flex-start' }}>
+            <div style={{ flex: 1, minWidth: 0 }}>{children}</div>
+            <AutoTableOfContents />
+          </div>
         </main>
       </div>
       <style>{`
         @media (max-width: 768px) {
           .doc-main {
-            padding: 24px 20px 60px !important;
+            padding: 24px 20px 120px !important;
           }
         }
       `}</style>
