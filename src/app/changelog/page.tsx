@@ -47,7 +47,7 @@ const RELEASES = [
       'Added integration manifest spec v1 (YAML) so tool registrations are machine-readable and auditable.',
       'SDK now auto-registers AI-BOM on first call and updates it on package version change.',
       'Added skillgate integrate --framework auto-detection that generates framework-specific example code.',
-      'Published skillgate-sdk[pydantic-ai], [langchain], and [crewai] extras to PyPI.',
+      'Published skillgate[sdk-pydantic-ai], [sdk-langchain], and [sdk-crewai] extras to PyPI.',
     ],
   },
   {

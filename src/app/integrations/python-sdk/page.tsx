@@ -77,7 +77,7 @@ export default function PythonSdkIntegrationPage() {
         <h2 id="install">Install</h2>
         <CodeBlock
           language="bash"
-          code={`pip install skillgate-sdk
+          code={`pip install skillgate
 
 # Point the SDK at your running sidecar and authenticate
 export SKILLGATE_SIDECAR_URL="http://127.0.0.1:9911"
@@ -281,7 +281,7 @@ except EnforcerUnavailableError as e:
 
         {/* ── PydanticAI ── */}
         <h2 id="pydantic-ai">PydanticAI</h2>
-        <CodeBlock language="bash" code={`pip install skillgate-sdk[pydantic-ai]`} />
+        <CodeBlock language="bash" code={`pip install "skillgate[sdk-pydantic-ai]"`} />
         <p>
           Use <code>skillgate_wrapped</code> directly on individual tool functions. The original
           type annotations and docstring are preserved so PydanticAI can still introspect the
@@ -326,7 +326,7 @@ agent = Agent("claude-opus-4-6", tools=enforced_tools)`}
 
         {/* ── LangChain ── */}
         <h2 id="langchain">LangChain</h2>
-        <CodeBlock language="bash" code={`pip install skillgate-sdk[langchain]`} />
+        <CodeBlock language="bash" code={`pip install "skillgate[sdk-langchain]"`} />
         <p>
           For new tools, subclass <code>SkillGateTool</code> instead of <code>BaseTool</code>.
           Declare the capabilities on the class and implement <code>_run</code> as usual. LangSmith
@@ -374,7 +374,7 @@ enforced = toolkit.get_tools()  # drop-in replacement`}
 
         {/* ── CrewAI ── */}
         <h2 id="crewai">CrewAI</h2>
-        <CodeBlock language="bash" code={`pip install skillgate-sdk[crewai]`} />
+        <CodeBlock language="bash" code={`pip install "skillgate[sdk-crewai]"`} />
         <p>
           Gate task execution with <code>enforce_crew_task</code>. The decorator fires before the
           task body and at each delegation hop in a delegation chain.
@@ -533,6 +533,11 @@ async with AsyncSkillGateClient(timeout_ms=50) as client:
           <li>
             <Link href="/integrations/codex-cli" className="sg-link">
               Codex CLI integration
+            </Link>
+          </li>
+          <li>
+            <Link href="/integrations/skillgate-agents" className="sg-link">
+              Claude Code plugin (SkillGate Agents)
             </Link>
           </li>
           <li>
