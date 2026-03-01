@@ -3,7 +3,7 @@
 Documentation site for SkillGate product and integrations.
 
 <p>
-  <img src="public/images/integrations/openclaw-icon.svg" alt="SkillGate shield" width="64" />
+  <img src="public/images/hero-shield.svg" alt="SkillGate shield" width="64" />
 </p>
 
 ## Product message
