@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/Badge';
 
 export const metadata: Metadata = {
   title: 'Installation',
-  description: 'Install SkillGate on macOS, Linux, and Windows via pipx, pip, Homebrew, winget, or npm.',
+  description: 'Install SkillGate CLI on macOS, Linux, and Windows via pipx, pip, Homebrew, winget, or npm shim. For Go/Ruby/Rust/.NET/Java clients, see Language Shims.',
 };
 
 export default function InstallationPage() {
@@ -19,7 +19,7 @@ export default function InstallationPage() {
           Installation
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '12px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          SkillGate runs on macOS, Linux, and Windows (including WSL). Choose the install channel that fits your workflow.
+          SkillGate runs on macOS, Linux, and Windows (including WSL). Choose the CLI install channel that fits your workflow.
         </p>
       </div>
 
@@ -46,8 +46,9 @@ export default function InstallationPage() {
               { channel: 'Homebrew', status: 'beta', platforms: 'macOS' },
               { channel: 'winget', status: 'beta', platforms: 'Windows' },
               { channel: 'npm shim', status: 'beta', platforms: 'macOS, Linux, Windows, WSL' },
+              { channel: 'language shims', status: 'beta', platforms: 'Go, Ruby, Rust, .NET, Java (source-first)' },
             ].map((row, i) => (
-              <tr key={row.channel} style={{ borderBottom: i < 4 ? '1px solid var(--border)' : 'none' }}>
+              <tr key={row.channel} style={{ borderBottom: i < 5 ? '1px solid var(--border)' : 'none' }}>
                 <td style={{ padding: '10px 16px', fontWeight: 500, color: 'var(--text)', fontFamily: 'monospace', fontSize: '0.85rem' }}>{row.channel}</td>
                 <td style={{ padding: '10px 16px' }}>
                   <Badge status={row.status as 'stable' | 'beta'} />
@@ -130,6 +131,21 @@ npm install -g @skillgate-io/cli   # then the npm wrapper`}
         />
         <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: '12px' }}>Quick run without global install:</p>
         <CodeBlock language="bash" code="npx @skillgate-io/cli version" />
+      </section>
+
+      {/* Post-install */}
+      <section style={{ marginBottom: '48px' }}>
+        <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '16px' }}>
+          Go and other language shims
+        </h2>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '12px' }}>
+          If you are integrating SkillGate into a Go service (or Ruby, Rust, .NET, Java), use the
+          sidecar client shims instead of CLI installation channels.
+        </p>
+        <Callout variant="tip">
+          See <a href="/integrations/language-shims">Language Shims</a> for package paths,
+          examples, and runtime behavior.
+        </Callout>
       </section>
 
       {/* Post-install */}

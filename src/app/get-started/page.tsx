@@ -40,7 +40,9 @@ export default function GetStartedPage() {
       />
 
       <Callout variant="tip" title="Need install options?">
-        See <Link href="/installation" className="sg-link">Installation</Link> for Homebrew, npm, Docker, and package manager paths.
+        See <Link href="/installation" className="sg-link">Installation</Link> for CLI install
+        channels, and <Link href="/integrations/language-shims" className="sg-link">Language Shims</Link> for
+        Go/Ruby/Rust/.NET/Java clients.
       </Callout>
     </div>
   );
